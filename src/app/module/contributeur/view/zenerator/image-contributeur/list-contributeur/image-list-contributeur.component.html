@@ -1,0 +1,274 @@
+<div class="p-grid">
+    <div class="p-col-12">
+        <p-toast></p-toast>
+        <div class="card">
+            <p-toolbar styleClass="p-mb-4">
+                <ng-template pTemplate="left">
+                    <button style="border-radius: 100px; background-color: #121F38 ;" pButton pRipple label="Nouveau" icon="pi pi-download" class="p-button-success p-mr-2 p-mb-2"
+                            (click)="openCreateImage('image')"></button>
+
+
+                    <button style="border-radius: 100px; background-color: #121F38 ;" pButton pRipple label="Recherche"
+                            icon="pi pi-search-{{findByCriteriaShow?'angle-down':'angle-right'}} pi-search"
+                            class="p-button-success p-mr-2 p-mb-2"
+                            (click)="this.findByCriteriaShow = !this.findByCriteriaShow"></button>
+                </ng-template>
+                <!--  <ng-template pTemplate="right">
+                      <div class="flex">
+                          <p-splitButton label="Exporter" icon="pi pi-download" styleClass="p-button-help" [model]="excelPdfButons"></p-splitButton>
+                      </div>
+                  </ng-template>-->
+
+            </p-toolbar>
+            <p-toolbar *ngIf="findByCriteriaShow">
+
+                <div class="align-form-search">
+                                <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                    <input class="p-mr-2" pInputText id="1"
+                                           type="text"  [(ngModel)]="searchImage.reference">
+                                    <label for="1">Reference</label>
+                                </span>
+                    <!-- <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                               <p-inputNumber class="p-mr-2"
+                                              mode="decimal" [(ngModel)]="searchImage.prixMin"
+                                              id="2-1"></p-inputNumber>
+                               <label for="2-1">Prix Min</label>
+                        </span>
+                        <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                               <p-inputNumber class="p-mr-2"
+                                              mode="decimal" [(ngModel)]="searchImage.prixMax"
+                                              id="2-2"></p-inputNumber>
+                              <label for="2-2">Prix Max</label>
+                        </span>-->
+                    <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                    <input class="p-mr-2" pInputText id="4"
+                                           type="text"  [(ngModel)]="searchImage.extension">
+                                    <label for="4">Extension</label>
+                                </span>
+                    <!--   <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                 <p-inputNumber class="p-mr-2"
+                                                mode="decimal" [(ngModel)]="searchImage.tailleMin"
+                                                id="5-1"></p-inputNumber>
+                                 <label for="5-1">Taille Min</label>
+                          </span>
+                          <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                 <p-inputNumber class="p-mr-2"
+                                                mode="decimal" [(ngModel)]="searchImage.tailleMax"
+                                                id="5-2"></p-inputNumber>
+                                <label for="5-2">Taille Max</label>
+                          </span>-->
+                    <!-- <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                               <p-inputNumber class="p-mr-2"
+                                              mode="decimal" [(ngModel)]="searchImage.resolutionMin"
+                                              id="6-1"></p-inputNumber>
+                               <label for="6-1">Resolution Min</label>
+                        </span>-->
+                    <!--  <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                             <p-inputNumber class="p-mr-2"
+                                            mode="decimal" [(ngModel)]="searchImage.resolutionMax"
+                                            id="6-2"></p-inputNumber>
+                            <label for="6-2">Resolution Max</label>
+                      </span>-->
+                    <!--     <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                             <p-dropdown [options]="clients" [(ngModel)]="searchImage.clientVo"
+                                     id="7"
+                                     [filter]="true" [showClear]="true"  placeholder="Client"
+                                     optionLabel="numeroMatricule">
+                             </p-dropdown>
+                         </span>-->
+                    <!--   <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                           <p-dropdown [options]="buckets" [(ngModel)]="searchImage.bucketVo"
+                                   id="8"
+                                   [filter]="true" [showClear]="true"  placeholder="Bucket"
+                                   optionLabel="libelle">
+                           </p-dropdown>
+                       </span>-->
+                    <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                <p-dropdown [options]="typeImages" [(ngModel)]="searchImage.typeImageVo"
+                                            id="10"
+                                            [filter]="true" [showClear]="true"  placeholder="Type image"
+                                            optionLabel="libelle">
+                                </p-dropdown>
+                            </span>
+                </div>
+
+                <div class="align-search-button">
+                    <button pButton pRipple label="Valider" icon="pi pi-search"
+                            class="p-button-info p-mr-2" (click)="searchRequest()"></button>
+                </div>
+            </p-toolbar>
+
+
+            <p-table #dt [value]="images" [columns]="cols" [rows]="4" [paginator]="true"
+                     [globalFilterFields]="['reference', 'prix', 'extension', 'taille', 'resolution', 'numeroMatricule', 'libelle', 'libelle']" [(selection)]="selectedImage"
+                     [rowHover]="true" dataKey="id" styleClass="p-datatable-customers"
+                     currentPageReportTemplate="Les éléments de {first} à {last} sur {totalRecords}"
+                     [showCurrentPageReport]="true">
+                <ng-template pTemplate="caption">
+                    <div class="p-d-flex p-flex-column p-flex-md-row p-jc-md-between table-header">
+                        <h5 class="p-m-0">Liste des images</h5>
+                        <!-- <span class="p-input-icon-left">
+                             <i class="pi pi-search"></i>
+                             <input pInputText type="text" placeholder="Chercher..." (input)="dt.filterGlobal($event.target.value, 'contains')"/>
+                         </span>-->
+                    </div>
+                </ng-template>
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th style="width: 3rem">
+                            <!--  <p-tableHeaderCheckbox></p-tableHeaderCheckbox>-->
+                        </th>
+
+
+                        <!-- <th pSortableColumn="reference">
+                             <div class="p-d-flex p-jc-between p-ai-center">
+                                 <span>Reference</span>
+                                 <p-sortIcon field="reference"></p-sortIcon>
+                             </div>
+                         </th>-->
+
+
+
+
+                        <th pSortableColumn="prix">
+                            <div class="p-d-flex p-jc-between p-ai-center">
+                                <span>Prix</span>
+                                <p-sortIcon field="prix"></p-sortIcon>
+                            </div>
+                        </th>
+
+
+
+
+
+                        <th pSortableColumn="extension">
+                            <div class="p-d-flex p-jc-between p-ai-center">
+                                <span>Extension</span>
+                                <p-sortIcon field="extension"></p-sortIcon>
+                            </div>
+                        </th>
+
+
+
+
+                        <th pSortableColumn="taille">
+                            <div class="p-d-flex p-jc-between p-ai-center">
+                                <span>Taille</span>
+                                <p-sortIcon field="taille"></p-sortIcon>
+                            </div>
+                        </th>
+
+
+
+
+                        <th pSortableColumn="resolution">
+                            <div class="p-d-flex p-jc-between p-ai-center">
+                                <span>Resolution</span>
+                                <p-sortIcon field="resolution"></p-sortIcon>
+                            </div>
+                        </th>
+
+
+
+
+                        <!--  <th pSortableColumn="client">
+                              <div class="p-d-flex p-jc-between p-ai-center">
+                                  <span>Client</span>
+                                  <p-sortIcon field="client"></p-sortIcon>
+                              </div>
+                          </th>-->
+
+
+
+
+                        <!--   <th pSortableColumn="bucket">
+                               <div class="p-d-flex p-jc-between p-ai-center">
+                                   <span>Bucket</span>
+                                   <p-sortIcon field="bucket"></p-sortIcon>
+                               </div>
+                           </th>-->
+
+
+
+
+
+                        <th pSortableColumn="typeImage">
+                            <div class="p-d-flex p-jc-between p-ai-center">
+                                <span>Type image</span>
+                                <p-sortIcon field="typeImage"></p-sortIcon>
+                            </div>
+                        </th>
+
+
+
+                        <!--   <th>Actions</th>-->
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-image>
+                    <tr>
+                        <!--    <td>
+                                <p-tableCheckbox [value]="image"></p-tableCheckbox>
+                            </td>-->
+
+                        <!--  <td>{{image.reference}}</td>-->
+
+
+
+                        <td>{{image.prix}}</td>
+
+
+
+                        <td>{{image.extension}}</td>
+
+
+
+                        <td>{{image.taille}}</td>
+
+
+
+                        <td>{{image.resolution}}</td>
+
+
+
+                        <td>{{image.clientVo?.numeroMatricule}}</td>
+
+
+
+                        <!--   <td>{{image.bucketVo?.libelle}}</td>-->
+
+
+
+                        <td>{{image.typeImageVo?.libelle}}</td>
+
+
+
+                        <!--   <td>
+                               <button pButton pRipple icon="pi pi-pencil"
+                                       class="p-button-rounded p-button-success p-mr-2"
+                                       (click)="editImage(image)"></button>
+                               <button pButton pRipple icon="pi pi-list" class="p-button-rounded p-button-info p-mr-2"
+                                       (click)="viewImage(image)"></button>
+                               <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-danger p-mr-2"
+                                       (click)="deleteImage(image)"></button>
+
+                               <button pButton pRipple icon="pi pi-copy" class="p-button-rounded p-button-raised p-button-warning"
+                                       (click)="duplicateImage(image)"></button>
+                           </td>-->
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="summary">
+                    <div class="p-d-flex p-ai-center p-jc-between">
+                        En totale
+                        il {{images ? images.length == 1 ? 'y a' : 'y a' : 'y a' }} {{images ? images.length : 0 }} {{images ? images.length == 1 ? 'image' : 'images' : 0 }}
+                        .
+                    </div>
+                </ng-template>
+            </p-table>
+        </div>
+
+        <app-image-create-contributeur></app-image-create-contributeur>
+        <app-image-edit-contributeur></app-image-edit-contributeur>
+        <app-image-view-contributeur></app-image-view-contributeur>
+        <p-confirmDialog [style]="{width: '450px'}"></p-confirmDialog>
+    </div>
+</div>

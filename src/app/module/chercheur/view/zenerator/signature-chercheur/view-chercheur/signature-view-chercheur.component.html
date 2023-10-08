@@ -1,0 +1,64 @@
+
+<p-dialog [(visible)]="viewSignatureDialog" [style]="{width: '70vw'}"
+        header="Signature" [modal]="true"
+        styleClass="p-fluid">
+
+    <ng-template pTemplate="content">
+        <p-tabView>
+            <p-tabPanel header="Signature">
+                <div class="p-grid">
+
+                                <div class="p-field p-col-12 p-md-6">
+                                    <label for="1">Date signature</label>
+                                    <p-calendar id="1" [disabled]="true"
+                                                placeholder="Date signature"  [(ngModel)]="selectedSignature.dateSignature"
+                                            dateFormat="{{dateFormat}}"></p-calendar>
+                                </div>
+
+                                <div class="p-field p-col-12 p-md-6">
+                                    <label for="2">Contributeur</label>
+                                    <p-dropdown [options]="contributeurs" [(ngModel)]="selectedSignature.contributeurVo"
+                                            id="2" [filter]="true" filterMatchMode="contains"
+                                            [showClear]="true" [disabled]="true"
+                                            optionLabel="cin"
+                                            placeholder="Contributeur">
+                                    </p-dropdown>
+                                </div>
+
+
+                                <div class="p-field p-col-12 p-md-6">
+                                    <label for="3">Contract</label>
+                                    <p-dropdown [options]="contracts" [(ngModel)]="selectedSignature.contractVo"
+                                            id="3" [filter]="true" filterMatchMode="contains"
+                                            [showClear]="true" [disabled]="true"
+                                            optionLabel="objet"
+                                            placeholder="Contract">
+                                    </p-dropdown>
+                                </div>
+
+
+                </div>
+            </p-tabPanel>
+
+        </p-tabView>
+
+    </ng-template>
+
+    <ng-template pTemplate="footer" >
+        <div class="p-grid">
+            <div>
+                <button pButton pRipple label="Annuler" icon="pi pi-times"
+                        class="p-button-text" (click)="hideViewDialog()"></button>
+            </div>
+        </div>
+    </ng-template>
+
+            <app-contributeur-create-chercheur></app-contributeur-create-chercheur>
+            <app-contract-create-chercheur></app-contract-create-chercheur>
+
+
+
+</p-dialog>
+
+
+

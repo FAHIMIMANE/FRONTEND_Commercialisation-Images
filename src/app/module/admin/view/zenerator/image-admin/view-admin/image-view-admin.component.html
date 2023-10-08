@@ -1,0 +1,213 @@
+
+<p-dialog [(visible)]="viewImageDialog" [style]="{width: '70vw'}"
+        header="Image" [modal]="true"
+        styleClass="p-fluid">
+
+    <ng-template pTemplate="content">
+        <p-tabView>
+            <p-tabPanel header="Image">
+                <div class="p-grid">
+
+                                <div class="p-field p-col-12 p-md-4">
+                                    <label for="1">Reference</label>
+                                    <input class="p-mb-2 p-mr-2" type="text" pInputText [disabled]="true"
+                                           placeholder="Reference"  [(ngModel)]="selectedImage.reference"
+                                           id="1" [(ngModel)]="selectedImage.reference"
+                                           autofocus>
+                                </div>
+
+
+
+                                <div class="p-field p-col-12 p-md-4">
+                                    <label for="2">Prix</label>
+                                    <p-inputNumber class="p-mb-2 p-mr-2" id="2" [disabled]="true"
+                                                   placeholder="Prix"  [(ngModel)]="selectedImage.prix"
+                                            [(ngModel)]="selectedImage.prix"></p-inputNumber>
+                                </div>
+
+                                <div class="p-field p-col-12 p-md-4">
+                                    <label for="3">Description</label>
+                                    <textarea id="3" pInputTextarea rows="5" cols="30"
+                                              placeholder="Description"  [(ngModel)]="selectedImage.description"
+                                    ></textarea>
+                                </div>
+
+                                <div class="p-field p-col-12 p-md-4">
+                                    <label for="4">Extension</label>
+                                    <input class="p-mb-2 p-mr-2" type="text" pInputText [disabled]="true"
+                                           placeholder="Extension"  [(ngModel)]="selectedImage.extension"
+                                           id="4" [(ngModel)]="selectedImage.extension"
+                                           autofocus>
+                                </div>
+
+
+
+                                <div class="p-field p-col-12 p-md-4">
+                                    <label for="5">Taille</label>
+                                    <p-inputNumber class="p-mb-2 p-mr-2" id="5" [disabled]="true"
+                                                   placeholder="Taille"  [(ngModel)]="selectedImage.taille"
+                                            [(ngModel)]="selectedImage.taille"></p-inputNumber>
+                                </div>
+
+                                <div class="p-field p-col-12 p-md-4">
+                                    <label for="6">Resolution</label>
+                                    <p-inputNumber class="p-mb-2 p-mr-2" id="6" [disabled]="true"
+                                                   placeholder="Resolution"  [(ngModel)]="selectedImage.resolution"
+                                            [(ngModel)]="selectedImage.resolution"></p-inputNumber>
+                                </div>
+
+                                <div class="p-field p-col-12 p-md-4">
+                                    <label for="7">Client</label>
+                                    <p-dropdown [options]="clients" [(ngModel)]="selectedImage.clientVo"
+                                            id="7" [filter]="true" filterMatchMode="contains"
+                                            [showClear]="true" [disabled]="true"
+                                            optionLabel="numeroMatricule"
+                                            placeholder="Client">
+                                    </p-dropdown>
+                                </div>
+
+
+                                <div class="p-field p-col-12 p-md-4">
+                                    <label for="8">Bucket</label>
+                                    <p-dropdown [options]="buckets" [(ngModel)]="selectedImage.bucketVo"
+                                            id="8" [filter]="true" filterMatchMode="contains"
+                                            [showClear]="true" [disabled]="true"
+                                            optionLabel="libelle"
+                                            placeholder="Bucket">
+                                    </p-dropdown>
+                                </div>
+
+
+                                <div class="p-field p-col-12 p-md-4">
+                                    <label for="10">Type image</label>
+                                    <p-dropdown [options]="typeImages" [(ngModel)]="selectedImage.typeImageVo"
+                                            id="10" [filter]="true" filterMatchMode="contains"
+                                            [showClear]="true" [disabled]="true"
+                                            optionLabel="libelle"
+                                            placeholder="Type image">
+                                    </p-dropdown>
+                                </div>
+
+
+                </div>
+            </p-tabPanel>
+                    <p-tabPanel header="Categorie items">
+                        <div class="p-grid">
+
+                            <div class="p-col">
+                                <div class="card">
+                                    <p-table [value]="selectedImage.categorieItemsVo" [scrollable]="true"
+                                            scrollHeight="200px">
+                                        <ng-template pTemplate="header">
+                                            <tr>
+                                                            <th>Categorie image</th>
+                                            </tr>
+                                        </ng-template>
+                                        <ng-template pTemplate="body" let-p>
+                                            <tr>
+                                                        <td>{{p.categorieImageVo?.libelle}}</td>
+
+                                            </tr>
+                                        </ng-template>
+                                    </p-table>
+                                </div>
+                            </div>
+                        </div>
+
+                    </p-tabPanel>
+
+
+        </p-tabView>
+
+    </ng-template>
+
+    <ng-template pTemplate="footer" >
+        <div class="p-grid">
+            <div>
+                <button pButton pRipple label="Annuler" icon="pi pi-times"
+                        class="p-button-text" (click)="hideViewDialog()"></button>
+            </div>
+        </div>
+    </ng-template>
+
+            <app-client-create-admin></app-client-create-admin>
+            <app-bucket-create-admin></app-bucket-create-admin>
+            <app-type-image-create-admin></app-type-image-create-admin>
+
+                    <app-categorie-image-create-admin></app-categorie-image-create-admin>
+
+
+</p-dialog>
+
+
+
+<!--&lt;!&ndash;<p-card header="Simple Card" [style]="{width: '360px'}">&ndash;&gt;-->
+<!--&lt;!&ndash;    <div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur error repudiandae numquam deserunt&ndash;&gt;-->
+<!--&lt;!&ndash;        quisquam repellat libero asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditate neque quas!</div>&ndash;&gt;-->
+<!--&lt;!&ndash;</p-card>&ndash;&gt;-->
+
+<!--<br>-->
+<!--<br>-->
+
+<!--<p-card class="card" header="Advanced Card" subheader="Subheader" [style]="{width: '360px'}" styleClass="ui-card-shadow">-->
+<!--    <p-header>-->
+<!--        <img src="Card" src="assets/images/fusion.png">-->
+<!--    </p-header>-->
+<!--    <div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur error repudiandae numquam deserunt-->
+<!--        quisquam repellat libero asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditate neque quas!</div>-->
+<!--    <p-footer>-->
+<!--        <button pButton type="button" label="Ajouter au panier" icon="pi pi-check"  style="margin-right: .25em"></button>-->
+<!--&lt;!&ndash;        <button pButton type="button" label="Cancel" icon="pi pi-times" class="ui-button-secondary"></button>&ndash;&gt;-->
+<!--    </p-footer>-->
+<!--</p-card>-->
+
+
+<!--<div class="cards">-->
+<!--    <article class="card">-->
+<!--        <header>-->
+<!--            <h2>A short heading</h2>-->
+<!--        </header>-->
+<!--        <img src="assets/images/car.webp" alt="Hot air balloons">-->
+<!--        <div class="content">-->
+<!--            <p> The idea of reaching the North Pole by means of balloons appears to have been entertained many years ago. </p>-->
+<!--            <button pButton type="button" label="Ajouter au panier" icon="pi pi-check"  style="margin-right: .25em"></button>-->
+<!--        </div>-->
+
+<!--    </article>-->
+
+<!--    <article class="card">-->
+<!--        <header>-->
+<!--            <h2>A short heading</h2>-->
+<!--        </header>-->
+<!--        <img src="assets/images/deep.png" alt="Hot air balloons">-->
+<!--        <div class="content">-->
+<!--            <p>The idea of reaching the North Pole by means of balloons appears to have been entertained many years ago.</p>-->
+<!--            <button pButton type="button" label="Ajouter au panier" icon="pi pi-check"  style="margin-right: .25em"></button>-->
+<!--        </div>-->
+<!--        &lt;!&ndash;        <footer>I have a footer!</footer>&ndash;&gt;-->
+<!--    </article>-->
+
+<!--    <article class="card">-->
+<!--        <header>-->
+<!--            <h2>A short heading</h2>-->
+<!--        </header>-->
+<!--        <img src="assets/images/fruits.png" alt="Hot air balloons">-->
+<!--        <div class="content">-->
+<!--            <p>The idea of reaching the North Pole by means of balloons appears to have been entertained many years ago.</p>-->
+<!--            <button pButton type="button" label="Ajouter au panier" icon="pi pi-check"  style="margin-right: .25em"></button>-->
+<!--        </div>-->
+<!--        &lt;!&ndash;        <footer>I have a footer!</footer>&ndash;&gt;-->
+<!--    </article>-->
+<!--    <article class="card">-->
+<!--        <header>-->
+<!--            <h2>A short heading</h2>-->
+<!--        </header>-->
+<!--        <img src="assets/images/art.jpg" alt="Hot air balloons">-->
+<!--        <div class="content">-->
+<!--            <p> The idea of reaching the North Pole by means of balloons appears to have been entertained many years ago. </p>-->
+<!--            <button pButton type="button" label="Ajouter au panier" icon="pi pi-check"  style="margin-right: .25em"></button>-->
+<!--        </div>-->
+
+<!--    </article>-->
+<!--</div>-->
+

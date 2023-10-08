@@ -1,0 +1,161 @@
+<p-dialog [(visible)]="panierDialog" [style]="{width: '70vw'}"
+          header="Image" [modal]="true"
+          styleClass="p-fluid" [maximizable]="true" [draggable]="false" [resizable]="false">
+
+
+    <ng-template pTemplate="content">
+        <p-tabView>
+            <p-tabPanel header="Image">
+                <div class="p-grid">
+
+                    <p-table #dt [value]="panier" [columns]="cols" [rows]="4" [paginator]="true"
+                             [globalFilterFields]="['reference', 'prix', 'extension', 'taille', 'resolution', 'numeroMatricule', 'libelle', 'libelle']"
+                             [(selection)]="selectedImage"
+                             [rowHover]="true" dataKey="id" styleClass="p-datatable-customers"
+                             currentPageReportTemplate="Les éléments de {first} à {last} sur {totalRecords}"
+                             [showCurrentPageReport]="true">
+                        <ng-template pTemplate="caption">
+                            <div class="p-d-flex p-flex-column p-flex-md-row p-jc-md-between table-header">
+                                <h5 class="p-m-0">Liste des images</h5>
+                                <span class="p-input-icon-left">
+                            <i class="pi pi-search"></i>
+                            <input pInputText type="text" placeholder="Chercher..."
+                                   (input)="dt.filterGlobal($event.target.value, 'contains')"/>
+                        </span>
+                            </div>
+                        </ng-template>
+                        <ng-template pTemplate="header">
+                            <tr>
+                                <th style="width: 3rem">
+                                    <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+                                </th>
+
+
+                                <th pSortableColumn="reference">
+                                    <div class="p-d-flex p-jc-between p-ai-center">
+                                        <span>Reference</span>
+                                        <p-sortIcon field="reference"></p-sortIcon>
+                                    </div>
+                                </th>
+
+
+                                <th pSortableColumn="prix">
+                                    <div class="p-d-flex p-jc-between p-ai-center">
+                                        <span>Prix</span>
+                                        <p-sortIcon field="prix"></p-sortIcon>
+                                    </div>
+                                </th>
+
+
+                                <th pSortableColumn="extension">
+                                    <div class="p-d-flex p-jc-between p-ai-center">
+                                        <span>Extension</span>
+                                        <p-sortIcon field="extension"></p-sortIcon>
+                                    </div>
+                                </th>
+
+
+                                <th pSortableColumn="taille">
+                                    <div class="p-d-flex p-jc-between p-ai-center">
+                                        <span>Taille</span>
+                                        <p-sortIcon field="taille"></p-sortIcon>
+                                    </div>
+                                </th>
+
+
+                                <th pSortableColumn="resolution">
+                                    <div class="p-d-flex p-jc-between p-ai-center">
+                                        <span>Resolution</span>
+                                        <p-sortIcon field="resolution"></p-sortIcon>
+                                    </div>
+                                </th>
+
+
+                                <th pSortableColumn="client">
+                                    <div class="p-d-flex p-jc-between p-ai-center">
+                                        <span>Client</span>
+                                        <p-sortIcon field="client"></p-sortIcon>
+                                    </div>
+                                </th>
+
+
+                                <th pSortableColumn="bucket">
+                                    <div class="p-d-flex p-jc-between p-ai-center">
+                                        <span>Bucket</span>
+                                        <p-sortIcon field="bucket"></p-sortIcon>
+                                    </div>
+                                </th>
+
+
+                                <th pSortableColumn="typeImage">
+                                    <div class="p-d-flex p-jc-between p-ai-center">
+                                        <span>Type image</span>
+                                        <p-sortIcon field="typeImage"></p-sortIcon>
+                                    </div>
+                                </th>
+
+
+                                <th>Actions</th>
+                            </tr>
+                        </ng-template>
+                        <ng-template pTemplate="body" let-image>
+                            <tr>
+                                <td>
+                                    <p-tableCheckbox [value]="image"></p-tableCheckbox>
+                                </td>
+
+                                <td>{{image.reference}}</td>
+
+
+                                <td>{{image.prix}}</td>
+
+
+                                <td>{{image.extension}}</td>
+
+
+                                <td>{{image.taille}}</td>
+
+
+                                <td>{{image.resolution}}</td>
+
+
+                                <td>{{image.clientVo?.numeroMatricule}}</td>
+
+
+                                <td>{{image.bucketVo?.libelle}}</td>
+
+
+                                <td>{{image.typeImageVo?.libelle}}</td>
+
+
+                            </tr>
+                        </ng-template>
+                        <ng-template pTemplate="summary">
+                            <div class="p-d-flex p-ai-center p-jc-between">
+                                En totale .
+                            </div>
+                        </ng-template>
+                    </p-table>
+
+                </div>
+            </p-tabPanel>
+
+        </p-tabView>
+
+    </ng-template>
+
+    <ng-template pTemplate="footer">
+        <div class="p-grid">
+            <div>
+                <button pButton pRipple label="Annuler" icon="pi pi-times"
+                        class="p-button-text"></button>
+            </div>
+            <div>
+                <button pButton pRipple label="Valider" icon="pi pi-check" style="margin:10px"
+                ></button>
+            </div>
+        </div>
+    </ng-template>
+
+
+</p-dialog>

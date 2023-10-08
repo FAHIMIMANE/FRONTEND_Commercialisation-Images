@@ -1,0 +1,207 @@
+<div class="p-grid">
+    <div class="p-col-12">
+        <p-toast></p-toast>
+        <div class="card">
+            <p-toolbar styleClass="p-mb-4">
+                <ng-template pTemplate="left">
+                                            <button pButton pRipple label="Nouveau" icon="pi pi-plus" class="p-button-success p-mr-2 p-mb-2"
+                                (click)="openCreatePackAbonnement('packAbonnement')"></button>
+
+
+                    <button pButton pRipple label="Recherche"
+                            icon="pi pi-{{findByCriteriaShow?'angle-down':'angle-right'}}"
+                            class="p-button-success p-mr-2 p-mb-2"
+                            (click)="this.findByCriteriaShow = !this.findByCriteriaShow"></button>
+                </ng-template>
+                <ng-template pTemplate="right">
+                    <div class="flex">
+                        <p-splitButton label="Exporter" icon="pi pi-download" styleClass="p-button-help" [model]="excelPdfButons"></p-splitButton>
+                    </div>
+                </ng-template>
+
+            </p-toolbar>
+            <p-toolbar *ngIf="findByCriteriaShow">
+
+                <div class="align-form-search">
+                                    <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                              <p-inputNumber class="p-mr-2"
+                                                             mode="decimal" [(ngModel)]="searchPackAbonnement.nombreImageMaxMin"
+                                                             id="1-1"></p-inputNumber>
+                                              <label for="1-1">Nombre image max Min</label>
+                                       </span>
+                                       <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                              <p-inputNumber class="p-mr-2"
+                                                             mode="decimal" [(ngModel)]="searchPackAbonnement.nombreImageMaxMax"
+                                                             id="1-2"></p-inputNumber>
+                                             <label for="1-2">Nombre image max Max</label>
+                                       </span>
+                                    <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                              <p-inputNumber class="p-mr-2"
+                                                             mode="decimal" [(ngModel)]="searchPackAbonnement.reductionMin"
+                                                             id="2-1"></p-inputNumber>
+                                              <label for="2-1">Reduction Min</label>
+                                       </span>
+                                       <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                              <p-inputNumber class="p-mr-2"
+                                                             mode="decimal" [(ngModel)]="searchPackAbonnement.reductionMax"
+                                                             id="2-2"></p-inputNumber>
+                                             <label for="2-2">Reduction Max</label>
+                                       </span>
+
+                        <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                            <p-calendar
+                                    class="p-mr-2" [(ngModel)]="searchPackAbonnement.dateMinMin"
+                                    id="3-1"
+                                    dateFormat="dd-MM-yy"></p-calendar>
+                            <label for="3-1">Date min Min</label>
+                        </span>
+
+                         <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                            <p-calendar
+                                    class="p-mr-2" [(ngModel)]="searchPackAbonnement.dateMinMax"
+                                    id="3-2"
+                                    dateFormat="dd-MM-yy"></p-calendar>
+                            <label for="3-2">Date min Max</label>
+                        </span>
+
+
+                        <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                            <p-calendar
+                                    class="p-mr-2" [(ngModel)]="searchPackAbonnement.dateMaxMin"
+                                    id="4-1"
+                                    dateFormat="dd-MM-yy"></p-calendar>
+                            <label for="4-1">Date max Min</label>
+                        </span>
+
+                         <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                            <p-calendar
+                                    class="p-mr-2" [(ngModel)]="searchPackAbonnement.dateMaxMax"
+                                    id="4-2"
+                                    dateFormat="dd-MM-yy"></p-calendar>
+                            <label for="4-2">Date max Max</label>
+                        </span>
+
+                </div>
+
+                <div class="align-search-button">
+                    <button pButton pRipple label="Valider" icon="pi pi-sort-amount-down"
+                            class="p-button-info p-mr-2" (click)="searchRequest()"></button>
+                </div>
+            </p-toolbar>
+
+
+            <p-table #dt [value]="packAbonnements" [columns]="cols" [rows]="4" [paginator]="true"
+                    [globalFilterFields]="['nombreImageMax', 'reduction', 'dateMin', 'dateMax']" [(selection)]="selectedPackAbonnement"
+                    [rowHover]="true" dataKey="id" styleClass="p-datatable-customers"
+                                      currentPageReportTemplate="Les éléments de {first} à {last} sur {totalRecords}"
+                    [showCurrentPageReport]="true">
+                <ng-template pTemplate="caption">
+                    <div class="p-d-flex p-flex-column p-flex-md-row p-jc-md-between table-header">
+                        <h5 class="p-m-0">Liste des pack abonnements</h5>
+                        <span class="p-input-icon-left">
+                            <i class="pi pi-search"></i>
+                            <input pInputText type="text" placeholder="Chercher..." (input)="dt.filterGlobal($event.target.value, 'contains')"/>
+                        </span>
+                    </div>
+                </ng-template>
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th style="width: 3rem">
+                            <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+                        </th>
+
+                                
+                                <th pSortableColumn="nombreImageMax">
+                                    <div class="p-d-flex p-jc-between p-ai-center">
+                                        <span>Nombre image max</span>
+                                        <p-sortIcon field="nombreImageMax"></p-sortIcon>
+                                    </div>
+                                </th>
+                                
+
+
+                                
+                                <th pSortableColumn="reduction">
+                                    <div class="p-d-flex p-jc-between p-ai-center">
+                                        <span>Reduction</span>
+                                        <p-sortIcon field="reduction"></p-sortIcon>
+                                    </div>
+                                </th>
+                                
+
+
+                                
+                                <th pSortableColumn="dateMin">
+                                    <div class="p-d-flex p-jc-between p-ai-center">
+                                        <span>Date min</span>
+                                        <p-sortIcon field="dateMin"></p-sortIcon>
+                                    </div>
+                                </th>
+                                
+
+
+                                
+                                <th pSortableColumn="dateMax">
+                                    <div class="p-d-flex p-jc-between p-ai-center">
+                                        <span>Date max</span>
+                                        <p-sortIcon field="dateMax"></p-sortIcon>
+                                    </div>
+                                </th>
+                                
+
+
+                        <th>Actions</th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-packAbonnement>
+                    <tr>
+                        <td>
+                            <p-tableCheckbox [value]="packAbonnement"></p-tableCheckbox>
+                        </td>
+                            
+                                 <td>{{packAbonnement.nombreImageMax}}</td>
+                            
+
+                            
+                                 <td>{{packAbonnement.reduction}}</td>
+                            
+
+                            
+                                <td>{{packAbonnement.dateMin | date:'dd-M-yyyy' }}</td>
+                            
+
+                            
+                                <td>{{packAbonnement.dateMax | date:'dd-M-yyyy' }}</td>
+                            
+
+
+                        <td>
+                            <button pButton pRipple icon="pi pi-pencil"
+                                    class="p-button-rounded p-button-success p-mr-2"
+                                    (click)="editPackAbonnement(packAbonnement)"></button>
+                            <button pButton pRipple icon="pi pi-list" class="p-button-rounded p-button-info p-mr-2"
+                                    (click)="viewPackAbonnement(packAbonnement)"></button>
+                            <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-danger p-mr-2"
+                                    (click)="deletePackAbonnement(packAbonnement)"></button>
+
+                            <button pButton pRipple icon="pi pi-copy" class="p-button-rounded p-button-raised p-button-warning"
+                                    (click)="duplicatePackAbonnement(packAbonnement)"></button>
+                        </td>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="summary">
+                    <div class="p-d-flex p-ai-center p-jc-between">
+                        En totale
+                        il {{packAbonnements ? packAbonnements.length == 1 ? 'y a' : 'y a' : 'y a' }} {{packAbonnements ? packAbonnements.length : 0 }} {{packAbonnements ? packAbonnements.length == 1 ? 'pack abonnement' : 'pack abonnements' : 0 }}
+                        .
+                    </div>
+                </ng-template>
+            </p-table>
+        </div>
+
+        <app-pack-abonnement-create-admin></app-pack-abonnement-create-admin>
+        <app-pack-abonnement-edit-admin></app-pack-abonnement-edit-admin>
+        <app-pack-abonnement-view-admin></app-pack-abonnement-view-admin>
+        <p-confirmDialog [style]="{width: '450px'}"></p-confirmDialog>
+    </div>
+</div>

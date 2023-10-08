@@ -1,0 +1,243 @@
+        <p-dialog [(visible)]="editBucketDialog" [style]="{width: '70vw'}"
+                header="Bucket" [modal]="true"
+                styleClass="p-fluid" [maximizable]="true" [draggable]="false" [resizable]="false">
+
+
+            <ng-template pTemplate="content" >
+                <p-tabView>
+                    <p-tabPanel header="Bucket">
+                        <div class="p-grid">
+
+                                        <div class="p-field p-col-12 p-md-6">
+                                            <label for="2">Nom<span style="color: red;">*</span></label>
+                                            <input class="p-mb-2 p-mr-2" type="text" pInputText
+                                                   placeholder="Nom"
+                                                   id="2" [(ngModel)]="selectedBucket.nom"
+                                                    [ngClass]="{'ng-invalid ng-dirty' : !validBucketNom}"  />
+                                            <small class='p-error' *ngIf='!validBucketNom'>Nom est obligatoire.</small>
+                                        </div>
+
+
+
+                                        <div class="p-field p-col-12 p-md-6">
+                                            <label for="3">Date creation<span style="color: red;">*</span></label>
+                                            <p-calendar id="3"
+                                                        placeholder="Date creation"  [(ngModel)]="selectedBucket.dateCreation"
+                                                    dateFormat="{{dateFormat}}" [ngClass]="{'ng-invalid ng-dirty' : !validBucketDateCreation}"  >
+                                            </p-calendar>
+                                            <small class='p-error' *ngIf='!validBucketDateCreation'>DateCreation est obligatoire.</small>
+                                        </div>
+
+                                        <div class="p-field p-col-12 p-md-6">
+                                            <label for="4">Libelle<span style="color: red;">*</span></label>
+                                            <input class="p-mb-2 p-mr-2" type="text" pInputText
+                                                   placeholder="Libelle"
+                                                   id="4" [(ngModel)]="selectedBucket.libelle"
+                                                    [ngClass]="{'ng-invalid ng-dirty' : !validBucketLibelle}"  />
+                                            <small class='p-error' *ngIf='!validBucketLibelle'>Libelle est obligatoire.</small>
+                                        </div>
+
+
+
+                                        <div class="p-field p-col-11 p-md-5">
+                                            <label for="5">State bucket<span style="color: red;">*</span></label>
+                                            <p-dropdown [options]="stateBuckets" [(ngModel)]="selectedBucket.stateBucketVo"
+                                                    id="5" [filter]="true" filterMatchMode="contains"
+                                                    [showClear]="true"
+                                                    optionLabel="libelle"
+                                                    placeholder="State bucket" [ngClass]="{'ng-invalid ng-dirty' : !validBucketStateBucket}"  >
+                                            </p-dropdown>
+                                            <small class='p-error' *ngIf='!validBucketStateBucket'>StateBucket est obligatoire.</small>
+                                        </div>
+                                        <div class="p-col-1">
+                                            <label></label>
+                                            <button pButton pRipple type="button"
+                                                    icon="pi pi-plus"   (click)="openCreatestateBucket('stateBucket')"
+                                                    class="p-button-success one-colonne-btn-success-align"></button>
+                                        </div>
+                                        <div class="p-field p-col-11 p-md-5">
+                                            <label for="6">Contributeur<span style="color: red;">*</span></label>
+                                            <p-dropdown [options]="contributeurs" [(ngModel)]="selectedBucket.contributeurVo"
+                                                    id="6" [filter]="true" filterMatchMode="contains"
+                                                    [showClear]="true"
+                                                    optionLabel="cin"
+                                                    placeholder="Contributeur" [ngClass]="{'ng-invalid ng-dirty' : !validBucketContributeur}"  >
+                                            </p-dropdown>
+                                            <small class='p-error' *ngIf='!validBucketContributeur'>Contributeur est obligatoire.</small>
+                                        </div>
+                                        <div class="p-col-1">
+                                            <label></label>
+                                            <button pButton pRipple type="button"
+                                                    icon="pi pi-plus"   (click)="openCreatecontributeur('contributeur')"
+                                                    class="p-button-success one-colonne-btn-success-align"></button>
+                                        </div>
+                        </div>
+                    </p-tabPanel>
+                            <p-tabPanel header="Images">
+                                <p-tabView>
+                                    <p-tabPanel header="Création">
+                                        <div class="p-grid">
+                                                            <div class="p-field p-col-12 p-md-4">
+                                                                <label for="1">Reference<span style="color: red;">*</span></label>
+                                                                <input class="p-mb-2 p-mr-2" type="text" pInputText
+                                                                       placeholder="Reference"
+                                                                       id="1" [(ngModel)]="selectedImages.reference"
+                                                                       autofocus  [ngClass]="{'ng-invalid ng-dirty' : !validImageReference}"  >
+                                                                <small class='p-error' *ngIf='!validImageReference'>Reference est obligatoire.</small>
+                                                            </div>
+                                                            <div class="p-field p-col-12 p-md-4">
+                                                                <label for="2">Prix<span style="color: red;">*</span></label>
+                                                                <p-inputNumber class="p-mb-2 p-mr-2" id="prix"
+                                                                               placeholder="Prix"  [ngClass]="{'ng-invalid ng-dirty' : !validImagePrix}" 
+                                                                        [(ngModel)]="selectedImages.prix"></p-inputNumber>
+                                                                <small class='p-error' *ngIf='!validImagePrix'>Prix est obligatoire.</small>
+                                                            </div>
+                                                            <div class="p-field p-col-12 p-md-4">
+                                                                <label for="3">Description<span style="color: red;">*</span></label>
+                                                                <input class="p-mb-2 p-mr-2" type="text" pInputText
+                                                                       placeholder="Description"
+                                                                       id="3" [(ngModel)]="selectedImages.description"
+                                                                       autofocus  [ngClass]="{'ng-invalid ng-dirty' : !validImageDescription}"  >
+                                                                <small class='p-error' *ngIf='!validImageDescription'>Description est obligatoire.</small>
+                                                            </div>
+                                                            <div class="p-field p-col-12 p-md-4">
+                                                                <label for="4">Extension</label>
+                                                                <input class="p-mb-2 p-mr-2" type="text" pInputText
+                                                                       placeholder="Extension"
+                                                                       id="4" [(ngModel)]="selectedImages.extension"
+                                                                       autofocus   >
+                                                                
+                                                            </div>
+                                                            <div class="p-field p-col-12 p-md-4">
+                                                                <label for="5">Taille</label>
+                                                                <p-inputNumber class="p-mb-2 p-mr-2" id="taille"
+                                                                               placeholder="Taille"  
+                                                                        [(ngModel)]="selectedImages.taille"></p-inputNumber>
+                                                                
+                                                            </div>
+                                                            <div class="p-field p-col-12 p-md-4">
+                                                                <label for="6">Resolution</label>
+                                                                <p-inputNumber class="p-mb-2 p-mr-2" id="resolution"
+                                                                               placeholder="Resolution"  
+                                                                        [(ngModel)]="selectedImages.resolution"></p-inputNumber>
+                                                                
+                                                            </div>
+                                                            <div class="p-field p-col-11 p-md-3">
+                                                                <label>Client</label>
+                                                                <p-dropdown [options]="clients" [(ngModel)]="selectedImages.clientVo"
+                                                                        id="7"  [filter]="true"
+                                                                        filterMatchMode="contains" [showClear]="true"
+                                                                        optionLabel="numeroMatricule"
+                                                                        placeholder="Client"  
+                                                                >
+                                                                </p-dropdown>
+                                                                
+                                                            </div>
+                                                            <div class="p-col-1">
+                                                                <label></label>
+                                                                <button pButton pRipple type="button"
+                                                                        icon="pi pi-plus"   (click)="openCreateclient('client')"
+                                                                        class="p-button-success one-colonne-btn-success-align"></button>
+                                                            </div>
+
+                                                            <div class="p-field p-col-12  p-md-4">
+                                                                <label>Categorie image</label>
+                                                                <p-multiSelect [options]="categorieItemsVo" [(ngModel)]="selectedImages.categorieItemsVo"
+                                                                        defaultLabel="Selectionner un Categorie image"
+                                                                        optionLabel="categorieImageVo.libelle"  display="chip"></p-multiSelect>
+                                                            </div>
+                                                            <div class="p-field p-col-11 p-md-3">
+                                                                <label>Type image</label>
+                                                                <p-dropdown [options]="typeImages" [(ngModel)]="selectedImages.typeImageVo"
+                                                                        id="10"  [filter]="true"
+                                                                        filterMatchMode="contains" [showClear]="true"
+                                                                        optionLabel="libelle"
+                                                                        placeholder="Type image"  
+                                                                >
+                                                                </p-dropdown>
+                                                                
+                                                            </div>
+                                                            <div class="p-col-1">
+                                                                <label></label>
+                                                                <button pButton pRipple type="button"
+                                                                        icon="pi pi-plus"   (click)="openCreatetypeImage('typeImage')"
+                                                                        class="p-button-success one-colonne-btn-success-align"></button>
+                                                            </div>
+
+                                                <div class="p-field p-col-12 p-md-1">
+                                                    <button pButton pRipple type="button" icon="pi pi-plus" class="p-mt-4"
+                                                            label="OK" (click)="addImages()">
+                                                    </button>
+                                                </div>
+                                        </div>
+                                    </p-tabPanel>
+                                    <p-tabPanel header="Liste">
+                                            <div class="card">
+                                                <p-table [value]="selectedBucket.imagesVo" [scrollable]="true"
+                                                        scrollHeight="200px">
+                                                    <ng-template pTemplate="header">
+                                                        <tr>
+                                                                        <th>Reference</th>
+                                                                        <th>Prix</th>
+                                                                        <th>Description</th>
+                                                                        <th>Extension</th>
+                                                                        <th>Taille</th>
+                                                                        <th>Resolution</th>
+                                                                        <th>Client</th>
+                                                                        <th>Type image</th>
+                                                            <th>Actions</th>
+                                                        </tr>
+                                                    </ng-template>
+                                                    <ng-template pTemplate="body" let-p>
+                                                        <tr>
+                                                                        <td>{{p.reference}}</td>
+
+                                                                        <td>{{p.prix}}</td>
+
+                                                                        <td>{{p.description}}</td>
+
+                                                                        <td>{{p.extension}}</td>
+
+                                                                        <td>{{p.taille}}</td>
+
+                                                                        <td>{{p.resolution}}</td>
+
+                                                                    <td>{{p.clientVo?.numeroMatricule}}</td>
+                                                                    <td>{{p.typeImageVo?.libelle}}</td>
+                                                            <td>
+                                                                <button (click)="deleteImages(p)" pButton type="button" icon="pi pi-times"  class="p-button-rounded p-button-danger">
+                                                                </button>
+                                                            </td>
+                                                        </tr>
+                                                    </ng-template>
+                                                </p-table>
+                                            </div>
+
+                                    </p-tabPanel>
+                                </p-tabView>
+                            </p-tabPanel>
+
+
+                </p-tabView>
+
+            </ng-template>
+
+            <ng-template pTemplate="footer" >
+                <div class="p-grid">
+                        <div>
+                            <button pButton pRipple label="Annuler" icon="pi pi-times"
+                                    class="p-button-text" (click)="hideCreateDialog()"></button>
+                        </div>
+                    <div>
+                        <button pButton pRipple label="Valider" icon="pi pi-check" style="margin:10px" (click)="edit()"></button>
+                    </div>
+                </div>
+            </ng-template>
+
+                    <app-state-bucket-create-contributeur></app-state-bucket-create-contributeur>
+                    <app-contributeur-create-contributeur></app-contributeur-create-contributeur>
+
+                            <app-client-create-contributeur></app-client-create-contributeur>
+                            <app-type-image-create-contributeur></app-type-image-create-contributeur>
+
+    </p-dialog>

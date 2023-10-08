@@ -1,0 +1,166 @@
+<div class="p-grid">
+    <div class="p-col-12">
+        <p-toast></p-toast>
+        <div class="card">
+            <p-toolbar styleClass="p-mb-4">
+                <ng-template pTemplate="left">
+                                            <button pButton pRipple label="Nouveau" icon="pi pi-plus" class="p-button-success p-mr-2 p-mb-2"
+                                (click)="openCreateSignature('signature')"></button>
+
+
+                    <button pButton pRipple label="Recherche"
+                            icon="pi pi-{{findByCriteriaShow?'angle-down':'angle-right'}}"
+                            class="p-button-success p-mr-2 p-mb-2"
+                            (click)="this.findByCriteriaShow = !this.findByCriteriaShow"></button>
+                </ng-template>
+                <ng-template pTemplate="right">
+                    <div class="flex">
+                        <p-splitButton label="Exporter" icon="pi pi-download" styleClass="p-button-help" [model]="excelPdfButons"></p-splitButton>
+                    </div>
+                </ng-template>
+
+            </p-toolbar>
+            <p-toolbar *ngIf="findByCriteriaShow">
+
+                <div class="align-form-search">
+
+                        <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                            <p-calendar
+                                    class="p-mr-2" [(ngModel)]="searchSignature.dateSignatureMin"
+                                    id="1-1"
+                                    dateFormat="dd-MM-yy"></p-calendar>
+                            <label for="1-1">Date signature Min</label>
+                        </span>
+
+                         <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                            <p-calendar
+                                    class="p-mr-2" [(ngModel)]="searchSignature.dateSignatureMax"
+                                    id="1-2"
+                                    dateFormat="dd-MM-yy"></p-calendar>
+                            <label for="1-2">Date signature Max</label>
+                        </span>
+
+                            <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                <p-dropdown [options]="contributeurs" [(ngModel)]="searchSignature.contributeurVo"
+                                        id="2"
+                                        [filter]="true" [showClear]="true"  placeholder="Contributeur"
+                                        optionLabel="cin">
+                                </p-dropdown>
+                            </span>
+                            <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                <p-dropdown [options]="contracts" [(ngModel)]="searchSignature.contractVo"
+                                        id="3"
+                                        [filter]="true" [showClear]="true"  placeholder="Contract"
+                                        optionLabel="objet">
+                                </p-dropdown>
+                            </span>
+                </div>
+
+                <div class="align-search-button">
+                    <button pButton pRipple label="Valider" icon="pi pi-sort-amount-down"
+                            class="p-button-info p-mr-2" (click)="searchRequest()"></button>
+                </div>
+            </p-toolbar>
+
+
+            <p-table #dt [value]="signatures" [columns]="cols" [rows]="4" [paginator]="true"
+                    [globalFilterFields]="['dateSignature', 'cin', 'objet']" [(selection)]="selectedSignature"
+                    [rowHover]="true" dataKey="id" styleClass="p-datatable-customers"
+                                      currentPageReportTemplate="Les éléments de {first} à {last} sur {totalRecords}"
+                    [showCurrentPageReport]="true">
+                <ng-template pTemplate="caption">
+                    <div class="p-d-flex p-flex-column p-flex-md-row p-jc-md-between table-header">
+                        <h5 class="p-m-0">Liste des signatures</h5>
+                        <span class="p-input-icon-left">
+                            <i class="pi pi-search"></i>
+                            <input pInputText type="text" placeholder="Chercher..." (input)="dt.filterGlobal($event.target.value, 'contains')"/>
+                        </span>
+                    </div>
+                </ng-template>
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th style="width: 3rem">
+                            <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+                        </th>
+
+                                
+                                <th pSortableColumn="dateSignature">
+                                    <div class="p-d-flex p-jc-between p-ai-center">
+                                        <span>Date signature</span>
+                                        <p-sortIcon field="dateSignature"></p-sortIcon>
+                                    </div>
+                                </th>
+                                
+
+
+                                
+                                <th pSortableColumn="contributeur">
+                                    <div class="p-d-flex p-jc-between p-ai-center">
+                                        <span>Contributeur</span>
+                                        <p-sortIcon field="contributeur"></p-sortIcon>
+                                    </div>
+                                </th>
+                                
+
+
+                                
+                                <th pSortableColumn="contract">
+                                    <div class="p-d-flex p-jc-between p-ai-center">
+                                        <span>Contract</span>
+                                        <p-sortIcon field="contract"></p-sortIcon>
+                                    </div>
+                                </th>
+                                
+
+
+                        <th>Actions</th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-signature>
+                    <tr>
+                        <td>
+                            <p-tableCheckbox [value]="signature"></p-tableCheckbox>
+                        </td>
+                            
+                                <td>{{signature.dateSignature | date:'dd-M-yyyy' }}</td>
+                            
+
+                            
+                                <td>{{signature.contributeurVo?.cin}}</td>
+                            
+
+                            
+                                <td>{{signature.contractVo?.objet}}</td>
+                            
+
+
+                        <td>
+                            <button pButton pRipple icon="pi pi-pencil"
+                                    class="p-button-rounded p-button-success p-mr-2"
+                                    (click)="editSignature(signature)"></button>
+                            <button pButton pRipple icon="pi pi-list" class="p-button-rounded p-button-info p-mr-2"
+                                    (click)="viewSignature(signature)"></button>
+                            <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-danger p-mr-2"
+                                    (click)="deleteSignature(signature)"></button>
+
+                            <button pButton pRipple icon="pi pi-copy" class="p-button-rounded p-button-raised p-button-warning"
+                                    (click)="duplicateSignature(signature)"></button>
+                        </td>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="summary">
+                    <div class="p-d-flex p-ai-center p-jc-between">
+                        En totale
+                        il {{signatures ? signatures.length == 1 ? 'y a' : 'y a' : 'y a' }} {{signatures ? signatures.length : 0 }} {{signatures ? signatures.length == 1 ? 'signature' : 'signatures' : 0 }}
+                        .
+                    </div>
+                </ng-template>
+            </p-table>
+        </div>
+
+        <app-signature-create-chercheur></app-signature-create-chercheur>
+        <app-signature-edit-chercheur></app-signature-edit-chercheur>
+        <app-signature-view-chercheur></app-signature-view-chercheur>
+        <p-confirmDialog [style]="{width: '450px'}"></p-confirmDialog>
+    </div>
+</div>

@@ -1,0 +1,68 @@
+
+<p-dialog [(visible)]="viewOffreReductionDialog" [style]="{width: '70vw'}"
+        header="Offre reduction" [modal]="true"
+        styleClass="p-fluid">
+
+    <ng-template pTemplate="content">
+        <p-tabView>
+            <p-tabPanel header="Offre reduction">
+                <div class="p-grid">
+
+                                <div class="p-field p-col-12 p-md-6">
+                                    <label for="1">Qte min</label>
+                                    <p-inputNumber class="p-mb-2 p-mr-2" id="1" [disabled]="true"
+                                                   placeholder="Qte min"  [(ngModel)]="selectedOffreReduction.qteMin"
+                                            [(ngModel)]="selectedOffreReduction.qteMin"></p-inputNumber>
+                                </div>
+
+                                <div class="p-field p-col-12 p-md-6">
+                                    <label for="2">Qte max</label>
+                                    <p-inputNumber class="p-mb-2 p-mr-2" id="2" [disabled]="true"
+                                                   placeholder="Qte max"  [(ngModel)]="selectedOffreReduction.qteMax"
+                                            [(ngModel)]="selectedOffreReduction.qteMax"></p-inputNumber>
+                                </div>
+
+                                <div class="p-field p-col-12 p-md-6">
+                                    <label for="3">Pourcentage</label>
+                                    <p-inputNumber class="p-mb-2 p-mr-2" id="3" [disabled]="true"
+                                                   placeholder="Pourcentage"  [(ngModel)]="selectedOffreReduction.pourcentage"
+                                            [(ngModel)]="selectedOffreReduction.pourcentage"></p-inputNumber>
+                                </div>
+
+                                <div class="p-field p-col-12 p-md-6">
+                                    <label for="4">Date min</label>
+                                    <p-calendar id="4" [disabled]="true"
+                                                placeholder="Date min"  [(ngModel)]="selectedOffreReduction.dateMin"
+                                            dateFormat="{{dateFormat}}"></p-calendar>
+                                </div>
+
+                                <div class="p-field p-col-12 p-md-6">
+                                    <label for="5">Date max</label>
+                                    <p-calendar id="5" [disabled]="true"
+                                                placeholder="Date max"  [(ngModel)]="selectedOffreReduction.dateMax"
+                                            dateFormat="{{dateFormat}}"></p-calendar>
+                                </div>
+
+                </div>
+            </p-tabPanel>
+
+        </p-tabView>
+
+    </ng-template>
+
+    <ng-template pTemplate="footer" >
+        <div class="p-grid">
+            <div>
+                <button pButton pRipple label="Annuler" icon="pi pi-times"
+                        class="p-button-text" (click)="hideViewDialog()"></button>
+            </div>
+        </div>
+    </ng-template>
+
+
+
+
+</p-dialog>
+
+
+

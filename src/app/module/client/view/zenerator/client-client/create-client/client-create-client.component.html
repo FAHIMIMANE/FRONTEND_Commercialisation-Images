@@ -1,0 +1,402 @@
+        <p-dialog [(visible)]="createClientDialog" [style]="{width: '70vw'}"
+                header="Client" [modal]="true"
+                styleClass="p-fluid" [maximizable]="true" [draggable]="false" [resizable]="false">
+
+
+            <ng-template pTemplate="content" >
+                <p-tabView>
+                    <p-tabPanel header="Client">
+                        <div class="p-grid">
+
+                                        <div class="p-field p-col-12 p-md-3">
+                                            <label for="1">Numero matricule<span style="color: red;">*</span></label>
+                                            <input class="p-mb-2 p-mr-2" type="text" pInputText
+                                                   placeholder="Numero matricule"
+                                                   id="1" [(ngModel)]="selectedClient.numeroMatricule"
+                                                    [ngClass]="{'ng-invalid ng-dirty' : !validClientNumeroMatricule}"  />
+                                            <small class='p-error' *ngIf='!validClientNumeroMatricule'>NumeroMatricule est obligatoire.</small>
+                                        </div>
+
+
+
+                                        <div class="p-field p-col-12 p-md-3">
+                                            <label for="2">Email principale</label>
+                                            <input class="p-mb-2 p-mr-2" type="text" pInputText
+                                                   placeholder="Email principale"
+                                                   id="2" [(ngModel)]="selectedClient.emailPrincipale"
+                                                     />
+                                            
+                                        </div>
+
+
+
+                                        <div class="p-field p-col-12 p-md-3">
+                                            <label for="3">Resume</label>
+                                            <textarea id="3" pInputTextarea rows="5" cols="30"
+                                                      placeholder="Resume"  [(ngModel)]="selectedClient.resume"
+                                             ></textarea>
+                                            
+                                        </div>
+
+                                        <div class="p-field align-inputswitch p-col-12  p-md-3">
+                                            <div  class="label-inputswitch">
+                                                <label for="4">Credentials non expired</label>
+                                            </div>
+                                            <div class="input-switch">
+                                                <p-inputSwitch id="4"  [(ngModel)]="selectedClient.credentialsNonExpired"
+                                                     >
+                                                </p-inputSwitch>
+                                                
+                                            </div>
+                                        </div>
+
+
+                                        <div class="p-field align-inputswitch p-col-12  p-md-3">
+                                            <div  class="label-inputswitch">
+                                                <label for="5">Enabled</label>
+                                            </div>
+                                            <div class="input-switch">
+                                                <p-inputSwitch id="5"  [(ngModel)]="selectedClient.enabled"
+                                                     >
+                                                </p-inputSwitch>
+                                                
+                                            </div>
+                                        </div>
+
+
+                                        <div class="p-field align-inputswitch p-col-12  p-md-3">
+                                            <div  class="label-inputswitch">
+                                                <label for="6">Account non expired</label>
+                                            </div>
+                                            <div class="input-switch">
+                                                <p-inputSwitch id="6"  [(ngModel)]="selectedClient.accountNonExpired"
+                                                     >
+                                                </p-inputSwitch>
+                                                
+                                            </div>
+                                        </div>
+
+
+                                        <div class="p-field align-inputswitch p-col-12  p-md-3">
+                                            <div  class="label-inputswitch">
+                                                <label for="7">Account non locked</label>
+                                            </div>
+                                            <div class="input-switch">
+                                                <p-inputSwitch id="7"  [(ngModel)]="selectedClient.accountNonLocked"
+                                                     >
+                                                </p-inputSwitch>
+                                                
+                                            </div>
+                                        </div>
+
+
+                                        <div class="p-field align-inputswitch p-col-12  p-md-3">
+                                            <div  class="label-inputswitch">
+                                                <label for="8">Password changed</label>
+                                            </div>
+                                            <div class="input-switch">
+                                                <p-inputSwitch id="8"  [(ngModel)]="selectedClient.passwordChanged"
+                                                     >
+                                                </p-inputSwitch>
+                                                
+                                            </div>
+                                        </div>
+
+
+                                        <div class="p-field p-col-12 p-md-3">
+                                            <label for="9">Created at</label>
+                                            <p-calendar id="9"
+                                                        placeholder="Created at"  [(ngModel)]="selectedClient.createdAt"
+                                                    dateFormat="{{dateFormat}}"  >
+                                            </p-calendar>
+                                            
+                                        </div>
+
+                                        <div class="p-field p-col-12 p-md-3">
+                                            <label for="10">Updated at</label>
+                                            <p-calendar id="10"
+                                                        placeholder="Updated at"  [(ngModel)]="selectedClient.updatedAt"
+                                                    dateFormat="{{dateFormat}}"  >
+                                            </p-calendar>
+                                            
+                                        </div>
+
+                                        <div class="p-field p-col-12 p-md-3">
+                                            <label for="11">Username</label>
+                                            <input class="p-mb-2 p-mr-2" type="text" pInputText
+                                                   placeholder="Username"
+                                                   id="11" [(ngModel)]="selectedClient.username"
+                                                     />
+                                            
+                                        </div>
+
+
+
+                                        <div class="p-field p-col-12 p-md-3">
+                                            <label for="12">Password</label>
+                                            <input class="p-mb-2 p-mr-2" type="text" pInputText
+                                                   placeholder="Password"
+                                                   id="12" [(ngModel)]="selectedClient.password"
+                                                     />
+                                            
+                                        </div>
+
+
+
+                                        <div class="p-field p-col-12 p-md-3">
+                                            <label for="13">Prenom</label>
+                                            <input class="p-mb-2 p-mr-2" type="text" pInputText
+                                                   placeholder="Prenom"
+                                                   id="13" [(ngModel)]="selectedClient.prenom"
+                                                     />
+                                            
+                                        </div>
+
+
+
+                                        <div class="p-field p-col-12 p-md-3">
+                                            <label for="14">Nom</label>
+                                            <input class="p-mb-2 p-mr-2" type="text" pInputText
+                                                   placeholder="Nom"
+                                                   id="14" [(ngModel)]="selectedClient.nom"
+                                                     />
+                                            
+                                        </div>
+
+
+
+                                        <div class="p-field p-col-12 p-md-3">
+                                            <label for="15">Equivalence avec panel erc</label>
+                                            <input class="p-mb-2 p-mr-2" type="text" pInputText
+                                                   placeholder="Equivalence avec panel erc"
+                                                   id="15" [(ngModel)]="selectedClient.equivalenceAvecPanelErc"
+                                                     />
+                                            
+                                        </div>
+
+
+
+                                        <div class="p-field p-col-12 p-md-3">
+                                            <label for="16">Base horizon</label>
+                                            <input class="p-mb-2 p-mr-2" type="text" pInputText
+                                                   placeholder="Base horizon"
+                                                   id="16" [(ngModel)]="selectedClient.baseHorizon"
+                                                     />
+                                            
+                                        </div>
+
+
+
+                                        <div class="p-field p-col-12 p-md-3">
+                                            <label for="17">Role</label>
+                                            <input class="p-mb-2 p-mr-2" type="text" pInputText
+                                                   placeholder="Role"
+                                                   id="17" [(ngModel)]="selectedClient.role"
+                                                     />
+                                            
+                                        </div>
+
+
+
+                                        <div class="p-field p-col-12 p-md-3">
+                                            <label for="18">Numero de tel<span style="color: red;">*</span></label>
+                                            <input class="p-mb-2 p-mr-2" type="text" pInputText
+                                                   placeholder="Numero de tel"
+                                                   id="18" [(ngModel)]="selectedClient.numeroDeTel"
+                                                    [ngClass]="{'ng-invalid ng-dirty' : !validClientNumeroDeTel}"  />
+                                            <small class='p-error' *ngIf='!validClientNumeroDeTel'>NumeroDeTel est obligatoire.</small>
+                                        </div>
+
+
+
+                                        <div class="p-field p-col-12 p-md-3">
+                                            <label for="20">Code postal<span style="color: red;">*</span></label>
+                                            <input class="p-mb-2 p-mr-2" type="text" pInputText
+                                                   placeholder="Code postal"
+                                                   id="20" [(ngModel)]="selectedClient.codePostal"
+                                                    [ngClass]="{'ng-invalid ng-dirty' : !validClientCodePostal}"  />
+                                            <small class='p-error' *ngIf='!validClientCodePostal'>CodePostal est obligatoire.</small>
+                                        </div>
+
+
+
+                                        <div class="p-field p-col-12 p-md-3">
+                                            <label for="21">Rib<span style="color: red;">*</span></label>
+                                            <input class="p-mb-2 p-mr-2" type="text" pInputText
+                                                   placeholder="Rib"
+                                                   id="21" [(ngModel)]="selectedClient.rib"
+                                                    [ngClass]="{'ng-invalid ng-dirty' : !validClientRib}"  />
+                                            <small class='p-error' *ngIf='!validClientRib'>Rib est obligatoire.</small>
+                                        </div>
+
+
+
+                        </div>
+                    </p-tabPanel>
+                    <p-tabPanel header="Images">
+                                   <p-tabView>
+                                    <p-tabPanel header="Création">
+                                <div class="p-grid">
+                                                 <div class="p-field p-col-12 p-md-4">
+                                                    <label for="1">Reference<span style="color: red;">*</span></label>
+                                                    <input class="p-mb-2 p-mr-2" type="text" pInputText
+                                                           placeholder="Reference"
+                                                           id="1" [(ngModel)]="selectedImages.reference"
+                                                           autofocus  [ngClass]="{'ng-invalid ng-dirty' : !validImageReference}"  >
+                                                    <small class='p-error' *ngIf='!validImageReference'>Reference est obligatoire.</small>
+                                                </div>
+                                                 <div class="p-field p-col-12 p-md-4">
+                                                    <label for="2">Prix<span style="color: red;">*</span></label>
+                                                    <p-inputNumber class="p-mb-2 p-mr-2" id="prix"
+                                                                   placeholder="Prix"  [ngClass]="{'ng-invalid ng-dirty' : !validImagePrix}" 
+                                                            [(ngModel)]="selectedImages.prix"></p-inputNumber>
+                                                    <small class='p-error' *ngIf='!validImagePrix'>Prix est obligatoire.</small>
+                                                </div>
+                                                 <div class="p-field p-col-12 p-md-4">
+                                                    <label for="3">Description<span style="color: red;">*</span></label>
+                                                    <input class="p-mb-2 p-mr-2" type="text" pInputText
+                                                           placeholder="Description"
+                                                           id="3" [(ngModel)]="selectedImages.description"
+                                                           autofocus  [ngClass]="{'ng-invalid ng-dirty' : !validImageDescription}"  >
+                                                    <small class='p-error' *ngIf='!validImageDescription'>Description est obligatoire.</small>
+                                                </div>
+                                                 <div class="p-field p-col-12 p-md-4">
+                                                    <label for="4">Extension</label>
+                                                    <input class="p-mb-2 p-mr-2" type="text" pInputText
+                                                           placeholder="Extension"
+                                                           id="4" [(ngModel)]="selectedImages.extension"
+                                                           autofocus   >
+                                                    
+                                                </div>
+                                                 <div class="p-field p-col-12 p-md-4">
+                                                    <label for="5">Taille</label>
+                                                    <p-inputNumber class="p-mb-2 p-mr-2" id="taille"
+                                                                   placeholder="Taille"  
+                                                            [(ngModel)]="selectedImages.taille"></p-inputNumber>
+                                                    
+                                                </div>
+                                                 <div class="p-field p-col-12 p-md-4">
+                                                    <label for="6">Resolution</label>
+                                                    <p-inputNumber class="p-mb-2 p-mr-2" id="resolution"
+                                                                   placeholder="Resolution"  
+                                                            [(ngModel)]="selectedImages.resolution"></p-inputNumber>
+                                                    
+                                                </div>
+                                                    <div class="p-field p-col-11 p-md-3">
+                                                        <label>Bucket<span style="color: red;">*</span></label>
+                                                        <p-dropdown [options]="buckets" [(ngModel)]="selectedImages.bucketVo"
+                                                                id="8"  [filter]="true"
+                                                                filterMatchMode="contains" [showClear]="true"
+                                                                optionLabel="libelle"
+                                                                placeholder="Bucket"  [ngClass]="{'ng-invalid ng-dirty' : !validImageBucket}" 
+                                                        >
+                                                        </p-dropdown>
+                                                        <small class='p-error' *ngIf='!validImageBucket'>Bucket est obligatoire.</small>
+                                                    </div>
+                                                    <div class="p-col-1">
+                                                        <label></label>
+                                                        <button pButton pRipple type="button"
+                                                                icon="pi pi-plus"   (click)="openCreatebucket('bucket')"
+                                                                class="p-button-success one-colonne-btn-success-align"></button>
+                                                    </div>
+
+                                                <div class="p-field p-col-12  p-md-4">
+                                                    <label>Categorie image</label>
+                                                    <p-multiSelect [options]="categorieItemsVo" [(ngModel)]="selectedImages.categorieItemsVo"
+                                                            defaultLabel="Selectionner un Categorie image"
+                                                            optionLabel="categorieImageVo.libelle"  display="chip"></p-multiSelect>
+                                                </div>
+                                                    <div class="p-field p-col-11 p-md-3">
+                                                        <label>Type image</label>
+                                                        <p-dropdown [options]="typeImages" [(ngModel)]="selectedImages.typeImageVo"
+                                                                id="10"  [filter]="true"
+                                                                filterMatchMode="contains" [showClear]="true"
+                                                                optionLabel="libelle"
+                                                                placeholder="Type image"  
+                                                        >
+                                                        </p-dropdown>
+                                                        
+                                                    </div>
+                                                    <div class="p-col-1">
+                                                        <label></label>
+                                                        <button pButton pRipple type="button"
+                                                                icon="pi pi-plus"   (click)="openCreatetypeImage('typeImage')"
+                                                                class="p-button-success one-colonne-btn-success-align"></button>
+                                                    </div>
+
+                                          <div class="p-field p-col-12 p-md-1">
+                                              <button pButton pRipple type="button" icon="pi pi-plus" class="p-mt-4"
+                                                    label="OK" (click)="addImages()">
+                                              </button>
+                                          </div>
+
+                                </div>
+                                </p-tabPanel>
+                                <p-tabPanel header="Liste">
+                                    <div class="card">
+                                        <p-table [value]="selectedClient.imagesVo" [scrollable]="true"
+                                                scrollHeight="200px">
+                                            <ng-template pTemplate="header">
+                                                <tr>
+                                                                <th>Reference</th>
+                                                                <th>Prix</th>
+                                                                <th>Description</th>
+                                                                <th>Extension</th>
+                                                                <th>Taille</th>
+                                                                <th>Resolution</th>
+                                                                <th>Bucket</th>
+                                                                <th>Type image</th>
+                                                    <th>Actions</th>
+                                                </tr>
+                                            </ng-template>
+                                            <ng-template pTemplate="body" let-p>
+                                                <tr>
+                                                                <td>{{p.reference}}</td>
+
+                                                                <td>{{p.prix}}</td>
+
+                                                                <td>{{p.description}}</td>
+
+                                                                <td>{{p.extension}}</td>
+
+                                                                <td>{{p.taille}}</td>
+
+                                                                <td>{{p.resolution}}</td>
+
+                                                            <td>{{p.bucketVo?.libelle}}</td>
+                                                            <td>{{p.typeImageVo?.libelle}}</td>
+                                                    <td>
+                                                        <button (click)="deleteImages(p)" pButton type="button" icon="pi pi-times"  class="p-button-rounded p-button-danger">
+                                                        </button>
+                                                    </td>
+                                                </tr>
+                                            </ng-template>
+                                        </p-table>
+                                    </div>
+
+                                </p-tabPanel>
+                                </p-tabView>
+                            </p-tabPanel>
+
+
+                </p-tabView>
+
+            </ng-template>
+
+            <ng-template pTemplate="footer" >
+                <div class="p-grid">
+                        <div>
+                            <button pButton pRipple label="Annuler" icon="pi pi-times"
+                                    class="p-button-text" (click)="hideCreateDialog()"></button>
+                        </div>
+                    <div>
+                        <button pButton pRipple label="Valider" icon="pi pi-check" style="margin:10px" (click)="save()"></button>
+                    </div>
+                </div>
+            </ng-template>
+
+
+<!--                            <app-bucket-create-client></app-bucket-create-client>-->
+                            <app-type-image-create-client></app-type-image-create-client>
+
+    </p-dialog>

@@ -1,0 +1,1127 @@
+<!--&lt;!&ndash;<div class="login-body">&ndash;&gt;-->
+<!--&lt;!&ndash;<div class="card login-panel p-fluid">&ndash;&gt;-->
+<!--&lt;!&ndash;        <div class="login-panel-content">&ndash;&gt;-->
+<!--&lt;!&ndash;           <div class="p-grid" [formGroup]="loginForm">&ndash;&gt;-->
+<!--&lt;!&ndash;                <div class="p-col-12 p-sm-6 p-md-6 logo-container"> &ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;                  <img src="../../../assets/layout/images/logo-roma.svg" />&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;                  <span class="guest-sign-in"> Welcome, please use the form to sign-in </span>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;                </div>&ndash;&gt;-->
+
+<!--&lt;!&ndash;             <div class="p-col-12 username-container">&ndash;&gt;-->
+<!--&lt;!&ndash;                    &lt;!&ndash; <h:panelGroup> &ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;                <label>Username</label>&ndash;&gt;-->
+<!--&lt;!&ndash;                    <div class="login-input">&ndash;&gt;-->
+<!--&lt;!&ndash;                        <input class="p-mb-2 p-mr-2" type="text" pInputText formControlName="username" id="1" required&ndash;&gt;-->
+<!--&lt;!&ndash;                            autofocus />&ndash;&gt;-->
+<!--&lt;!&ndash;                    </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                    &lt;!&ndash; </h:panelGroup> &ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;            </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                <div class="p-col-12 password-container">&ndash;&gt;-->
+<!--&lt;!&ndash;                    &lt;!&ndash; <h:panelGroup> &ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;             <label>Password</label>&ndash;&gt;-->
+<!--&lt;!&ndash;                    <div class="login-input">&ndash;&gt;-->
+<!--&lt;!&ndash;                        <input pPassword type="password" [feedback]="false" formControlName="password" />&ndash;&gt;-->
+<!--&lt;!&ndash;                    </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                    &lt;!&ndash; </h:panelGroup> &ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;            </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                <div class="p-col-12 p-sm-6 p-md-6 rememberme-container">&ndash;&gt;-->
+
+<!--&lt;!&ndash;                </div>&ndash;&gt;-->
+
+<!--&lt;!&ndash;             <div class="p-col-6 p-md-12">&ndash;&gt;-->
+<!--&lt;!&ndash;                    <button pButton type="button" icon="pi pi-check" label="Sign In" (click)="submit()"></button>&ndash;&gt;-->
+<!--&lt;!&ndash;                </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                <div class="p-col-6 p-md-12">&ndash;&gt;-->
+<!--&lt;!&ndash;                    <button pButton type="button" icon="pi pi-check" class="p-button p-button-success" label="Connexion" (click)="register()"></button>&ndash;&gt;-->
+
+
+<!--&lt;!&ndash;<p-galleria [value]="images" panelWidth="500" panelHeight="313" [value]="true"></p-galleria> &ndash;&gt;-->
+
+
+<!--&lt;!&ndash;                    <div class="slider-input" >&ndash;&gt;-->
+<!--&lt;!&ndash;                        <div class="photos-mini">&ndash;&gt;-->
+<!--&lt;!&ndash;                            <p style="font-family: Snell Round hand, cursive ; font-size: 20px" >Scroll To See More !!!</p>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <div class=miniature>&ndash;&gt;-->
+<!--&lt;!&ndash;                                <input type="radio" name="demo" checked class="fen" id="lightbox-1">&ndash;&gt;-->
+<!--&lt;!&ndash;                                <label for="lightbox-1">&ndash;&gt;-->
+<!--&lt;!&ndash;                                    <img src="assets/images/hahaha.jpg" alt="Hot air balloons">&ndash;&gt;-->
+<!--&lt;!&ndash;                                </label>&ndash;&gt;-->
+<!--&lt;!&ndash;                                <img class="fenetre" src="assets/images/hahaha.jpg" alt="Hot air balloons">&ndash;&gt;-->
+<!--&lt;!&ndash;                                <span class=figcaption>Titre1, description</span>&ndash;&gt;-->
+<!--&lt;!&ndash;                            </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <div class=miniature>&ndash;&gt;-->
+<!--&lt;!&ndash;                                <input type="radio" name="demo" class="fen" id="lightbox-2">&ndash;&gt;-->
+<!--&lt;!&ndash;                                <label for="lightbox-2">&ndash;&gt;-->
+<!--&lt;!&ndash;                                    <img src="assets/images/mintad.jpg" alt>&ndash;&gt;-->
+<!--&lt;!&ndash;                                </label>&ndash;&gt;-->
+<!--&lt;!&ndash;                                <img class="fenetre" src="assets/images/mintad.jpg" alt>&ndash;&gt;-->
+<!--&lt;!&ndash;                                <span class=figcaption>Titre2, description</span>&ndash;&gt;-->
+<!--&lt;!&ndash;                            </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <div class=miniature>&ndash;&gt;-->
+<!--&lt;!&ndash;                                <input type="radio" name="demo" class="fen" id="lightbox-3">&ndash;&gt;-->
+<!--&lt;!&ndash;                                <label for="lightbox-3">&ndash;&gt;-->
+<!--&lt;!&ndash;                                    <img src="assets/images/fusion.png" alt>&ndash;&gt;-->
+<!--&lt;!&ndash;                                </label>&ndash;&gt;-->
+<!--&lt;!&ndash;                                <img class="fenetre" src="assets/images/fusion.png" alt>&ndash;&gt;-->
+<!--&lt;!&ndash;                                <span class=figcaption>Titre3, description</span>&ndash;&gt;-->
+<!--&lt;!&ndash;                            </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <div class=miniature>&ndash;&gt;-->
+<!--&lt;!&ndash;                                <input type="radio" name="demo" class="fen" id="lightbox-4">&ndash;&gt;-->
+<!--&lt;!&ndash;                                <label for="lightbox-4">&ndash;&gt;-->
+<!--&lt;!&ndash;                                    <img src="assets/images/fruits.png" alt>&ndash;&gt;-->
+<!--&lt;!&ndash;                                </label>&ndash;&gt;-->
+<!--&lt;!&ndash;                                <img class="fenetre" src="assets/images/fruits.png" alt>&ndash;&gt;-->
+<!--&lt;!&ndash;                                <span class=figcaption>Titre4, description</span>&ndash;&gt;-->
+<!--&lt;!&ndash;                            </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <div class=miniature>&ndash;&gt;-->
+<!--&lt;!&ndash;                                <input type="radio" name="demo" class="fen" id="lightbox-5">&ndash;&gt;-->
+<!--&lt;!&ndash;                                <label for="lightbox-5">&ndash;&gt;-->
+<!--&lt;!&ndash;                                    <img src="assets/images/background.jpg" alt>&ndash;&gt;-->
+<!--&lt;!&ndash;                                </label>&ndash;&gt;-->
+<!--&lt;!&ndash;                                <img class="fenetre" src="assets/images/background.jpg" alt>&ndash;&gt;-->
+<!--&lt;!&ndash;                                <span class=figcaption>Titre5, descriptionv/.figcaption>&ndash;&gt;-->
+<!--&lt;!&ndash;                                    </span>&ndash;&gt;-->
+<!--&lt;!&ndash;                            </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <div class=miniature>&ndash;&gt;-->
+<!--&lt;!&ndash;                                <input type="radio" name="demo" class="fen" id="lightbox-6">&ndash;&gt;-->
+<!--&lt;!&ndash;                                <label for="lightbox-6">&ndash;&gt;-->
+<!--&lt;!&ndash;                                    <img src="assets/images/hahaha.jpg" alt>&ndash;&gt;-->
+<!--&lt;!&ndash;                                </label>&ndash;&gt;-->
+<!--&lt;!&ndash;                                <img class="fenetre" src="assets/images/hahaha.jpg" alt>&ndash;&gt;-->
+<!--&lt;!&ndash;                                <span class=figcaption>Titre6, description</span>&ndash;&gt;-->
+<!--&lt;!&ndash;                            </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                        </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                    </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                    <ul>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <li><a href="default.html">Home</a></li>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <li><a href="news.asp">News</a></li>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <li><a href="contact.asp">Contact</a></li>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <li><a href="about.asp">About</a></li>&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;                        <h3>Please click on the below button open popup</h3>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;                        <hr />&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;                        <button&ndash;&gt;-->
+<!--&lt;!&ndash;                                style="margin: 50px; padding: 10px"&ndash;&gt;-->
+<!--&lt;!&ndash;                                type="button"&ndash;&gt;-->
+<!--&lt;!&ndash;                                class="btn btn-primary"&ndash;&gt;-->
+<!--&lt;!&ndash;                                (click)="openPopup()">Acheter mes images&ndash;&gt;-->
+<!--&lt;!&ndash;                        </button>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <div&ndash;&gt;-->
+<!--&lt;!&ndash;                                class="modal"&ndash;&gt;-->
+<!--&lt;!&ndash;                                tabindex="-1"&ndash;&gt;-->
+<!--&lt;!&ndash;                                role="dialog"&ndash;&gt;-->
+<!--&lt;!&ndash;                                [ngStyle]="{'display':displayStyle}">&ndash;&gt;-->
+<!--&lt;!&ndash;                            <div class="modal-dialog" role="document">&ndash;&gt;-->
+<!--&lt;!&ndash;                                <div class="modal-content">&ndash;&gt;-->
+<!--&lt;!&ndash;                                    <div class="modal-header">&ndash;&gt;-->
+<!--&lt;!&ndash;                                        <label>Username</label>&ndash;&gt;-->
+<!--&lt;!&ndash;                                        <input class="p-mb-2 p-mr-2" type="text" pInputText formControlName="username" id="1" required&ndash;&gt;-->
+<!--&lt;!&ndash;                                                            autofocus />&ndash;&gt;-->
+<!--&lt;!&ndash;                                        <label>Password</label>&ndash;&gt;-->
+<!--&lt;!&ndash;                                        <input pPassword type="password" [feedback]="false" formControlName="password" />&ndash;&gt;-->
+<!--&lt;!&ndash;                                       <h4 class="modal-title">GeeksForGeeks</h4>&ndash;&gt;-->
+<!--&lt;!&ndash;                                    </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                                    <div class="modal-body">&ndash;&gt;-->
+<!--&lt;!&ndash;                                        <button pButton type="button" icon="pi pi-check" label="Se connecter" (click)="submit()"></button>&ndash;&gt;-->
+<!--&lt;!&ndash;                                        <button pButton type="button" icon="pi pi-check" class="p-button p-button-success" label="s'authentifier" (click)="register()"></button>&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;                                        <p>One Stop Solution for all CS problems</p>&ndash;&gt;&ndash;&gt;-->
+
+<!--&lt;!&ndash;                                    </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                                    <div class="modal-footer">&ndash;&gt;-->
+<!--&lt;!&ndash;                                        <button type="button" class="btn btn-danger"&ndash;&gt;-->
+<!--&lt;!&ndash;                                                (click)="closePopup()">&ndash;&gt;-->
+<!--&lt;!&ndash;                                            Close&ndash;&gt;-->
+<!--&lt;!&ndash;                                        </button>&ndash;&gt;-->
+<!--&lt;!&ndash;                                    </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                                </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                            </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                        </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                    </ul>&ndash;&gt;-->
+<!--&lt;!&ndash;              &ndash;&gt;-->
+
+<!--&lt;!&ndash;                </div>&ndash;&gt;-->
+<!--&lt;!&ndash;        </div>&ndash;&gt;-->
+<!--&lt;!&ndash;</div>&ndash;&gt;-->
+<!--&lt;!&ndash;<footer>&ndash;&gt;-->
+<!--&lt;!&ndash;    <div class="content">&ndash;&gt;-->
+<!--&lt;!&ndash;        <div class="left box">&ndash;&gt;-->
+<!--&lt;!&ndash;            <div class="upper">&ndash;&gt;-->
+<!--&lt;!&ndash;                <div class="topic">About us</div>&ndash;&gt;-->
+<!--&lt;!&ndash;                <p>CodingLab is a channel where you can learn HTML,&ndash;&gt;-->
+<!--&lt;!&ndash;                    CSS, and also JavaScript along with creative CSS Animations and Effects.</p>&ndash;&gt;-->
+<!--&lt;!&ndash;            </div>&ndash;&gt;-->
+<!--&lt;!&ndash;            <div class="lower">&ndash;&gt;-->
+<!--&lt;!&ndash;                <div class="topic">Contact us</div>&ndash;&gt;-->
+<!--&lt;!&ndash;                <div class="phone">&ndash;&gt;-->
+<!--&lt;!&ndash;                    <a href="#"><i class="fas fa-phone-volume"></i>+007 9089 6767</a>&ndash;&gt;-->
+<!--&lt;!&ndash;                </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                <div class="email">&ndash;&gt;-->
+<!--&lt;!&ndash;                    <a href="#"><i class="fas fa-envelope"></i>abc@gmail.com</a>&ndash;&gt;-->
+<!--&lt;!&ndash;                </div>&ndash;&gt;-->
+<!--&lt;!&ndash;            </div>&ndash;&gt;-->
+<!--&lt;!&ndash;        </div>&ndash;&gt;-->
+<!--&lt;!&ndash;        <div class="middle box">&ndash;&gt;-->
+<!--&lt;!&ndash;            <div class="topic">Our Services</div>&ndash;&gt;-->
+<!--&lt;!&ndash;            <div><a href="#">Web Design, Development</a></div>&ndash;&gt;-->
+<!--&lt;!&ndash;            <div><a href="#">Web UX Design, Reasearch</a></div>&ndash;&gt;-->
+<!--&lt;!&ndash;            <div><a href="#">Web User Interface Design</a></div>&ndash;&gt;-->
+<!--&lt;!&ndash;            <div><a href="#">Theme Development, Design</a></div>&ndash;&gt;-->
+<!--&lt;!&ndash;            <div><a href="#">Mobile Application Design</a></div>&ndash;&gt;-->
+<!--&lt;!&ndash;            <div><a href="#">Wire raming & Prototyping</a></div>&ndash;&gt;-->
+<!--&lt;!&ndash;        </div>&ndash;&gt;-->
+<!--&lt;!&ndash;        <div class="right box">&ndash;&gt;-->
+<!--&lt;!&ndash;            <div class="topic">Subscribe us</div>&ndash;&gt;-->
+<!--&lt;!&ndash;            <form action="#">&ndash;&gt;-->
+<!--&lt;!&ndash;                <input type="text" placeholder="Enter email address">&ndash;&gt;-->
+<!--&lt;!&ndash;                <input type="submit" name="" value="Send">&ndash;&gt;-->
+<!--&lt;!&ndash;                <div class="media-icons">&ndash;&gt;-->
+<!--&lt;!&ndash;                    <a href="#"><i class="fab fa-facebook-f"></i></a>&ndash;&gt;-->
+<!--&lt;!&ndash;                    <a href="#"><i class="fab fa-instagram"></i></a>&ndash;&gt;-->
+<!--&lt;!&ndash;                    <a href="#"><i class="fab fa-twitter"></i></a>&ndash;&gt;-->
+<!--&lt;!&ndash;                    <a href="#"><i class="fab fa-youtube"></i></a>&ndash;&gt;-->
+<!--&lt;!&ndash;                    <a href="#"><i class="fab fa-linkedin-in"></i></a>&ndash;&gt;-->
+<!--&lt;!&ndash;                </div>&ndash;&gt;-->
+<!--&lt;!&ndash;            </form>&ndash;&gt;-->
+<!--&lt;!&ndash;        </div>&ndash;&gt;-->
+<!--&lt;!&ndash;    </div>&ndash;&gt;-->
+<!--&lt;!&ndash;    <div class="bottom">&ndash;&gt;-->
+<!--&lt;!&ndash;        <p>Copyright © 2020 <a href="#">CodingLab</a> All rights reserved</p>&ndash;&gt;-->
+<!--&lt;!&ndash;    </div>&ndash;&gt;-->
+<!--&lt;!&ndash;</footer>&ndash;&gt;-->
+
+<!--&lt;!&ndash;</div>&ndash;&gt;-->
+<!--&lt;!&ndash;</div>&ndash;&gt;-->
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    &lt;!&ndash; Theme Made By www.w3schools.com - No Copyright &ndash;&gt;-->
+<!--&lt;!&ndash;    <title>Bootstrap Theme Simply Me</title>&ndash;&gt;-->
+<!--    <meta charset="utf-8">-->
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1">-->
+<!--    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">-->
+<!--    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">-->
+<!--    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>-->
+<!--    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>-->
+<!--    <style>-->
+<!--        body {-->
+<!--            font: 20px Montserrat, sans-serif;-->
+<!--            line-height: 1.8;-->
+<!--            color: #f5f6f7;-->
+<!--        }-->
+<!--        p {font-size: 16px;}-->
+<!--        .margin {margin-bottom: 45px;}-->
+<!--        .bg-1 {-->
+<!--            background-color: #b2ec5d; /* Green */-->
+<!--            color: #ffffff;-->
+<!--        }-->
+<!--        .bg-2 {-->
+<!--            background-color: #474e5d; /* Dark Blue */-->
+<!--            color: #ffffff;-->
+<!--        }-->
+<!--        .bg-3 {-->
+<!--            background-color: #ffffff; /* White */-->
+<!--            color: #555555;-->
+<!--        }-->
+<!--        .bg-4 {-->
+<!--            background-color: #2f2f2f; /* Black Gray */-->
+<!--            color: #fff;-->
+<!--        }-->
+<!--        .container-fluid {-->
+<!--            padding-top: 70px;-->
+<!--            padding-bottom: 70px;-->
+<!--        }-->
+<!--        .navbar {-->
+<!--            padding-top: 15px;-->
+<!--            padding-bottom: 15px;-->
+<!--            border: 0;-->
+<!--            border-radius: 0;-->
+<!--            margin-bottom: 0;-->
+<!--            font-size: 12px;-->
+<!--            letter-spacing: 5px;-->
+<!--        }-->
+<!--        .navbar-nav  li a:hover {-->
+<!--            color: #1abc9c !important;-->
+<!--        }-->
+<!--        .zoom:hover{-->
+<!--            -webkit-transform: scale(1.3);-->
+<!--            transform: scale(1.3);-->
+<!--        }-->
+<!--        .p-button{-->
+<!--            background-color: #ddd;-->
+<!--            border: none;-->
+<!--            color: black;-->
+<!--            padding: 10px 20px;-->
+<!--            text-align: center;-->
+<!--            text-decoration: none;-->
+<!--            display: inline-block;-->
+<!--            margin: 4px 2px;-->
+<!--            cursor: pointer;-->
+<!--            border-radius: 16px;-->
+<!--        }-->
+
+<!--    </style>-->
+<!--</head>-->
+<!--<body>-->
+
+<!--&lt;!&ndash; Navbar &ndash;&gt;-->
+<!--<nav class="navbar navbar-default">-->
+<!--    <div class="container">-->
+<!--        <div class="navbar-header">-->
+<!--            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">-->
+<!--                <span class="icon-bar"></span>-->
+<!--                <span class="icon-bar"></span>-->
+<!--                <span class="icon-bar"></span>-->
+<!--            </button>-->
+<!--            <a class="navbar-brand" href="#" style="font-weight: bolder ; color: #343a40">TU CARTERA</a>-->
+<!--        </div>-->
+<!--        <div class="collapse navbar-collapse" id="myNavbar">-->
+<!--            <ul class="nav navbar-nav navbar-right">-->
+<!--&lt;!&ndash;                <li><a href="#">WHO</a></li>&ndash;&gt;-->
+<!--&lt;!&ndash;                <li><a href="#">WHAT</a></li>&ndash;&gt;-->
+<!--&lt;!&ndash;                <li><a href="#">WHERE</a></li>&ndash;&gt;-->
+<!--                <button-->
+<!--                        style="margin: 5px ;  font-family: Montserrat; font-weight: bold"-->
+<!--                        type="button"-->
+<!--                        class="btn btn-primary p-button button "-->
+<!--                        (click)="openPopup()"> Acheter mes images-->
+<!--                </button>-->
+<!--                <div-->
+<!--                        class="modal"-->
+<!--                        tabindex="-1"-->
+<!--                        role="dialog"-->
+<!--                        [ngStyle]="{'display':displayStyle}">-->
+<!--                    <div class="modal-dialog" role="document">-->
+<!--                        <div class="modal-content" [formGroup]="loginForm" >-->
+<!--                            <div class="modal-header">-->
+<!--                                <label style="color: black">Username</label>-->
+<!--                                <input class="p-mb-2 p-mr-2" type="text" pInputText formControlName="username" id="1" required-->
+<!--                                       autofocus />-->
+<!--                                <label style="color: black">Password</label>-->
+<!--                                <input pPassword type="password" [feedback]="false" formControlName="password" />-->
+<!--                                &lt;!&ndash;                                <h4 class="modal-title">GeeksForGeeks</h4>&ndash;&gt;-->
+<!--                            </div>-->
+<!--                            <div class="modal-body">-->
+<!--                                &lt;!&ndash;                                        <p>One Stop Solution for all CS problems</p>&ndash;&gt;-->
+<!--                                <button pButton type="button" icon="pi pi-check" label="Se connecter" (click)="submit()"></button>-->
+<!--                                <button pButton type="button" icon="pi pi-check" class="p-button p-button-success" label="S'inscrire" (click)="register()"></button>-->
+<!--                                <p style="color: black">Si vous n'avez pas de compte , veuillez s'inscrire avant de se connecter .</p>-->
+<!--                            </div>-->
+<!--                            <div class="modal-footer">-->
+<!--                                <button type="button" class="btn btn-danger p-button"-->
+<!--                                        (click)="closePopup()">-->
+<!--                                    Close-->
+<!--                                </button>-->
+<!--                            </div>-->
+<!--                            </div>-->
+<!--                            </div>-->
+<!--                            </div>-->
+<!--            </ul>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</nav>-->
+
+<!--&lt;!&ndash; First Container &ndash;&gt;-->
+<!--<div class="container-fluid bg-1 text-center">-->
+<!--    <h3 class="margin" style="font-family: Copperplate Gothic Light ; color: black ; font-weight: bold "> Qui Suis-je?</h3>-->
+<!--    <img src="assets/images/fruits.png" class="img-responsive  margin"  style="display:inline" alt="Bird" width="350" height="350">-->
+<!--    <img src="assets/images/art.jpg" class="img-responsive  margin zoom"  style="display:inline" alt="Bird" width="350" height="350">-->
+<!--    <img src="assets/images/fruits.png" class="img-responsive  margin"  style="display:inline" alt="Bird" width="350" height="350">-->
+<!--    <h3 style="font-family: Copperplate Gothic Light ; color: black; font-weight: bold" >Je suis une bonne dose d’inspiration toutes les semaines, juste pour vous!</h3>-->
+<!--</div>-->
+
+<!-- Second Container -->
+<!--<div class="container-fluid bg-2 text-center" style="background-color: #ffcff1">-->
+<!--&lt;!&ndash;    <h3 class="margin">What Am I?</h3>&ndash;&gt;-->
+<!--&lt;!&ndash;    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud&ndash;&gt;-->
+<!--&lt;!&ndash;        exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>&ndash;&gt;-->
+<!--&lt;!&ndash;    <a href="#" class="btn btn-default btn-lg">&ndash;&gt;-->
+<!--&lt;!&ndash;        <span class="glyphicon glyphicon-search"></span> Search&ndash;&gt;-->
+<!--        <ng-image-slider [images]="imageObject" #nav></ng-image-slider>-->
+<!--&lt;!&ndash;    </a>&ndash;&gt;-->
+<!--</div>-->
+
+<!--&lt;!&ndash;Pricing container&ndash;&gt;-->
+<!--<section class="pricing-table">-->
+<!--    <div class="container">-->
+<!--        <div class="block-heading">-->
+<!--            <h2 style="color: black">PLAN PRIX </h2>-->
+<!--            <p style="color: black">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quam urna, dignissim nec auctor in, mattis vitae leo.</p>-->
+<!--        </div>-->
+<!--        <div class="row justify-content-md-center">-->
+<!--            <div class="col-md-5 col-lg-4">-->
+<!--                <div class="item">-->
+<!--                    <div class="heading">-->
+<!--                        <h3 style="color: black">BASIC</h3>-->
+<!--                    </div>-->
+<!--                    <p style="color: black" >Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>-->
+<!--                    <div class="features" style="color: black">-->
+<!--                        <h4><span class="feature" style="color: black">Full Support</span> : <span class="value">No</span></h4>-->
+<!--                        <h4><span class="feature" style="color: black">Duration</span> : <span class="value">30 Days</span></h4>-->
+<!--                        <h4><span class="feature" style="color: black">Storage</span> : <span class="value">10GB</span></h4>-->
+<!--                    </div>-->
+<!--                    <div class="price">-->
+<!--                        <h4 style="color: black">$25</h4>-->
+<!--                    </div>-->
+<!--                    <button class="btn btn-block btn-outline-primary" type="submit" style="color: black">BUY NOW</button>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="col-md-5 col-lg-4">-->
+<!--                <div class="item">-->
+<!--                    <div class="ribbon" style="color: black">Best Value</div>-->
+<!--                    <div class="heading">-->
+<!--                        <h3 style="color: black">PRO</h3>-->
+<!--                    </div>-->
+<!--                    <p style="color: black">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>-->
+<!--                    <div class="features">-->
+<!--                        <h4><span class="feature" style="color: black">Full Support</span> : <span class="value">Yes</span></h4>-->
+<!--                        <h4><span class="feature" style="color: black">Duration</span> : <span class="value">60 Days</span></h4>-->
+<!--                        <h4><span class="feature" style="color: black">Storage</span> : <span class="value">50GB</span></h4>-->
+<!--                    </div>-->
+<!--                    <div class="price">-->
+<!--                        <h4 style="color: black">$50</h4>-->
+<!--                    </div>-->
+<!--                    <button class="btn btn-block btn-primary" type="submit" style="color: black">BUY NOW</button>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="col-md-5 col-lg-4">-->
+<!--                <div class="item">-->
+<!--                    <div class="heading">-->
+<!--                        <h3 style="color: black">PREMIUM</h3>-->
+<!--                    </div>-->
+<!--                    <p style="color: black">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>-->
+<!--                    <div class="features">-->
+<!--                        <h4><span class="feature" style="color: black">Full Support</span> : <span class="value">Yes</span></h4>-->
+<!--                        <h4><span class="feature" style="color: black">Duration</span> : <span class="value">120 Days</span></h4>-->
+<!--                        <h4><span class="feature" style="color: black">Storage</span> : <span class="value">150GB</span></h4>-->
+<!--                    </div>-->
+<!--                    <div class="price">-->
+<!--                        <h4 style="color: black">$150</h4>-->
+<!--                    </div>-->
+<!--                    <button class="btn btn-block btn-outline-primary" type="submit" style="color: black">BUY NOW</button>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</section>-->
+
+
+<!--&lt;!&ndash; Third Container (Grid) &ndash;&gt;-->
+<!--<div class="container-fluid bg-3 text-center">-->
+<!--    <h3 class="margin" style="font-family: Copperplate Gothic Light ; color: black ; font-weight: bold">Nos Conseil et nos astuces </h3><br>-->
+<!--    <div class="row">-->
+<!--        <div class="col-sm-4">-->
+<!--            <img src="assets/images/No%20faces.jpg" class="img-responsive margin img-rounded"  style="width : 500px;-->
+<!--height : 360px; " alt="Image">-->
+<!--            <h1 style="font-weight: bold ;color: black; font-family: Copperplate Gothic Light ; font-size: 20px">Image sans Visage? Quel interet?</h1>-->
+<!--            <p>Par un manque de repères, on ne sait plus ce qui est important et ce qui ne l’est pas ,-->
+<!--                ce qui doit être mis en valeur ou pas. <br> Vie Sans Valorisation! </p>-->
+
+<!--        </div>-->
+<!--        <div class="col-sm-4">-->
+<!--            <img src="assets/images/culture.jpg" class="img-responsive margin img-rounded"  style="width:100% ; " alt="Image">-->
+<!--            <h1 style="font-weight: bold ;color: black; font-family: Copperplate Gothic Light ; font-size: 20px">Comment traduire en images la diversite des cultures a travers le monde ?</h1>-->
+<!--            <p>Par la photographie, l'energie de la diversite se partage partout dans le monde .-->
+<!--                Naviguez et decouvrez d'autres cultures !!  </p>-->
+
+<!--        </div>-->
+<!--        <div class="col-sm-4">-->
+<!--            <img src="assets/images/tendance.jpg" class="img-responsive margin img-rounded"  style="width:100%" alt="Image">-->
+<!--            <h2 style="font-weight: bold ;color: black; font-family: Copperplate Gothic Light ; font-size: 20px">Style de vie et la nature?-->
+<!--               <br>Quelle relation?</h2>-->
+<!--            <p>La nature nous entoure , et la tendance nous guide ! <br> Une image vous aide-->
+<!--                a savoir sur la tendance et la reprer dans la nature.</p>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
+
+<!--&lt;!&ndash; Footer &ndash;&gt;-->
+<!--<footer class="container-fluid bg-4 text-center">-->
+<!--&lt;!&ndash;    <p>Bootstrap Theme Made By <a href="https://www.w3schools.com">www.w3schools.com</a></p>&ndash;&gt;-->
+
+<!--    <p>Postal Address: <i>123, Street 1, Colony 2, City, State, Country, 123123</i></p>-->
+
+<!--    <div class="content">-->
+<!--        <div class="left box">-->
+<!--            <div class="upper">-->
+<!--                <div class="topic">Qui somme nous?</div>-->
+<!--                <p>On aide les professionnels de la création à créer leurs meilleures réalisations en rassemblant-->
+<!--                    dans une plateforme unique  des outils innovants et des contenus creatifs.</p>-->
+<!--            </div>-->
+<!--            <div class="lower">-->
+<!--                <div class="topic">Contact us</div>-->
+<!--                <div class="phone"> Tel :-->
+<!--                    <a href="#"><i class="fas fa-phone-volume"></i>+007 9089 6767</a>-->
+<!--                </div>-->
+<!--                <div class="email">-->
+<!--                    <p>Adresse E-mail : <a href="mailto:xyz@example.com">xyz@example.com</a></p>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--&lt;!&ndash;        <div class="middle box">&ndash;&gt;-->
+<!--&lt;!&ndash;            <div class="topic">Our Services</div>&ndash;&gt;-->
+<!--&lt;!&ndash;            <div><a href="#">Web Design, Development</a></div>&ndash;&gt;-->
+<!--&lt;!&ndash;            <div><a href="#">Web UX Design, Reasearch</a></div>&ndash;&gt;-->
+<!--&lt;!&ndash;            <div><a href="#">Web User Interface Design</a></div>&ndash;&gt;-->
+<!--&lt;!&ndash;            <div><a href="#">Theme Development, Design</a></div>&ndash;&gt;-->
+<!--&lt;!&ndash;            <div><a href="#">Mobile Application Design</a></div>&ndash;&gt;-->
+<!--&lt;!&ndash;            <div><a href="#">Wire raming & Prototyping</a></div>&ndash;&gt;-->
+<!--&lt;!&ndash;        </div>&ndash;&gt;-->
+<!--        <div class="right box">-->
+<!--            <div class="topic">Subscribe us</div>-->
+<!--            <form action="#">-->
+<!--                <input type="text" placeholder="Enter email address">-->
+<!--                <input type="submit" name="" value="Send">-->
+<!--                <div class="media-icons">-->
+<!--                    <a href="#"><i class="fab fa-facebook-f "></i></a>-->
+<!--                    <a href="#"><i class="fab fa-instagram"></i></a>-->
+<!--                    <a href="#"><i class="fab fa-twitter"></i></a>-->
+<!--                    <a href="#"><i class="fab fa-youtube"></i></a>-->
+<!--                    <a href="#"><i class="fab fa-linkedin-in"></i></a>-->
+<!--                </div>-->
+<!--            </form>-->
+
+<!--        </div>-->
+<!--    </div>-->
+
+<!--</footer>-->
+
+<!--</body>-->
+<!--</html>-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+<!--    <title>Jack & Rose - Free Wedding Website Template</title>-->
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="Free HTML Templates" name="keywords">
+    <meta content="Free HTML Templates" name="description">
+
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/style.css" rel="stylesheet">
+</head>
+
+<body data-spy="scroll" data-target=".navbar" data-offset="51">
+<!-- Navbar Start -->
+<!--<nav class="navbar fixed-top shadow-sm navbar-expand-lg bg-dark navbar-dark py-3 py-lg-0 px-lg-5">-->
+<!--    <a href="index.html" class="navbar-brand d-block d-lg-none">-->
+<!--        <h1 class="font-secondary text-white mb-n2">Jack <span class="text-primary">&</span> Rose</h1>-->
+<!--    </a>-->
+<!--    <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">-->
+<!--        <span class="navbar-toggler-icon"></span>-->
+<!--    </button>-->
+<!--    <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">-->
+<!--        <div class="navbar-nav ml-auto py-0">-->
+<!--            <a href="#home" class="nav-item nav-link active">Home</a>-->
+<!--            <a href="#about" class="nav-item nav-link">About</a>-->
+<!--            <a href="#story" class="nav-item nav-link">Story</a>-->
+<!--            <a href="#gallery" class="nav-item nav-link">Gallery</a>-->
+<!--        </div>-->
+<!--        <a href="index.html" class="navbar-brand mx-5 d-none d-lg-block">-->
+<!--            <h1 class="font-secondary text-white mb-n2">Jack <span class="text-primary">&</span> Rose</h1>-->
+<!--        </a>-->
+<!--        <div class="navbar-nav mr-auto py-0">-->
+<!--            <a href="#family" class="nav-item nav-link">Family</a>-->
+<!--            <a href="#event" class="nav-item nav-link">Event</a>-->
+<!--            <a href="#rsvp" class="nav-item nav-link">RSVP</a>-->
+<!--            <a href="#contact" class="nav-item nav-link">Contact</a>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</nav>-->
+<!-- Navbar End -->
+
+
+<!-- Carousel Start -->
+<div class="container-fluid p-0 mb-5 pb-5" id="home">
+    <div id="header-carousel" class="carousel slide carousel-fade" data-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item position-relative active" style="height: 100vh; min-height: 400px;">
+                <img class="position-absolute w-100 h-100" src="assets/images/losange.jpg" style="object-fit: cover;">
+                <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
+                    <div class="p-3" style="max-width: 900px;">
+                        <h1 class="display-1 font-secondary text-white mt-n3 mb-md-4">TU CARTERA</h1>
+                        <div class="d-inline-block border-top border-bottom border-light py-3 px-4">
+                            <h3 class="text-uppercase font-weight-normal text-white m-0" style="letter-spacing: 2px;">VOTRE MONDE D'IMAGES.</h3>
+                        </div>
+                        <div class="box-2">
+                            <div class="btn btn-two" (click)="openPopup()">
+                                <span> Bienvenu .</span>
+                            </div>
+                            <div
+                                    class="modal"
+                                    tabindex="-1"
+                                    role="dialog"
+                                    [ngStyle]="{'display':displayStyle}">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content" [formGroup]="loginForm" >
+                                        <div class="modal-header" style="background-color: #d8bfd8">
+                                            <label style="color: black; font-weight: bold">Username</label>
+                                            <input class="p-mb-2 p-mr-2" type="text" style="width: 150px" pInputText formControlName="username" id="1" required
+                                                   autofocus />
+                                            <label style="color: black; font-weight: bold">Password</label>
+                                            <input pPassword type="password" [feedback]="false" formControlName="password" />
+                                            <!--                                <h4 class="modal-title">GeeksForGeeks</h4>-->
+                                        </div>
+                                        <div class="modal-body" style="background-color: #d8bfd8">
+                                            <!--                                        <p>One Stop Solution for all CS problems</p>-->
+                                            <button pButton type="button" style="border-radius: 100px;background-color: #e6e6fa; color: black; font-weight: bold ; border-color: #4b0082" icon="pi pi-check" label="Se connecter" (click)="submit()"></button>
+                                            <button pButton type="button" style="border-radius: 100px;background-color: #e6e6fa;color: black; font-weight: bold ; border-color: #4b0082" icon="pi pi-check" class="p-button p-button-success" label="S'inscrire" (click)="register()"></button>
+                                            <p style="color: black; font-weight: bold">Si vous n'avez pas de compte , veuillez s'inscrire avant de se connecter .</p>
+                                        </div>
+                                        <div class="modal-footer" style="background-color: #d8bfd8;color: black; font-weight: bold ; border-color: #4b0082">
+                                            <button type="button" style="border-radius: 100px ; background-color: #e6e6fa;color: black; font-weight: bold ; border-color: #4b0082" class="btn btn-danger p-button"
+                                                    (click)="closePopup()">
+                                                Close
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--                        <button type="button" class="btn-play mx-auto" data-toggle="modal"-->
+                        <!--                                data-src="https://www.youtube.com/embed/DWRcNpR6Kdc" data-target="#videoModal">-->
+                        <!--                            <span></span>-->
+                        <!--                        </button>-->
+                    </div>
+                </div>
+            </div>
+            <!--            <div class="carousel-item position-relative" style="height: 100vh; min-height: 400px;">-->
+            <!--                <img class="position-absolute w-100 h-100" src="img/carousel-2.jpg" style="object-fit: cover;">-->
+            <!--                <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">-->
+            <!--                    <div class="p-3" style="max-width: 900px;">-->
+            <!--                        <h1 class="display-1 font-secondary text-white mt-n3 mb-md-4">Jack & Rose</h1>-->
+            <!--                        <div class="d-inline-block border-top border-bottom border-light py-3 px-4">-->
+            <!--                            <h3 class="text-uppercase font-weight-normal text-white m-0" style="letter-spacing: 2px;">We're getting married</h3>-->
+            <!--                        </div>-->
+            <!--                        <button type="button" class="btn-play mx-auto" data-toggle="modal"-->
+            <!--                                data-src="https://www.youtube.com/embed/DWRcNpR6Kdc" data-target="#videoModal">-->
+            <!--                            <span></span>-->
+            <!--                        </button>-->
+            <!--                    </div>-->
+            <!--                </div>-->
+            <!--            </div>-->
+        </div>
+        <!--        <a class="carousel-control-prev justify-content-start" href="#header-carousel" data-slide="prev">-->
+        <!--            <div class="btn btn-primary px-0" style="width: 68px; height: 68px;">-->
+        <!--                <span class="carousel-control-prev-icon mt-3"></span>-->
+        <!--            </div>-->
+        <!--        </a>-->
+        <!--        <a class="carousel-control-next justify-content-end" href="#header-carousel" data-slide="next">-->
+        <!--            <div class="btn btn-primary px-0" style="width: 68px; height: 68px;">-->
+        <!--                <span class="carousel-control-next-icon mt-3"></span>-->
+        <!--            </div>-->
+        <!--        </a>-->
+    </div>
+</div>
+<!-- Carousel End -->
+
+
+<!-- Video Modal Start -->
+<!--<div class="modal fade" id="videoModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">-->
+<!--    <div class="modal-dialog" role="document">-->
+<!--        <div class="modal-content">-->
+<!--            <div class="modal-body">-->
+<!--                <button type="button" class="close" data-dismiss="modal" aria-label="Close">-->
+<!--                    <span aria-hidden="true">&times;</span>-->
+<!--                </button>-->
+<!--                &lt;!&ndash; 16:9 aspect ratio &ndash;&gt;-->
+<!--                <div class="embed-responsive embed-responsive-16by9">-->
+<!--                    <iframe class="embed-responsive-item" src="" id="video"  allowscriptaccess="always" allow="autoplay"></iframe>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
+<!-- Video Modal End -->
+
+
+<!-- About Start -->
+<div class="container-fluid py-5" id="about">
+    <div class="container py-5">
+        <div class="section-title position-relative text-center">
+            <h6 class="text-uppercase text-primary mb-3" style="letter-spacing: 3px;">Nos</h6>
+            <h1 class="font-secondary display-4">Conseils et astuces.</h1>
+            <i class="far fa-heart text-dark"></i>
+        </div>
+        <div class="row m-0 mb-4 mb-md-0 pb-2 pb-md-0">
+            <div class="col-md-6 p-0 text-center text-md-right">
+                <div class="h-100 d-flex flex-column justify-content-center bg-secondary p-5">
+                    <h3 class="mb-3" style="font-weight: bold">Comment traduire en images <br> la diversite des cultures a travers le monde ?</h3>
+                    <p style="font-weight: bold;font-size: 15px">Par la photographie, l'energie de la diversite se partage partout dans le monde .
+                       <br> Naviguez et decouvrez d'autres cultures !!</p>
+                    <!--                    <h3 class="font-secondary font-weight-normal text-muted mb-3"><i class="fa fa-male text-primary pr-3"></i>Jack</h3>-->
+                    <div class="position-relative">
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 p-0" style="min-height: 400px;">
+                <img class="position-absolute w-100 h-100" src="assets/images/culture.jpg" style="object-fit: cover;">
+            </div>
+        </div>
+        <div class="row m-0">
+            <div class="col-md-6 p-0" style="min-height: 400px;">
+                <img class="position-absolute w-100 h-100" src="assets/images/No%20faces.jpg" style="object-fit: cover;">
+            </div>
+            <div class="col-md-6 p-0 text-center text-md-left">
+                <div class="h-100 d-flex flex-column justify-content-center bg-secondary p-5">
+                    <h3 class="mb-3" style="font-weight: bold">Image sans Visage? <br> Quel interet?</h3>
+                    <p style="font-weight: bold;font-size: 15px"> Par un manque de repères, on ne sait plus ce qui est important et ce qui ne l’est pas
+                        ce qui doit être mis en valeur ou pas. <br> Vie Sans Valorisation!</p>
+                    <!--                    <h3 class="font-secondary font-weight-normal text-muted mb-3"><i class="fa fa-female text-primary pr-3"></i>Rose</h3>-->
+                    <div class="position-relative">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row m-0 mb-4 mb-md-0 pb-2 pb-md-0">
+            <div class="col-md-6 p-0 text-center text-md-right">
+                <div class="h-100 d-flex flex-column justify-content-center bg-secondary p-5">
+                    <h3 class="mb-3" style="font-weight: bold">Style de vie et la nature? <br>
+                        Quelle relation?</h3>
+                    <p style="font-weight: bold;font-size: 15px">   La nature nous entoure , et la tendance nous guide ! Une image vous aide
+                        a savoir sur la tendance et la reprer dans la nature.</p>
+                    <!--                    <h3 class="font-secondary font-weight-normal text-muted mb-3"><i class="fa fa-male text-primary pr-3"></i>Jack</h3>-->
+                    <div class="position-relative">
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 p-0" style="min-height: 400px;">
+                <img class="position-absolute w-100 h-100" src="assets/images/tendance.jpg" style="object-fit: cover;">
+            </div>
+        </div>
+    </div>
+</div>
+<!-- About End -->
+
+
+<!-- Story Start -->
+
+<!-- Story End -->
+
+
+<!-- Gallery Start -->
+<div class="container-fluid bg-gallery" id="gallery" style="padding: 120px 0; margin: 90px 0;">
+    <div class="section-title position-relative text-center" style="margin-bottom: 120px;">
+        <h6 class="text-uppercase text-primary mb-3" style="letter-spacing: 3px;">GALLERIE</h6>
+        <h1 class="font-secondary display-4 text-white">NOTRE PORTFOLIO.</h1>
+        <i class="far fa-heart text-white"></i>
+
+    </div>
+    <!--    <div>-->
+    <ng-image-slider style="padding-top: 30px ;position: relative" [images]="imageObject" #nav></ng-image-slider>
+    <div>
+        <ng-image-slider style="padding-top: 30px; position: relative" [images]="imageObjet" #nav></ng-image-slider>
+    </div>
+
+</div>
+<!-- Gallery End -->
+
+
+<!-- Event Start -->
+<!--<div class="container-fluid py-5" id="event">-->
+<!--    <div class="container py-5">-->
+<!--        <div class="section-title position-relative text-center">-->
+<!--            <h6 class="text-uppercase text-primary mb-3" style="letter-spacing: 3px;">Event</h6>-->
+<!--            <h1 class="font-secondary display-4">Our Wedding Event</h1>-->
+<!--            <i class="far fa-heart text-dark"></i>-->
+<!--        </div>-->
+<!--        <div class="row justify-content-center">-->
+<!--            <div class="col-md-6 text-center">-->
+<!--                <h5 class="font-weight-normal text-muted mb-3 pb-3">Clita ipsum aliquyam dolor diam dolores elitr nonumy. Rebum sea vero ipsum eirmod tempor kasd. Diam amet lorem erat eos sit lorem elitr justo</h5>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        <div class="row">-->
+<!--            <div class="col-md-6 border-right border-primary">-->
+<!--                <div class="text-center text-md-right mr-md-3 mb-4 mb-md-0">-->
+<!--                    <img class="img-fluid mb-4" src="img/event-1.jpg" alt="">-->
+<!--                    <h4 class="mb-3">The Reception</h4>-->
+<!--                    <p class="mb-2">123 Street, New York, USA</p>-->
+<!--                    <p class="mb-0">12:00AM - 13:00PM</p>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="col-md-6">-->
+<!--                <div class="text-center text-md-left ml-md-3">-->
+<!--                    <img class="img-fluid mb-4" src="img/event-2.jpg" alt="">-->
+<!--                    <h4 class="mb-3">Wedding Party</h4>-->
+<!--                    <p class="mb-2">123 Street, New York, USA</p>-->
+<!--                    <p class="mb-0">12:00AM - 13:00PM</p>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
+<!-- Event End -->
+
+
+<!-- Friends & Family Start -->
+<div class="container-fluid py-5" id="family">
+    <div class="container pt-5 pb-3">
+        <div class="section-title position-relative text-center">
+            <h6 class="text-uppercase text-primary mb-3" style="letter-spacing: 3px;">CREATIVITE & OPPORTUNITE</h6>
+            <h1 class="font-secondary display-4">PLAN PRIX</h1>
+            <i class="far fa-heart text-dark"></i>
+        </div>
+        <section class="pricing-table">
+            <div class="container">
+                <div class="row justify-content-md-center">
+                    <div class="col-md-5 col-lg-4">
+                        <div class="item">
+                            <div class="heading">
+                                <h3 style="color: black">BASIC</h3>
+                            </div>
+                            <p style="color: black" >Beneficiez du telechargement de 150 images en un mois !</p>
+                            <div class="features" style="color: black">
+                                <h4><span class="feature" style="color: black">Duree</span> : <span class="value">30 Jours</span></h4>
+                                <h4><span class="feature" style="color: black">Telechargements</span> : <span class="value">150 photos</span></h4>
+                            </div>
+                            <div class="price">
+                                <h4 style="color: black">250 DH</h4>
+                            </div>
+                            <!--                            <button class="btn btn-block btn-outline-primary" type="submit" style="color: black">BUY NOW</button>-->
+                        </div>
+                    </div>
+                    <div class="col-md-5 col-lg-4">
+                        <div class="item">
+                            <div class="ribbon" style="color: black">Best Value</div>
+                            <div class="heading">
+                                <h3 style="color: black">PRO</h3>
+                            </div>
+                            <p style="color: black">Beneficiez d'une duree de deux mois avec un telechargement de 300 photos ! </p>
+                            <div class="features">
+                                <h4><span class="feature" style="color: black">Duree</span> : <span class="value">60 Jours</span></h4>
+                                <h4><span class="feature" style="color: black">Telechargements</span> : <span class="value">300 photos</span></h4>
+                            </div>
+                            <div class="price">
+                                <h4 style="color: black">500 DH</h4>
+                            </div>
+                            <!--                            <button class="btn btn-block btn-primary" type="submit" style="color: black">BUY NOW</button>-->
+                        </div>
+                    </div>
+                    <div class="col-md-5 col-lg-4">
+                        <div class="item">
+                            <div class="heading">
+                                <h3 style="color: black">PREMIUM</h3>
+                            </div>
+                            <p style="color: black">Vous avez quatres mois pour telecharger plus de 500 images ! </p>
+                            <div class="features">
+                                <h4><span class="feature" style="color: black">Duree</span> : <span class="value">120 Jours</span></h4>
+                                <h4><span class="feature" style="color: black">Telechargements</span> : <span class="value">600 Photos</span></h4>
+                            </div>
+                            <div class="price">
+                                <h4 style="color: black">1500 DH</h4>
+                            </div>
+                            <!--                            <button class="btn btn-block btn-outline-primary" type="submit" style="color: black">BUY NOW</button>-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!--        <div class="row">-->
+        <!--            <div class="col-12 text-center mb-2">-->
+        <!--                <ul class="list-inline mb-4" id="portfolio-flters">-->
+        <!--                    <li class="btn btn-outline-primary font-weight-bold m-1 py-2 px-4" data-filter=".first">Groomsmen</li>-->
+        <!--                    <li class="btn btn-outline-primary font-weight-bold m-1 py-2 px-4" data-filter=".second">Bridesmaid</li>-->
+        <!--                </ul>-->
+        <!--            </div>-->
+        <!--        </div>-->
+        <!--        <div class="row portfolio-container">-->
+        <!--            <div class="col-lg-4 col-md-6 mb-4 portfolio-item first">-->
+        <!--                <div class="position-relative mb-2">-->
+        <!--                    <img class="img-fluid w-100" src="img/groomsmen-1.jpg" alt="">-->
+        <!--                    <div class="bg-secondary text-center p-4">-->
+        <!--                        <h4 class="mb-3">Full Name</h4>-->
+        <!--                        <p class="text-uppercase">Best Friend</p>-->
+        <!--                        <div class="d-inline-block">-->
+        <!--                            <a class="mx-2" href="#"><i class="fab fa-twitter"></i></a>-->
+        <!--                            <a class="mx-2" href="#"><i class="fab fa-facebook-f"></i></a>-->
+        <!--                            <a class="mx-2" href="#"><i class="fab fa-linkedin-in"></i></a>-->
+        <!--                            <a class="mx-2" href="#"><i class="fab fa-instagram"></i></a>-->
+        <!--                        </div>-->
+        <!--                    </div>-->
+        <!--                </div>-->
+        <!--            </div>-->
+        <!--            <div class="col-lg-4 col-md-6 mb-4 portfolio-item second">-->
+        <!--                <div class="position-relative mb-2">-->
+        <!--                    <img class="img-fluid w-100" src="img/bridesmaid-1.jpg" alt="">-->
+        <!--                    <div class="bg-secondary text-center p-4">-->
+        <!--                        <h4 class="mb-3">Full Name</h4>-->
+        <!--                        <p class="text-uppercase">Best Friend</p>-->
+        <!--                        <div class="d-inline-block">-->
+        <!--                            <a class="mx-2" href="#"><i class="fab fa-twitter"></i></a>-->
+        <!--                            <a class="mx-2" href="#"><i class="fab fa-facebook-f"></i></a>-->
+        <!--                            <a class="mx-2" href="#"><i class="fab fa-linkedin-in"></i></a>-->
+        <!--                            <a class="mx-2" href="#"><i class="fab fa-instagram"></i></a>-->
+        <!--                        </div>-->
+        <!--                    </div>-->
+        <!--                </div>-->
+        <!--            </div>-->
+        <!--            <div class="col-lg-4 col-md-6 mb-4 portfolio-item first">-->
+        <!--                <div class="position-relative mb-2">-->
+        <!--                    <img class="img-fluid w-100" src="img/groomsmen-2.jpg" alt="">-->
+        <!--                    <div class="bg-secondary text-center p-4">-->
+        <!--                        <h4 class="mb-3">Full Name</h4>-->
+        <!--                        <p class="text-uppercase">Best Friend</p>-->
+        <!--                        <div class="d-inline-block">-->
+        <!--                            <a class="mx-2" href="#"><i class="fab fa-twitter"></i></a>-->
+        <!--                            <a class="mx-2" href="#"><i class="fab fa-facebook-f"></i></a>-->
+        <!--                            <a class="mx-2" href="#"><i class="fab fa-linkedin-in"></i></a>-->
+        <!--                            <a class="mx-2" href="#"><i class="fab fa-instagram"></i></a>-->
+        <!--                        </div>-->
+        <!--                    </div>-->
+        <!--                </div>-->
+        <!--            </div>-->
+        <!--            <div class="col-lg-4 col-md-6 mb-4 portfolio-item second">-->
+        <!--                <div class="position-relative mb-2">-->
+        <!--                    <img class="img-fluid w-100" src="img/bridesmaid-2.jpg" alt="">-->
+        <!--                    <div class="bg-secondary text-center p-4">-->
+        <!--                        <h4 class="mb-3">Full Name</h4>-->
+        <!--                        <p class="text-uppercase">Best Friend</p>-->
+        <!--                        <div class="d-inline-block">-->
+        <!--                            <a class="mx-2" href="#"><i class="fab fa-twitter"></i></a>-->
+        <!--                            <a class="mx-2" href="#"><i class="fab fa-facebook-f"></i></a>-->
+        <!--                            <a class="mx-2" href="#"><i class="fab fa-linkedin-in"></i></a>-->
+        <!--                            <a class="mx-2" href="#"><i class="fab fa-instagram"></i></a>-->
+        <!--                        </div>-->
+        <!--                    </div>-->
+        <!--                </div>-->
+        <!--            </div>-->
+        <!--            <div class="col-lg-4 col-md-6 mb-4 portfolio-item first">-->
+        <!--                <div class="position-relative mb-2">-->
+        <!--                    <img class="img-fluid w-100" src="img/groomsmen-3.jpg" alt="">-->
+        <!--                    <div class="bg-secondary text-center p-4">-->
+        <!--                        <h4 class="mb-3">Full Name</h4>-->
+        <!--                        <p class="text-uppercase">Best Friend</p>-->
+        <!--                        <div class="d-inline-block">-->
+        <!--                            <a class="mx-2" href="#"><i class="fab fa-twitter"></i></a>-->
+        <!--                            <a class="mx-2" href="#"><i class="fab fa-facebook-f"></i></a>-->
+        <!--                            <a class="mx-2" href="#"><i class="fab fa-linkedin-in"></i></a>-->
+        <!--                            <a class="mx-2" href="#"><i class="fab fa-instagram"></i></a>-->
+        <!--                        </div>-->
+        <!--                    </div>-->
+        <!--                </div>-->
+        <!--            </div>-->
+        <!--            <div class="col-lg-4 col-md-6 mb-4 portfolio-item second">-->
+        <!--                <div class="position-relative mb-2">-->
+        <!--                    <img class="img-fluid w-100" src="img/bridesmaid-3.jpg" alt="">-->
+        <!--                    <div class="bg-secondary text-center p-4">-->
+        <!--                        <h4 class="mb-3">Full Name</h4>-->
+        <!--                        <p class="text-uppercase">Best Friend</p>-->
+        <!--                        <div class="d-inline-block">-->
+        <!--                            <a class="mx-2" href="#"><i class="fab fa-twitter"></i></a>-->
+        <!--                            <a class="mx-2" href="#"><i class="fab fa-facebook-f"></i></a>-->
+        <!--                            <a class="mx-2" href="#"><i class="fab fa-linkedin-in"></i></a>-->
+        <!--                            <a class="mx-2" href="#"><i class="fab fa-instagram"></i></a>-->
+        <!--                        </div>-->
+        <!--                    </div>-->
+        <!--                </div>-->
+        <!--            </div>-->
+        <!--        </div>-->
+    </div>
+</div>
+<!-- Friends & Family End -->
+
+
+<!-- RSVP Start -->
+
+<!-- RSVP End -->
+
+
+<!-- Footer Start -->
+<div class="container-fluid bg-dark text-white py-5" id="contact" style="margin-top: 90px;">
+
+    <div class="container text-center py-5">
+        <div class="section-title position-relative text-center">
+            <h1 class="font-secondary display-3 text-white">Merci</h1>
+            <i class="far fa-heart text-white"></i>
+        </div>
+<!--        <p style="font-family: Goudy Old Style; color: #6f1285">TU CARTERA </p>-->
+        <br>
+        <p style="color: white; font-weight: bold; font-size: 20px; font-family: MV Boli">Pour plus d'information , veuillez nous contacter .</p> <br>
+        <dl class="contact-list">
+
+            <dd style="color: white; font-weight: bold ; font-size: 18px; font-family: MV Boli">Maroc , Marrakech </dd>
+            <br>
+        </dl>
+        <dl class="contact-list">
+
+            <dd><a href="mailto:#" style="color: white; font-weight: bold; font-size: 18px; font-family: MV Boli">tu.cartera@gmail.com</a></dd>
+            <br>
+        </dl>
+        <dl class="contact-list">
+
+            <dd><a href="tel:#" style="color: white; font-weight: bold; font-size: 18px; font-family: MV Boli">05 65 92 35 86</a> <br>
+            </dd>
+        </dl>
+
+<!--        <div class="d-flex justify-content-center mb-4">-->
+<!--            <a class="btn btn-lg btn-outline-light btn-lg-square mr-2" href="#"><i class="fab fas-facebook-f"></i></a>-->
+<!--            <a class="btn btn-lg btn-outline-light btn-lg-square mr-2" href="#"><i class="fab fas-linkedin-in"></i></a>-->
+<!--            <a class="btn btn-lg btn-outline-light btn-lg-square" href="#"><i class="fab fa-instagram"></i></a>-->
+<!--        </div>-->
+        <div class="d-flex justify-content-center mb-4">
+            <a class="btn btn-lg btn-outline-light btn-lg-square mr-2" href="#"><i class="fab fa-twitter"></i></a>
+            <a class="btn btn-lg btn-outline-light btn-lg-square mr-2" href="#"><i class="fab fa-facebook-f"></i></a>
+<!--            <a class="btn btn-lg btn-outline-light btn-lg-square mr-2" href="#"><i class="fab fa-linkedin-in"></i></a>-->
+<!--            <a class="btn btn-lg btn-outline-light btn-lg-square" href="#"><i class="fab fa-instagram"></i></a>-->
+        </div>
+        </div>
+
+</div>
+<!-- Footer End -->
+
+
+<!-- Scroll to Bottom -->
+<i class="fa fa-2x fa-angle-down text-white scroll-to-bottom"></i>
+
+<!-- Back to Top -->
+<a href="#" class="btn btn-lg btn-outline-primary btn-lg-square back-to-top"><i class="fa fa-angle-double-up"></i></a>
+
+
+<!-- JavaScript Libraries -->
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+<script src="lib/easing/easing.min.js"></script>
+<script src="lib/waypoints/waypoints.min.js"></script>
+<script src="lib/owlcarousel/owl.carousel.min.js"></script>
+<script src="lib/isotope/isotope.pkgd.min.js"></script>
+<script src="lib/lightbox/js/lightbox.min.js"></script>
+
+<!-- Template Javascript -->
+<script>
+    (function ($) {
+        "use strict";
+
+        // Navbar on scrolling
+        $(window).scroll(function () {
+            if ($(this).scrollTop() > 200) {
+                $('.navbar').fadeIn('slow').css('display', 'flex');
+            } else {
+                $('.navbar').fadeOut('slow').css('display', 'none');
+            }
+        });
+
+
+        // Smooth scrolling on the navbar links
+        $(".navbar-nav a").on('click', function (event) {
+            if (this.hash !== "") {
+                event.preventDefault();
+
+                $('html, body').animate({
+                    scrollTop: $(this.hash).offset().top - 45
+                }, 1500, 'easeInOutExpo');
+
+                if ($(this).parents('.navbar-nav').length) {
+                    $('.navbar-nav .active').removeClass('active');
+                    $(this).closest('a').addClass('active');
+                }
+            }
+        });
+
+
+        // Modal Video
+        $(document).ready(function () {
+            var $videoSrc;
+            $('.btn-play').click(function () {
+                $videoSrc = $(this).data("src");
+            });
+            console.log($videoSrc);
+
+            $('#videoModal').on('shown.bs.modal', function (e) {
+                $("#video").attr('src', $videoSrc + "?autoplay=1&amp;modestbranding=1&amp;showinfo=0");
+            })
+
+            $('#videoModal').on('hide.bs.modal', function (e) {
+                $("#video").attr('src', $videoSrc);
+            })
+        });
+
+
+        // Scroll to Bottom
+        $(window).scroll(function () {
+            if ($(this).scrollTop() > 100) {
+                $('.scroll-to-bottom').fadeOut('slow');
+            } else {
+                $('.scroll-to-bottom').fadeIn('slow');
+            }
+        });
+
+
+        // Portfolio isotope and filter
+        var portfolioIsotope = $('.portfolio-container').isotope({
+            itemSelector: '.portfolio-item',
+            layoutMode: 'fitRows'
+        });
+        $('#portfolio-flters li').on('click', function () {
+            $("#portfolio-flters li").removeClass('active');
+            $(this).addClass('active');
+
+            portfolioIsotope.isotope({filter: $(this).data('filter')});
+        });
+
+
+        // Back to top button
+        $(window).scroll(function () {
+            if ($(this).scrollTop() > 200) {
+                $('.back-to-top').fadeIn('slow');
+            } else {
+                $('.back-to-top').fadeOut('slow');
+            }
+        });
+        $('.back-to-top').click(function () {
+            $('html, body').animate({scrollTop: 0}, 1500, 'easeInOutExpo');
+            return false;
+        });
+
+
+        // Gallery carousel
+        $(".gallery-carousel").owlCarousel({
+            autoplay: false,
+            smartSpeed: 1500,
+            dots: false,
+            loop: true,
+            nav : true,
+            navText : [
+                '<i class="fa fa-angle-left" aria-hidden="true"></i>',
+                '<i class="fa fa-angle-right" aria-hidden="true"></i>'
+            ],
+            responsive: {
+                0:{
+                    items:1
+                },
+                576:{
+                    items:2
+                },
+                768:{
+                    items:3
+                },
+                992:{
+                    items:4
+                },
+                1200:{
+                    items:5
+                }
+            }
+        });
+
+    })(jQuery);
+
+
+</script>
+</body>
+
+</html>

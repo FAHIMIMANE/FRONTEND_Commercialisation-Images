@@ -1,0 +1,567 @@
+<!--&lt;!&ndash;<div class="login-body" >&ndash;&gt;-->
+<!--&lt;!&ndash;    <div class="card login-panel p-fluid">&ndash;&gt;-->
+
+<!--&lt;!&ndash;        <div class="p-mt-4">&ndash;&gt;-->
+<!--&lt;!&ndash;            <div class="p-grid" [formGroup]="registerForm">&ndash;&gt;-->
+<!--&lt;!&ndash;                <div class="p-col-12 p-sm-6 p-md-6 logo-container">&ndash;&gt;-->
+<!--&lt;!&ndash;                    <span class="guest-sign-in" style="font-weight: 600;font-size: 2rem;">Inscription</span>&ndash;&gt;-->
+<!--&lt;!&ndash;                </div>&ndash;&gt;-->
+
+<!--&lt;!&ndash;                <div class="p-col-12 username-container">&ndash;&gt;-->
+<!--&lt;!&ndash;                    &lt;!&ndash; <h:panelGroup> &ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;                    <label>prenom</label>&ndash;&gt;-->
+<!--&lt;!&ndash;                    <div class="login-input">&ndash;&gt;-->
+<!--&lt;!&ndash;                        <input formControlName="prenom" class="p-mb-2 p-mr-2" type="text" pInputText id="1" required&ndash;&gt;-->
+<!--&lt;!&ndash;                            autofocus />&ndash;&gt;-->
+<!--&lt;!&ndash;                    </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                    &lt;!&ndash; </h:panelGroup> &ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;                </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                <div class="p-col-12 username-container">&ndash;&gt;-->
+<!--&lt;!&ndash;                    &lt;!&ndash; <h:panelGroup> &ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;                    <label>nom</label>&ndash;&gt;-->
+<!--&lt;!&ndash;                    <div class="login-input">&ndash;&gt;-->
+<!--&lt;!&ndash;                        <input formControlName="nom" class="p-mb-2 p-mr-2" type="text" pInputText id="1" required&ndash;&gt;-->
+<!--&lt;!&ndash;                            autofocus />&ndash;&gt;-->
+<!--&lt;!&ndash;                    </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                    &lt;!&ndash; </h:panelGroup> &ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;                </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                <div class="p-col-12 username-container">&ndash;&gt;-->
+<!--&lt;!&ndash;                    &lt;!&ndash; <h:panelGroup> &ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;                    <label>Username</label>&ndash;&gt;-->
+<!--&lt;!&ndash;                    <div class="login-input">&ndash;&gt;-->
+<!--&lt;!&ndash;                        <input formControlName="userName" class="p-mb-2 p-mr-2" type="text" pInputText id="1" required&ndash;&gt;-->
+<!--&lt;!&ndash;                            autofocus />&ndash;&gt;-->
+<!--&lt;!&ndash;                    </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                    &lt;!&ndash; </h:panelGroup> &ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;                </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                <div class="p-col-12 username-container">&ndash;&gt;-->
+<!--&lt;!&ndash;                    &lt;!&ndash; <h:panelGroup> &ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;                    <label>Email</label>&ndash;&gt;-->
+<!--&lt;!&ndash;                    <div class="login-input">&ndash;&gt;-->
+<!--&lt;!&ndash;                        <input formControlName="email" class="p-mb-2 p-mr-2" type="email" pInputText id="1" required&ndash;&gt;-->
+<!--&lt;!&ndash;                            autofocus />&ndash;&gt;-->
+<!--&lt;!&ndash;                    </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                    &lt;!&ndash; </h:panelGroup> &ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;                </div>&ndash;&gt;-->
+
+<!--&lt;!&ndash;                <div class="p-col-12 password-container">&ndash;&gt;-->
+<!--&lt;!&ndash;                    &lt;!&ndash; <h:panelGroup> &ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;                    <label>Password</label>&ndash;&gt;-->
+<!--&lt;!&ndash;                    <div class="login-input">&ndash;&gt;-->
+<!--&lt;!&ndash;                        <input formControlName="password" pPassword type="password" />&ndash;&gt;-->
+<!--&lt;!&ndash;                    </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                    &lt;!&ndash; </h:panelGroup> &ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;                </div>&ndash;&gt;-->
+
+
+<!--&lt;!&ndash;                <div class="p-col-12 p-sm-6 p-md-6">&ndash;&gt;-->
+<!--&lt;!&ndash;                    <button pButton type="button" icon="pi pi-check" label="Register" [disabled]="registerForm.invalid"&ndash;&gt;-->
+<!--&lt;!&ndash;                        (click)="submit()"></button>&ndash;&gt;-->
+<!--&lt;!&ndash;                </div>&ndash;&gt;-->
+<!--&lt;!&ndash;            </div>&ndash;&gt;-->
+<!--&lt;!&ndash;        </div>&ndash;&gt;-->
+<!--&lt;!&ndash;    </div>&ndash;&gt;-->
+<!--&lt;!&ndash;</div>&ndash;&gt;-->
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    <title>Bootstrap Example</title>-->
+<!--    <meta charset="utf-8">-->
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1">-->
+<!--    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">-->
+<!--    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>-->
+<!--    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>-->
+<!--    <style>-->
+<!--        /* Set height of the grid so .sidenav can be 100% (adjust if needed) */-->
+<!--        .row.content {height: 1500px}-->
+
+<!--        /* Set gray background color and 100% height */-->
+<!--        .sidenav {-->
+<!--            background-color: #f1f1f1;-->
+<!--            height: 100%;-->
+<!--        }-->
+
+<!--        /* Set black background color, white text and some padding */-->
+<!--        footer {-->
+<!--            background-color: #555;-->
+<!--            color: white;-->
+<!--            padding: 15px;-->
+<!--        }-->
+
+<!--        /* On small screens, set height to 'auto' for sidenav and grid */-->
+<!--        @media screen and (max-width: 767px) {-->
+<!--            .sidenav {-->
+<!--                height: auto;-->
+<!--                padding: 15px;-->
+<!--            }-->
+<!--            .row.content {height: auto;}-->
+<!--        }-->
+
+
+<!--    </style>-->
+<!--</head>-->
+<!--<body>-->
+
+<!--<div class="container-fluid">-->
+<!--&lt;!&ndash;    <div class="row content">&ndash;&gt;-->
+<!--&lt;!&ndash;        <div class="col-sm-3 sidenav">&ndash;&gt;-->
+<!--&lt;!&ndash;            <h4>John's Blog</h4>&ndash;&gt;-->
+<!--&lt;!&ndash;            <ul class="nav nav-pills nav-stacked">&ndash;&gt;-->
+<!--&lt;!&ndash;                <li class="active"><a href="#section1">Home</a></li>&ndash;&gt;-->
+<!--&lt;!&ndash;                <li><a href="#section2">Friends</a></li>&ndash;&gt;-->
+<!--&lt;!&ndash;                <li><a href="#section3">Family</a></li>&ndash;&gt;-->
+<!--&lt;!&ndash;                <li><a href="#section3">Photos</a></li>&ndash;&gt;-->
+<!--&lt;!&ndash;            </ul><br>&ndash;&gt;-->
+<!--&lt;!&ndash;            <div class="input-group">&ndash;&gt;-->
+<!--&lt;!&ndash;                <input type="text" class="form-control" placeholder="Search Blog..">&ndash;&gt;-->
+<!--&lt;!&ndash;                <span class="input-group-btn">&ndash;&gt;-->
+<!--&lt;!&ndash;          <button class="btn btn-default" type="button">&ndash;&gt;-->
+<!--&lt;!&ndash;            <span class="glyphicon glyphicon-search"></span>&ndash;&gt;-->
+<!--&lt;!&ndash;          </button>&ndash;&gt;-->
+<!--&lt;!&ndash;        </span>&ndash;&gt;-->
+<!--&lt;!&ndash;            </div>&ndash;&gt;-->
+<!--    <img src="assets/images/lemon.jpg"   style="position: absolute; top: 0.5px; left: 450px;width: 1065px; height: 475px;">-->
+<!--    <div class="p-mt-4">-->
+<!--        <div class="p-grid" [formGroup]="registerForm" style="background-color:#dcd0ff ">-->
+<!--            <div class="p-col-12 p-sm-6 p-md-6 logo-container">-->
+<!--                <span class="guest-sign-in" style="font-weight: 600;font-size: 2rem;">Inscription</span>-->
+<!--            </div>-->
+
+<!--            <div class="p-col-12 username-container">-->
+<!--                &lt;!&ndash; <h:panelGroup> &ndash;&gt;-->
+<!--                <label>prenom</label>-->
+<!--                <div class="login-input">-->
+<!--                    <input formControlName="prenom" class="p-mb-2 p-mr-2" type="text" pInputText id="1" required-->
+<!--                           autofocus />-->
+<!--                </div>-->
+<!--                &lt;!&ndash; </h:panelGroup> &ndash;&gt;-->
+<!--            </div>-->
+<!--            <div class="p-col-12 username-container">-->
+<!--                &lt;!&ndash; <h:panelGroup> &ndash;&gt;-->
+<!--                <label>nom</label>-->
+<!--                <div class="login-input">-->
+<!--                    <input formControlName="nom" class="p-mb-2 p-mr-2" type="text" pInputText id="1" required-->
+<!--                           autofocus />-->
+<!--                </div>-->
+<!--                &lt;!&ndash; </h:panelGroup> &ndash;&gt;-->
+<!--            </div>-->
+<!--            <div class="p-col-12 username-container">-->
+<!--                &lt;!&ndash; <h:panelGroup> &ndash;&gt;-->
+<!--                <label>Username</label>-->
+<!--                <div class="login-input">-->
+<!--                    <input formControlName="userName" class="p-mb-2 p-mr-2" type="text" pInputText id="1" required-->
+<!--                           autofocus />-->
+<!--                </div>-->
+<!--                &lt;!&ndash; </h:panelGroup> &ndash;&gt;-->
+<!--            </div>-->
+<!--            <div class="p-col-12 username-container">-->
+<!--                &lt;!&ndash; <h:panelGroup> &ndash;&gt;-->
+<!--                <label>Email</label>-->
+<!--                <div class="login-input">-->
+<!--                    <input formControlName="email" class="p-mb-2 p-mr-2" type="email" pInputText id="1" required-->
+<!--                           autofocus />-->
+<!--                </div>-->
+<!--                &lt;!&ndash; </h:panelGroup> &ndash;&gt;-->
+<!--            </div>-->
+
+<!--            <div class="p-col-12 password-container">-->
+<!--                &lt;!&ndash; <h:panelGroup> &ndash;&gt;-->
+<!--                <label>Password</label>-->
+<!--                <div class="login-input">-->
+<!--                    <input formControlName="password" pPassword type="password" />-->
+<!--                </div>-->
+<!--                &lt;!&ndash; </h:panelGroup> &ndash;&gt;-->
+<!--            </div>-->
+
+
+<!--            <div class="p-col-12 p-sm-6 p-md-6">-->
+<!--                <button pButton class="button"   icon="pi pi-check" label="Register" [disabled]="registerForm.invalid"-->
+<!--                        (click)="submit()"></button>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+
+<!--        </div>-->
+
+<!--        <div class="col-sm-9">-->
+<!--&lt;!&ndash;            <h4><small>RECENT POSTS</small></h4>&ndash;&gt;-->
+<!--&lt;!&ndash;            <hr>&ndash;&gt;-->
+<!--&lt;!&ndash;            <h2>I Love Food</h2>&ndash;&gt;-->
+<!--&lt;!&ndash;            <h5><span class="glyphicon glyphicon-time"></span> Post by Jane Dane, Sep 27, 2015.</h5>&ndash;&gt;-->
+<!--&lt;!&ndash;            <h5><span class="label label-danger">Food</span> <span class="label label-primary">Ipsum</span></h5><br>&ndash;&gt;-->
+<!--&lt;!&ndash;            <p>Food is my passion. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>&ndash;&gt;-->
+<!--&lt;!&ndash;            <br><br>&ndash;&gt;-->
+
+
+
+
+
+<!--&lt;!&ndash;            <h4><small>RECENT POSTS</small></h4>&ndash;&gt;-->
+<!--&lt;!&ndash;            <hr>&ndash;&gt;-->
+<!--&lt;!&ndash;            <h2>Officially Blogging</h2>&ndash;&gt;-->
+<!--&lt;!&ndash;            <h5><span class="glyphicon glyphicon-time"></span> Post by John Doe, Sep 24, 2015.</h5>&ndash;&gt;-->
+<!--&lt;!&ndash;            <h5><span class="label label-success">Lorem</span></h5><br>&ndash;&gt;-->
+<!--&lt;!&ndash;            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>&ndash;&gt;-->
+<!--&lt;!&ndash;            <hr>&ndash;&gt;-->
+
+<!--&lt;!&ndash;            <h4>Leave a Comment:</h4>&ndash;&gt;-->
+<!--&lt;!&ndash;            <form role="form">&ndash;&gt;-->
+<!--&lt;!&ndash;                <div class="form-group">&ndash;&gt;-->
+<!--&lt;!&ndash;                    <textarea class="form-control" rows="3" required></textarea>&ndash;&gt;-->
+<!--&lt;!&ndash;                </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                <button type="submit" class="btn btn-success">Submit</button>&ndash;&gt;-->
+<!--&lt;!&ndash;            </form>&ndash;&gt;-->
+<!--&lt;!&ndash;            <br><br>&ndash;&gt;-->
+
+<!--&lt;!&ndash;            <p><span class="badge">2</span> Comments:</p><br>&ndash;&gt;-->
+
+<!--&lt;!&ndash;            <div class="row">&ndash;&gt;-->
+<!--&lt;!&ndash;                <div class="col-sm-2 text-center">&ndash;&gt;-->
+<!--&lt;!&ndash;                    <img src="bandmember.jpg" class="img-circle" height="65" width="65" alt="Avatar">&ndash;&gt;-->
+<!--&lt;!&ndash;                </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                <div class="col-sm-10">&ndash;&gt;-->
+<!--&lt;!&ndash;                    <h4>Anja <small>Sep 29, 2015, 9:12 PM</small></h4>&ndash;&gt;-->
+<!--&lt;!&ndash;                    <p>Keep up the GREAT work! I am cheering for you!! Lorem ipsum dolor sit amet,&ndash;&gt;-->
+<!--&lt;!&ndash;                        consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>&ndash;&gt;-->
+<!--&lt;!&ndash;                    <br>&ndash;&gt;-->
+<!--&lt;!&ndash;                </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                <div class="col-sm-2 text-center">&ndash;&gt;-->
+<!--&lt;!&ndash;                    <img src="bird.jpg" class="img-circle" height="65" width="65" alt="Avatar">&ndash;&gt;-->
+<!--&lt;!&ndash;                </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                <div class="col-sm-10">&ndash;&gt;-->
+<!--&lt;!&ndash;                    <h4>John Row <small>Sep 25, 2015, 8:25 PM</small></h4>&ndash;&gt;-->
+<!--&lt;!&ndash;                    <p>I am so happy for you man! Finally. I am looking forward to read about your trendy life.&ndash;&gt;-->
+<!--&lt;!&ndash;                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut&ndash;&gt;-->
+<!--&lt;!&ndash;                        labore et dolore magna aliqua.</p>&ndash;&gt;-->
+<!--&lt;!&ndash;                    <br>&ndash;&gt;-->
+<!--&lt;!&ndash;                    <p><span class="badge">1</span> Comment:</p><br>&ndash;&gt;-->
+<!--&lt;!&ndash;                    <div class="row">&ndash;&gt;-->
+<!--&lt;!&ndash;                        <div class="col-sm-2 text-center">&ndash;&gt;-->
+<!--&lt;!&ndash;                            <img src="bird.jpg" class="img-circle" height="65" width="65" alt="Avatar">&ndash;&gt;-->
+<!--&lt;!&ndash;                        </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <div class="col-xs-10">&ndash;&gt;-->
+<!--&lt;!&ndash;                            <h4>Nested Bro <small>Sep 25, 2015, 8:28 PM</small></h4>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <p>Me too! WOW!</p>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <br>&ndash;&gt;-->
+<!--&lt;!&ndash;                        </div>&ndash;&gt;-->
+<!--                    </div>-->
+<!--&lt;!&ndash;                </div>&ndash;&gt;-->
+<!--&lt;!&ndash;            </div>&ndash;&gt;-->
+<!--&lt;!&ndash;        </div>&ndash;&gt;-->
+<!--&lt;!&ndash;    </div>&ndash;&gt;-->
+<!--&lt;!&ndash;</div>&ndash;&gt;-->
+
+<!--<footer class="container-fluid" style="background-color: #b9f2ff">-->
+<!--<h1 style="font-family: Rockwell; font-weight: bold ; padding: 90px ; font-size: 40px; color: #343a40">L'ETE EST LA !! <br> LAISSEZ VOTRE ESPRIT S'ENVOLER. </h1>-->
+<!--  <img src="assets/images/summer.jpg"  style="width: 640px ; height: 460px ; padding: 10px ">-->
+<!--    <img src="assets/images/directions.webp"  style="width: 640px ; height: 460px ; padding: 10px">-->
+<!--    <img src="assets/images/creativite.jpg"  style="width: 640px ; height: 480px ; padding: 10px"> <img src="assets/images/aven.webp" style="width: 640px ; height: 480px ; padding: 10px">-->
+<!--    <img src="assets/images/sauvage.jpg"  style="width: 640px ; height: 460px ; padding: 10px"><img src="assets/images/fest.jpg"  style="width: 640px ; height: 460px ; padding: 10px">-->
+<!--    <img src="assets/images/fashion.png"  style="width: 640px ; height: 460px ; padding: 10px"><img src="assets/images/free.webp"  style="width: 640px ; height: 460px ; padding: 10px">-->
+<!--    <img src="assets/images/kayak.jpg"  style="width: 640px ; height: 460px ; padding: 10px ">    <img src="assets/images/happy.jpg"  style="width: 640px ; height: 460px ; padding: 10px ">-->
+<!--    <p style="font-family: Rockwell; font-weight: bold ; padding: 90px ; font-size: 40px; color: #343a40"> ACCEPTEZ LES AVENTURES !-->
+<!--        ACCEPTEZ LA CREATIVITE !</p>-->
+<!--</footer>-->
+
+<!--</body>-->
+<div class="login-client" >
+    <div class="card login-panel p-fluid" style="padding-bottom: 50px">
+
+        <div class="p-mt-4">
+            <div class="p-grid" [formGroup]="registerForm" >
+                <div class="p-col-12 p-sm-6 p-md-6 logo-container">
+                    <span class="guest-sign-in" style="font-weight: 600;font-size: 2rem;">Inscription</span>
+                </div>
+
+                <div class="p-col-12 username-container">
+                    <!-- <h:panelGroup> -->
+                    <label>prenom</label>
+                    <div class="login-input">
+                        <input formControlName="prenom" class="p-mb-2 p-mr-2" type="text" pInputText id="1" required
+                               autofocus />
+                    </div>
+                    <!--             </h:panelGroup> -->
+                </div>
+                <div class="p-col-12 username-container">
+                    <!-- <h:panelGroup> -->
+                    <label>nom</label>
+                    <div class="login-input">
+                        <input formControlName="nom" class="p-mb-2 p-mr-2" type="text" pInputText id="2" required
+                               autofocus />
+                    </div>
+                    <!--             </h:panelGroup> -->
+                </div>
+                <div class="p-col-12 username-container">
+                    <!-- <h:panelGroup> -->
+                    <label>Nom d'utilisateur</label>
+                    <div class="login-input">
+                        <input formControlName="userName" class="p-mb-2 p-mr-2" type="text" pInputText id="3" required
+                               autofocus />
+                    </div>
+                    <!--             </h:panelGroup> -->
+                </div>
+                <div class="p-col-12 username-container">
+                    <!-- <h:panelGroup> -->
+                    <label>Email</label>
+                    <div class="login-input">
+                        <input formControlName="email" class="p-mb-2 p-mr-2" type="email" pInputText id="4" required
+                               autofocus />
+                    </div>
+                    <!--             </h:panelGroup> -->
+                </div>
+
+                <div class="p-col-12 password-container">
+                    <!-- <h:panelGroup> -->
+                    <label>Mot de passe</label>
+                    <div class="login-input">
+                        <input formControlName="password" pPassword type="password" />
+                    </div>
+                    <!--             </h:panelGroup> -->
+                </div>
+
+
+                <div class="p-col-12 p-sm-6 p-md-6">
+                    <button pButton class="button"   icon="pi pi-check" label="Register" [disabled]="registerForm.invalid"
+                            (click)="submit()"></button>
+                </div>
+            </div>
+        </div>
+
+        <!-- <section class="pricing-table" style="position: relative ; padding-left: 160px" >
+             <div class="container">
+                 <div class="block-heading">-->
+        <!--                    <h2 style="color: black">PLAN PRIX </h2>-->
+        <!--                    <p style="color: black">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quam urna, dignissim nec auctor in, mattis vitae leo.</p>-->
+        <!--<img src="assets/images/summer.jpg" id="myImg" class=" modal-content" style=" transform: rotate(25deg); width: 400px; padding-top: 90px">
+        <div class="centered">Centered</div>
+        <img src="assets/images/happy.jpg" class="picture" style=" transform: rotate(-25deg); width: 400px;opacity: 0.5; padding-top: 90px ">
+        <img src="assets/images/aven.webp" id="myImg" class=" modal-content"  style=" transform: rotate(25deg); width: 400px; padding-top: 90px ">
+    </div>
+    <div class="row justify-content-md-center">
+        <div class="col-md-5 col-lg-4">
+            <div class="item">
+                <div class="heading">-->
+        <!--                                <h3 style="color: black">BASIC</h3>-->
+
+
+        <!--                            <p style="color: black" >Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>-->
+        <!--                     <div class="features" style="color: black">
+
+                                 <img src="assets/images/bleu.webp" class="picture" style=" transform: rotate(-25deg);opacity: 0.5; width: 400px; ">
+                                 <img src="assets/images/directions.webp" id="myImg" class=" modal-content" style=" transform: rotate(25deg); width: 400px" >
+                                 <img src="assets/images/kayak.jpg" class="picture" style=" transform: rotate(25deg); opacity: 0.7; width: 400px; ">-->
+
+        <!--                                <h4><span class="feature" style="color: black">Full Support</span> : <span class="value">No</span></h4>-->
+        <!--                                <h4><span class="feature" style="color: black">Duration</span> : <span class="value">30 Days</span></h4>-->
+        <!--                                <h4><span class="feature" style="color: black">Storage</span> : <span class="value">10GB</span></h4>-->
+
+        <!--                                <h4 style="color: black">$25</h4>-->
+
+        <!--   <img src="assets/images/fashion.png" id="myImg" class=" modal-content" style=" transform: rotate(25deg); width: 400px" >
+
+
+           <img src="assets/images/fest.jpg" class="picture" style=" transform: rotate(-25deg);opacity: 0.7; width: 400px; ">
+
+
+           <img src="assets/images/famille.webp" id="myImg" class=" modal-content" style=" transform: rotate(-25deg); width: 400px; ">
+
+       </div>-->
+        <!--                            <button class="btn btn-block btn-outline-primary" type="submit" style="color: black">BUY NOW</button>-->
+
+
+        <!--<!DOCTYPE html>-->
+        <!--<html lang="en">-->
+        <!--<head>-->
+        <!--    <title>Bootstrap Example</title>-->
+        <!--    <meta charset="utf-8">-->
+        <!--    <meta name="viewport" content="width=device-width, initial-scale=1">-->
+        <!--    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">-->
+        <!--    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>-->
+        <!--    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>-->
+        <!--    <style>-->
+        <!--        /* Set height of the grid so .sidenav can be 100% (adjust if needed) */-->
+        <!--        .row.content {height: 1500px}-->
+
+        <!--        /* Set gray background color and 100% height */-->
+        <!--        .sidenav {-->
+        <!--            background-color: #f1f1f1;-->
+        <!--            height: 100%;-->
+        <!--        }-->
+
+        <!--        /* Set black background color, white text and some padding */-->
+        <!--        footer {-->
+        <!--            background-color: #555;-->
+        <!--            color: white;-->
+        <!--            padding: 15px;-->
+        <!--        }-->
+
+        <!--        /* On small screens, set height to 'auto' for sidenav and grid */-->
+        <!--        @media screen and (max-width: 767px) {-->
+        <!--            .sidenav {-->
+        <!--                height: auto;-->
+        <!--                padding: 15px;-->
+        <!--            }-->
+        <!--            .row.content {height: auto;}-->
+        <!--        }-->
+
+
+        <!--    </style>-->
+        <!--</head>-->
+        <!--<body>-->
+
+        <!--<div class="container-fluid">-->
+        <!--    <div class="row content">-->
+        <!--        <div class="col-sm-3 sidenav">-->
+        <!--            <h4>John's Blog</h4>-->
+        <!--            <ul class="nav nav-pills nav-stacked">-->
+        <!--                <li class="active"><a href="#section1">Home</a></li>-->
+        <!--                <li><a href="#section2">Friends</a></li>-->
+        <!--                <li><a href="#section3">Family</a></li>-->
+        <!--                <li><a href="#section3">Photos</a></li>-->
+        <!--            </ul><br>-->
+        <!--            <div class="input-group">-->
+        <!--                <input type="text" class="form-control" placeholder="Search Blog..">-->
+        <!--                <span class="input-group-btn">-->
+        <!--          <button class="btn btn-default" type="button">-->
+        <!--            <span class="glyphicon glyphicon-search"></span>-->
+        <!--          </button>-->
+        <!--        </span>-->
+        <!--            </div>-->
+        <!--    <img src="assets/images/lemon.jpg"   style="position: absolute; top: 0.5px; left: 450px;width: 1065px; height: 475px;">-->
+        <!--    <div class="p-mt-4">-->
+        <!--        <div class="p-grid" [formGroup]="registerForm" style="background-color:#dcd0ff ">-->
+        <!--            <div class="p-col-12 p-sm-6 p-md-6 logo-container">-->
+        <!--                <span class="guest-sign-in" style="font-weight: 600;font-size: 2rem;">Inscription</span>-->
+        <!--            </div>-->
+
+        <!--            <div class="p-col-12 username-container">-->
+        <!--                &lt;!&ndash; <h:panelGroup> &ndash;&gt;-->
+        <!--                <label>prenom</label>-->
+        <!--                <div class="login-input">-->
+        <!--                    <input formControlName="prenom" class="p-mb-2 p-mr-2" type="text" pInputText id="1" required-->
+        <!--                           autofocus />-->
+        <!--                </div>-->
+        <!--                &lt;!&ndash; </h:panelGroup> &ndash;&gt;-->
+        <!--            </div>-->
+        <!--            <div class="p-col-12 username-container">-->
+        <!--                &lt;!&ndash; <h:panelGroup> &ndash;&gt;-->
+        <!--                <label>nom</label>-->
+        <!--                <div class="login-input">-->
+        <!--                    <input formControlName="nom" class="p-mb-2 p-mr-2" type="text" pInputText id="1" required-->
+        <!--                           autofocus />-->
+        <!--                </div>-->
+        <!--                &lt;!&ndash; </h:panelGroup> &ndash;&gt;-->
+        <!--            </div>-->
+        <!--            <div class="p-col-12 username-container">-->
+        <!--                &lt;!&ndash; <h:panelGroup> &ndash;&gt;-->
+        <!--                <label>Username</label>-->
+        <!--                <div class="login-input">-->
+        <!--                    <input formControlName="userName" class="p-mb-2 p-mr-2" type="text" pInputText id="1" required-->
+        <!--                           autofocus />-->
+        <!--                </div>-->
+        <!--                &lt;!&ndash; </h:panelGroup> &ndash;&gt;-->
+        <!--            </div>-->
+        <!--            <div class="p-col-12 username-container">-->
+        <!--                &lt;!&ndash; <h:panelGroup> &ndash;&gt;-->
+        <!--                <label>Email</label>-->
+        <!--                <div class="login-input">-->
+        <!--                    <input formControlName="email" class="p-mb-2 p-mr-2" type="email" pInputText id="1" required-->
+        <!--                           autofocus />-->
+        <!--                </div>-->
+        <!--                &lt;!&ndash; </h:panelGroup> &ndash;&gt;-->
+        <!--            </div>-->
+
+        <!--            <div class="p-col-12 password-container">-->
+        <!--                &lt;!&ndash; <h:panelGroup> &ndash;&gt;-->
+        <!--                <label>Password</label>-->
+        <!--                <div class="login-input">-->
+        <!--                    <input formControlName="password" pPassword type="password" />-->
+        <!--                </div>-->
+        <!--                &lt;!&ndash; </h:panelGroup> &ndash;&gt;-->
+        <!--            </div>-->
+
+
+        <!--            <div class="p-col-12 p-sm-6 p-md-6">-->
+        <!--                <button pButton class="button"   icon="pi pi-check" label="Register" [disabled]="registerForm.invalid"-->
+        <!--                        (click)="submit()"></button>-->
+        <!--            </div>-->
+        <!--        </div>-->
+        <!--    </div>-->
+
+        <!--        </div>-->
+
+        <!--        <div class="col-sm-9">-->
+        <!--            <h4><small>RECENT POSTS</small></h4>-->
+        <!--            <hr>-->
+        <!--            <h2>I Love Food</h2>-->
+        <!--            <h5><span class="glyphicon glyphicon-time"></span> Post by Jane Dane, Sep 27, 2015.</h5>-->
+        <!--            <h5><span class="label label-danger">Food</span> <span class="label label-primary">Ipsum</span></h5><br>-->
+        <!--            <p>Food is my passion. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>-->
+        <!--            <br><br>-->
+
+
+
+
+
+        <!--            <h4><small>RECENT POSTS</small></h4>-->
+        <!--            <hr>-->
+        <!--            <h2>Officially Blogging</h2>-->
+        <!--            <h5><span class="glyphicon glyphicon-time"></span> Post by John Doe, Sep 24, 2015.</h5>-->
+        <!--            <h5><span class="label label-success">Lorem</span></h5><br>-->
+        <!--            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>-->
+        <!--            <hr>-->
+
+        <!--            <h4>Leave a Comment:</h4>-->
+        <!--            <form role="form">-->
+        <!--                <div class="form-group">-->
+        <!--                    <textarea class="form-control" rows="3" required></textarea>-->
+        <!--                </div>-->
+        <!--                <button type="submit" class="btn btn-success">Submit</button>-->
+        <!--            </form>-->
+        <!--            <br><br>-->
+
+        <!--            <p><span class="badge">2</span> Comments:</p><br>-->
+
+        <!--            <div class="row">-->
+        <!--                <div class="col-sm-2 text-center">-->
+        <!--                    <img src="bandmember.jpg" class="img-circle" height="65" width="65" alt="Avatar">-->
+        <!--                </div>-->
+        <!--                <div class="col-sm-10">-->
+        <!--                    <h4>Anja <small>Sep 29, 2015, 9:12 PM</small></h4>-->
+        <!--                    <p>Keep up the GREAT work! I am cheering for you!! Lorem ipsum dolor sit amet,-->
+        <!--                        consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>-->
+        <!--                    <br>-->
+        <!--                </div>-->
+        <!--                <div class="col-sm-2 text-center">-->
+        <!--                    <img src="bird.jpg" class="img-circle" height="65" width="65" alt="Avatar">-->
+        <!--                </div>-->
+        <!--                <div class="col-sm-10">-->
+        <!--                    <h4>John Row <small>Sep 25, 2015, 8:25 PM</small></h4>-->
+        <!--                    <p>I am so happy for you man! Finally. I am looking forward to read about your trendy life.-->
+        <!--                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut-->
+        <!--                        labore et dolore magna aliqua.</p>-->
+        <!--                    <br>-->
+        <!--                    <p><span class="badge">1</span> Comment:</p><br>-->
+        <!--                    <div class="row">-->
+        <!--                        <div class="col-sm-2 text-center">-->
+        <!--                            <img src="bird.jpg" class="img-circle" height="65" width="65" alt="Avatar">-->
+        <!--                        </div>-->
+        <!--                        <div class="col-xs-10">-->
+        <!--                            <h4>Nested Bro <small>Sep 25, 2015, 8:28 PM</small></h4>-->
+        <!--                            <p>Me too! WOW!</p>-->
+        <!--                            <br>-->
+        <!--                        </div>-->
+        <!--                    </div>-->
+        <!--                </div>-->
+        <!--            </div>-->
+        <!--        </div>-->
+        <!--    </div>-->
+        <!--</div>-->
+
+
+
+        <!--</body>-->
+        <!--</div>-->
+        <!--</div>-->
+    </div>
+</div>

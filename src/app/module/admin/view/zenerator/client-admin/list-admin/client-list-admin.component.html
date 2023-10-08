@@ -1,0 +1,489 @@
+<div class="p-grid">
+    <div class="p-col-12">
+        <p-toast></p-toast>
+        <div class="card">
+            <p-toolbar styleClass="p-mb-4">
+                <ng-template pTemplate="left">
+                                            <button pButton pRipple label="Nouveau" icon="pi pi-plus" class="p-button-success p-mr-2 p-mb-2"
+                                (click)="openCreateClient('client')"></button>
+
+
+                    <button pButton pRipple label="Recherche"
+                            icon="pi pi-{{findByCriteriaShow?'angle-down':'angle-right'}}"
+                            class="p-button-success p-mr-2 p-mb-2"
+                            (click)="this.findByCriteriaShow = !this.findByCriteriaShow"></button>
+                </ng-template>
+                <ng-template pTemplate="right">
+                    <div class="flex">
+                        <p-splitButton label="Exporter" icon="pi pi-download" styleClass="p-button-help" [model]="excelPdfButons"></p-splitButton>
+                    </div>
+                </ng-template>
+
+            </p-toolbar>
+            <p-toolbar *ngIf="findByCriteriaShow">
+
+                <div class="align-form-search">
+                                <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                    <input class="p-mr-2" pInputText id="1"
+                                           type="text"  [(ngModel)]="searchClient.numeroMatricule">
+                                    <label for="1">Numero matricule</label>
+                                </span>
+                                <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                    <input class="p-mr-2" pInputText id="2"
+                                           type="text"  [(ngModel)]="searchClient.emailPrincipale">
+                                    <label for="2">Email principale</label>
+                                </span>
+                                <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                    <p-dropdown  id="4" [options]="yesOrNoCredentialsNonExpired" [(ngModel)]="searchClient.credentialsNonExpired"
+                                            [filter]="false" [showClear]="true"  placeholder="Credentials non expired"
+                                                 optionLabel="label" optionValue="value">
+                                    </p-dropdown>
+                                </span>
+                                <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                    <p-dropdown  id="5" [options]="yesOrNoEnabled" [(ngModel)]="searchClient.enabled"
+                                            [filter]="false" [showClear]="true"  placeholder="Enabled"
+                                                 optionLabel="label" optionValue="value">
+                                    </p-dropdown>
+                                </span>
+                                <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                    <p-dropdown  id="6" [options]="yesOrNoAccountNonExpired" [(ngModel)]="searchClient.accountNonExpired"
+                                            [filter]="false" [showClear]="true"  placeholder="Account non expired"
+                                                 optionLabel="label" optionValue="value">
+                                    </p-dropdown>
+                                </span>
+                                <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                    <p-dropdown  id="7" [options]="yesOrNoAccountNonLocked" [(ngModel)]="searchClient.accountNonLocked"
+                                            [filter]="false" [showClear]="true"  placeholder="Account non locked"
+                                                 optionLabel="label" optionValue="value">
+                                    </p-dropdown>
+                                </span>
+                                <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                    <p-dropdown  id="8" [options]="yesOrNoPasswordChanged" [(ngModel)]="searchClient.passwordChanged"
+                                            [filter]="false" [showClear]="true"  placeholder="Password changed"
+                                                 optionLabel="label" optionValue="value">
+                                    </p-dropdown>
+                                </span>
+
+                        <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                            <p-calendar
+                                    class="p-mr-2" [(ngModel)]="searchClient.createdAtMin"
+                                    id="9-1"
+                                    dateFormat="dd-MM-yy"></p-calendar>
+                            <label for="9-1">Created at Min</label>
+                        </span>
+
+                         <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                            <p-calendar
+                                    class="p-mr-2" [(ngModel)]="searchClient.createdAtMax"
+                                    id="9-2"
+                                    dateFormat="dd-MM-yy"></p-calendar>
+                            <label for="9-2">Created at Max</label>
+                        </span>
+
+
+                        <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                            <p-calendar
+                                    class="p-mr-2" [(ngModel)]="searchClient.updatedAtMin"
+                                    id="10-1"
+                                    dateFormat="dd-MM-yy"></p-calendar>
+                            <label for="10-1">Updated at Min</label>
+                        </span>
+
+                         <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                            <p-calendar
+                                    class="p-mr-2" [(ngModel)]="searchClient.updatedAtMax"
+                                    id="10-2"
+                                    dateFormat="dd-MM-yy"></p-calendar>
+                            <label for="10-2">Updated at Max</label>
+                        </span>
+
+                                <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                    <input class="p-mr-2" pInputText id="11"
+                                           type="text"  [(ngModel)]="searchClient.username">
+                                    <label for="11">Username</label>
+                                </span>
+                                <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                    <input class="p-mr-2" pInputText id="12"
+                                           type="text"  [(ngModel)]="searchClient.password">
+                                    <label for="12">Password</label>
+                                </span>
+                                <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                    <input class="p-mr-2" pInputText id="13"
+                                           type="text"  [(ngModel)]="searchClient.prenom">
+                                    <label for="13">Prenom</label>
+                                </span>
+                                <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                    <input class="p-mr-2" pInputText id="14"
+                                           type="text"  [(ngModel)]="searchClient.nom">
+                                    <label for="14">Nom</label>
+                                </span>
+                                <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                    <input class="p-mr-2" pInputText id="15"
+                                           type="text"  [(ngModel)]="searchClient.equivalenceAvecPanelErc">
+                                    <label for="15">Equivalence avec panel erc</label>
+                                </span>
+                                <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                    <input class="p-mr-2" pInputText id="16"
+                                           type="text"  [(ngModel)]="searchClient.baseHorizon">
+                                    <label for="16">Base horizon</label>
+                                </span>
+                                <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                    <input class="p-mr-2" pInputText id="18"
+                                           type="text"  [(ngModel)]="searchClient.numeroDeTel">
+                                    <label for="18">Numero de tel</label>
+                                </span>
+                                <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                    <input class="p-mr-2" pInputText id="20"
+                                           type="text"  [(ngModel)]="searchClient.codePostal">
+                                    <label for="20">Code postal</label>
+                                </span>
+                                <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                    <input class="p-mr-2" pInputText id="21"
+                                           type="text"  [(ngModel)]="searchClient.rib">
+                                    <label for="21">Rib</label>
+                                </span>
+                </div>
+
+                <div class="align-search-button">
+                    <button pButton pRipple label="Valider" icon="pi pi-sort-amount-down"
+                            class="p-button-info p-mr-2" (click)="searchRequest()"></button>
+                </div>
+            </p-toolbar>
+
+
+            <p-table #dt [value]="clients" [columns]="cols" [rows]="4" [paginator]="true"
+                    [globalFilterFields]="['numeroMatricule', 'emailPrincipale', 'credentialsNonExpired', 'enabled', 'accountNonExpired', 'accountNonLocked', 'passwordChanged', 'createdAt', 'updatedAt', 'username', 'password', 'prenom', 'nom', 'equivalenceAvecPanelErc', 'baseHorizon', 'role', 'numeroDeTel', 'codePostal', 'rib']" [(selection)]="selectedClient"
+                    [rowHover]="true" dataKey="id" styleClass="p-datatable-customers"
+                                      currentPageReportTemplate="Les éléments de {first} à {last} sur {totalRecords}"
+                    [showCurrentPageReport]="true">
+                <ng-template pTemplate="caption">
+                    <div class="p-d-flex p-flex-column p-flex-md-row p-jc-md-between table-header">
+                        <h5 class="p-m-0">Liste des clients</h5>
+                        <span class="p-input-icon-left">
+                            <i class="pi pi-search"></i>
+                            <input pInputText type="text" placeholder="Chercher..." (input)="dt.filterGlobal($event.target.value, 'contains')"/>
+                        </span>
+                    </div>
+                </ng-template>
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th style="width: 3rem">
+                            <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+                        </th>
+
+                                
+                                <th pSortableColumn="numeroMatricule">
+                                    <div class="p-d-flex p-jc-between p-ai-center">
+                                        <span>Numero matricule</span>
+                                        <p-sortIcon field="numeroMatricule"></p-sortIcon>
+                                    </div>
+                                </th>
+                                
+
+
+                                
+                                <th pSortableColumn="emailPrincipale">
+                                    <div class="p-d-flex p-jc-between p-ai-center">
+                                        <span>Email principale</span>
+                                        <p-sortIcon field="emailPrincipale"></p-sortIcon>
+                                    </div>
+                                </th>
+                                
+
+
+
+                                
+                                <th pSortableColumn="credentialsNonExpired">
+                                    <div class="p-d-flex p-jc-between p-ai-center">
+                                        <span>Credentials non expired</span>
+                                        <p-sortIcon field="credentialsNonExpired"></p-sortIcon>
+                                    </div>
+                                </th>
+                                
+
+
+                                
+                                <th pSortableColumn="enabled">
+                                    <div class="p-d-flex p-jc-between p-ai-center">
+                                        <span>Enabled</span>
+                                        <p-sortIcon field="enabled"></p-sortIcon>
+                                    </div>
+                                </th>
+                                
+
+
+                                
+                                <th pSortableColumn="accountNonExpired">
+                                    <div class="p-d-flex p-jc-between p-ai-center">
+                                        <span>Account non expired</span>
+                                        <p-sortIcon field="accountNonExpired"></p-sortIcon>
+                                    </div>
+                                </th>
+                                
+
+
+                                
+                                <th pSortableColumn="accountNonLocked">
+                                    <div class="p-d-flex p-jc-between p-ai-center">
+                                        <span>Account non locked</span>
+                                        <p-sortIcon field="accountNonLocked"></p-sortIcon>
+                                    </div>
+                                </th>
+                                
+
+
+                                
+                                <th pSortableColumn="passwordChanged">
+                                    <div class="p-d-flex p-jc-between p-ai-center">
+                                        <span>Password changed</span>
+                                        <p-sortIcon field="passwordChanged"></p-sortIcon>
+                                    </div>
+                                </th>
+                                
+
+
+                                
+                                <th pSortableColumn="createdAt">
+                                    <div class="p-d-flex p-jc-between p-ai-center">
+                                        <span>Created at</span>
+                                        <p-sortIcon field="createdAt"></p-sortIcon>
+                                    </div>
+                                </th>
+                                
+
+
+                                
+                                <th pSortableColumn="updatedAt">
+                                    <div class="p-d-flex p-jc-between p-ai-center">
+                                        <span>Updated at</span>
+                                        <p-sortIcon field="updatedAt"></p-sortIcon>
+                                    </div>
+                                </th>
+                                
+
+
+                                <!-- 
+                                <th pSortableColumn="username">
+                                    <div class="p-d-flex p-jc-between p-ai-center">
+                                        <span>Username</span>
+                                        <p-sortIcon field="username"></p-sortIcon>
+                                    </div>
+                                </th>
+                                --> 
+
+
+                                <!-- 
+                                <th pSortableColumn="password">
+                                    <div class="p-d-flex p-jc-between p-ai-center">
+                                        <span>Password</span>
+                                        <p-sortIcon field="password"></p-sortIcon>
+                                    </div>
+                                </th>
+                                --> 
+
+
+                                <!-- 
+                                <th pSortableColumn="prenom">
+                                    <div class="p-d-flex p-jc-between p-ai-center">
+                                        <span>Prenom</span>
+                                        <p-sortIcon field="prenom"></p-sortIcon>
+                                    </div>
+                                </th>
+                                --> 
+
+
+                                <!-- 
+                                <th pSortableColumn="nom">
+                                    <div class="p-d-flex p-jc-between p-ai-center">
+                                        <span>Nom</span>
+                                        <p-sortIcon field="nom"></p-sortIcon>
+                                    </div>
+                                </th>
+                                --> 
+
+
+                                <!-- 
+                                <th pSortableColumn="equivalenceAvecPanelErc">
+                                    <div class="p-d-flex p-jc-between p-ai-center">
+                                        <span>Equivalence avec panel erc</span>
+                                        <p-sortIcon field="equivalenceAvecPanelErc"></p-sortIcon>
+                                    </div>
+                                </th>
+                                --> 
+
+
+                                <!-- 
+                                <th pSortableColumn="baseHorizon">
+                                    <div class="p-d-flex p-jc-between p-ai-center">
+                                        <span>Base horizon</span>
+                                        <p-sortIcon field="baseHorizon"></p-sortIcon>
+                                    </div>
+                                </th>
+                                --> 
+
+
+                                <!-- 
+                                <th pSortableColumn="role">
+                                    <div class="p-d-flex p-jc-between p-ai-center">
+                                        <span>Role</span>
+                                        <p-sortIcon field="role"></p-sortIcon>
+                                    </div>
+                                </th>
+                                --> 
+
+
+                                <!-- 
+                                <th pSortableColumn="numeroDeTel">
+                                    <div class="p-d-flex p-jc-between p-ai-center">
+                                        <span>Numero de tel</span>
+                                        <p-sortIcon field="numeroDeTel"></p-sortIcon>
+                                    </div>
+                                </th>
+                                --> 
+
+
+
+                                <!-- 
+                                <th pSortableColumn="codePostal">
+                                    <div class="p-d-flex p-jc-between p-ai-center">
+                                        <span>Code postal</span>
+                                        <p-sortIcon field="codePostal"></p-sortIcon>
+                                    </div>
+                                </th>
+                                --> 
+
+
+                                <!-- 
+                                <th pSortableColumn="rib">
+                                    <div class="p-d-flex p-jc-between p-ai-center">
+                                        <span>Rib</span>
+                                        <p-sortIcon field="rib"></p-sortIcon>
+                                    </div>
+                                </th>
+                                --> 
+
+
+                        <th>Actions</th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-client>
+                    <tr>
+                        <td>
+                            <p-tableCheckbox [value]="client"></p-tableCheckbox>
+                        </td>
+                            
+                                 <td>{{client.numeroMatricule}}</td>
+                            
+
+                            
+                                 <td>{{client.emailPrincipale}}</td>
+                            
+
+                            
+                                <td><i *ngIf="client.credentialsNonExpired" class="pi pi-check checked-toogle"></i>
+                                    <i *ngIf="!client.credentialsNonExpired" class="pi pi-times unchecked-toogle"></i>
+                                </td>
+                            
+
+                            
+                                <td><i *ngIf="client.enabled" class="pi pi-check checked-toogle"></i>
+                                    <i *ngIf="!client.enabled" class="pi pi-times unchecked-toogle"></i>
+                                </td>
+                            
+
+                            
+                                <td><i *ngIf="client.accountNonExpired" class="pi pi-check checked-toogle"></i>
+                                    <i *ngIf="!client.accountNonExpired" class="pi pi-times unchecked-toogle"></i>
+                                </td>
+                            
+
+                            
+                                <td><i *ngIf="client.accountNonLocked" class="pi pi-check checked-toogle"></i>
+                                    <i *ngIf="!client.accountNonLocked" class="pi pi-times unchecked-toogle"></i>
+                                </td>
+                            
+
+                            
+                                <td><i *ngIf="client.passwordChanged" class="pi pi-check checked-toogle"></i>
+                                    <i *ngIf="!client.passwordChanged" class="pi pi-times unchecked-toogle"></i>
+                                </td>
+                            
+
+                            
+                                <td>{{client.createdAt | date:'dd-M-yyyy' }}</td>
+                            
+
+                             <!-- 
+                                <td>{{client.updatedAt | date:'dd-M-yyyy' }}</td>
+                             --> 
+
+                             <!-- 
+                                 <td>{{client.username}}</td>
+                             --> 
+
+                             <!-- 
+                                 <td>{{client.password}}</td>
+                             --> 
+
+                             <!-- 
+                                 <td>{{client.prenom}}</td>
+                             --> 
+
+                             <!-- 
+                                 <td>{{client.nom}}</td>
+                             --> 
+
+                             <!-- 
+                                 <td>{{client.equivalenceAvecPanelErc}}</td>
+                             --> 
+
+                             <!-- 
+                                 <td>{{client.baseHorizon}}</td>
+                             --> 
+
+                             <!-- 
+                             --> 
+
+                             <!-- 
+                                 <td>{{client.numeroDeTel}}</td>
+                             --> 
+
+                             <!-- 
+                                 <td>{{client.codePostal}}</td>
+                             --> 
+
+                             <!-- 
+                                 <td>{{client.rib}}</td>
+                             --> 
+
+
+                        <td>
+                            <button pButton pRipple icon="pi pi-pencil"
+                                    class="p-button-rounded p-button-success p-mr-2"
+                                    (click)="editClient(client)"></button>
+                            <button pButton pRipple icon="pi pi-list" class="p-button-rounded p-button-info p-mr-2"
+                                    (click)="viewClient(client)"></button>
+                            <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-danger p-mr-2"
+                                    (click)="deleteClient(client)"></button>
+
+                            <button pButton pRipple icon="pi pi-copy" class="p-button-rounded p-button-raised p-button-warning"
+                                    (click)="duplicateClient(client)"></button>
+                        </td>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="summary">
+                    <div class="p-d-flex p-ai-center p-jc-between">
+                        En totale
+                        il {{clients ? clients.length == 1 ? 'y a' : 'y a' : 'y a' }} {{clients ? clients.length : 0 }} {{clients ? clients.length == 1 ? 'client' : 'clients' : 0 }}
+                        .
+                    </div>
+                </ng-template>
+            </p-table>
+        </div>
+
+        <app-client-create-admin></app-client-create-admin>
+        <app-client-edit-admin></app-client-edit-admin>
+        <app-client-view-admin></app-client-view-admin>
+        <p-confirmDialog [style]="{width: '450px'}"></p-confirmDialog>
+    </div>
+</div>

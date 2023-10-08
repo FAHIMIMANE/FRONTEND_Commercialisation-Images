@@ -1,0 +1,131 @@
+
+<p-dialog [(visible)]="viewBucketDialog" [style]="{width: '70vw'}"
+        header="Bucket" [modal]="true"
+        styleClass="p-fluid">
+
+    <ng-template pTemplate="content">
+        <p-tabView>
+            <p-tabPanel header="Bucket">
+                <div class="p-grid">
+
+                                <div class="p-field p-col-12 p-md-6">
+                                    <label for="2">Nom</label>
+                                    <input class="p-mb-2 p-mr-2" type="text" pInputText [disabled]="true"
+                                           placeholder="Nom"  [(ngModel)]="selectedBucket.nom"
+                                           id="2" [(ngModel)]="selectedBucket.nom"
+                                           autofocus>
+                                </div>
+
+
+
+                                <div class="p-field p-col-12 p-md-6">
+                                    <label for="3">Date creation</label>
+                                    <p-calendar id="3" [disabled]="true"
+                                                placeholder="Date creation"  [(ngModel)]="selectedBucket.dateCreation"
+                                            dateFormat="{{dateFormat}}"></p-calendar>
+                                </div>
+
+                                <div class="p-field p-col-12 p-md-6">
+                                    <label for="4">Libelle</label>
+                                    <input class="p-mb-2 p-mr-2" type="text" pInputText [disabled]="true"
+                                           placeholder="Libelle"  [(ngModel)]="selectedBucket.libelle"
+                                           id="4" [(ngModel)]="selectedBucket.libelle"
+                                           autofocus>
+                                </div>
+
+
+
+                                <div class="p-field p-col-12 p-md-6">
+                                    <label for="5">State bucket</label>
+                                    <p-dropdown [options]="stateBuckets" [(ngModel)]="selectedBucket.stateBucketVo"
+                                            id="5" [filter]="true" filterMatchMode="contains"
+                                            [showClear]="true" [disabled]="true"
+                                            optionLabel="libelle"
+                                            placeholder="State bucket">
+                                    </p-dropdown>
+                                </div>
+
+
+                                <div class="p-field p-col-12 p-md-6">
+                                    <label for="6">Contributeur</label>
+                                    <p-dropdown [options]="contributeurs" [(ngModel)]="selectedBucket.contributeurVo"
+                                            id="6" [filter]="true" filterMatchMode="contains"
+                                            [showClear]="true" [disabled]="true"
+                                            optionLabel="cin"
+                                            placeholder="Contributeur">
+                                    </p-dropdown>
+                                </div>
+
+
+                </div>
+            </p-tabPanel>
+                    <p-tabPanel header="Images">
+                        <div class="p-grid">
+
+                            <div class="p-col">
+                                <div class="card">
+                                    <p-table [value]="selectedBucket.imagesVo" [scrollable]="true"
+                                            scrollHeight="200px">
+                                        <ng-template pTemplate="header">
+                                            <tr>
+                                                            <th>Reference</th>
+                                                            <th>Prix</th>
+                                                            <th>Description</th>
+                                                            <th>Extension</th>
+                                                            <th>Taille</th>
+                                                            <th>Resolution</th>
+                                                            <th>Client</th>
+                                                            <th>Type image</th>
+                                            </tr>
+                                        </ng-template>
+                                        <ng-template pTemplate="body" let-p>
+                                            <tr>
+                                                            <td>{{p.reference}}</td>
+
+                                                            <td>{{p.prix}}</td>
+
+                                                            <td>{{p.description}}</td>
+
+                                                            <td>{{p.extension}}</td>
+
+                                                            <td>{{p.taille}}</td>
+
+                                                            <td>{{p.resolution}}</td>
+
+                                                        <td>{{p.clientVo?.numeroMatricule}}</td>
+                                                        <td>{{p.typeImageVo?.libelle}}</td>
+
+                                            </tr>
+                                        </ng-template>
+                                    </p-table>
+                                </div>
+                            </div>
+                        </div>
+
+                    </p-tabPanel>
+
+
+        </p-tabView>
+
+    </ng-template>
+
+    <ng-template pTemplate="footer" >
+        <div class="p-grid">
+            <div>
+                <button pButton pRipple label="Annuler" icon="pi pi-times"
+                        class="p-button-text" (click)="hideViewDialog()"></button>
+            </div>
+        </div>
+    </ng-template>
+
+            <app-state-bucket-create-client></app-state-bucket-create-client>
+            <app-contributeur-create-client></app-contributeur-create-client>
+
+                    <app-client-create-client></app-client-create-client>
+                    <app-type-image-create-client></app-type-image-create-client>
+
+
+</p-dialog>
+
+
+

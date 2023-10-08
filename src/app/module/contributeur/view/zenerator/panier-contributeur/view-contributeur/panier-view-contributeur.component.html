@@ -1,0 +1,97 @@
+
+<p-dialog [(visible)]="viewPanierDialog" [style]="{width: '70vw'}"
+        header="Panier" [modal]="true"
+        styleClass="p-fluid">
+
+    <ng-template pTemplate="content">
+        <p-tabView>
+            <p-tabPanel header="Panier">
+                <div class="p-grid">
+
+                                <div class="p-field p-col-12 p-md-6">
+                                    <label for="1">Reference</label>
+                                    <input class="p-mb-2 p-mr-2" type="text" pInputText [disabled]="true"
+                                           placeholder="Reference"  [(ngModel)]="selectedPanier.reference"
+                                           id="1" [(ngModel)]="selectedPanier.reference"
+                                           autofocus>
+                                </div>
+
+
+
+                                <div class="p-field p-col-12 p-md-6">
+                                    <label for="2">Prix total</label>
+                                    <p-inputNumber class="p-mb-2 p-mr-2" id="2" [disabled]="true"
+                                                   placeholder="Prix total"  [(ngModel)]="selectedPanier.prixTotal"
+                                            [(ngModel)]="selectedPanier.prixTotal"></p-inputNumber>
+                                </div>
+
+                                <div class="p-field p-col-12 p-md-6">
+                                    <label for="3">Etat panier</label>
+                                    <p-dropdown [options]="etatPaniers" [(ngModel)]="selectedPanier.etatPanierVo"
+                                            id="3" [filter]="true" filterMatchMode="contains"
+                                            [showClear]="true" [disabled]="true"
+                                            optionLabel="libelle"
+                                            placeholder="Etat panier">
+                                    </p-dropdown>
+                                </div>
+
+
+                </div>
+            </p-tabPanel>
+                    <p-tabPanel header="Panier items">
+                        <div class="p-grid">
+
+                            <div class="p-col">
+                                <div class="card">
+                                    <p-table [value]="selectedPanier.panierItemsVo" [scrollable]="true"
+                                            scrollHeight="200px">
+                                        <ng-template pTemplate="header">
+                                            <tr>
+                                                            <th>Image</th>
+                                                            <th>Prix</th>
+                                                            <th>Reduction</th>
+                                                            <th>Prix apres reduction</th>
+                                            </tr>
+                                        </ng-template>
+                                        <ng-template pTemplate="body" let-p>
+                                            <tr>
+                                                        <td>{{p.imageVo?.reference}}</td>
+                                                            <td>{{p.prix}}</td>
+
+                                                            <td>{{p.reduction}}</td>
+
+                                                            <td>{{p.prixApresReduction}}</td>
+
+
+                                            </tr>
+                                        </ng-template>
+                                    </p-table>
+                                </div>
+                            </div>
+                        </div>
+
+                    </p-tabPanel>
+
+
+        </p-tabView>
+
+    </ng-template>
+
+    <ng-template pTemplate="footer" >
+        <div class="p-grid">
+            <div>
+                <button pButton pRipple label="Annuler" icon="pi pi-times"
+                        class="p-button-text" (click)="hideViewDialog()"></button>
+            </div>
+        </div>
+    </ng-template>
+
+            <app-etat-panier-create-contributeur></app-etat-panier-create-contributeur>
+
+                    <app-image-create-contributeur></app-image-create-contributeur>
+
+
+</p-dialog>
+
+
+

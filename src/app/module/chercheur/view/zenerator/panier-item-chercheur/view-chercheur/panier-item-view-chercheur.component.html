@@ -1,0 +1,78 @@
+
+<p-dialog [(visible)]="viewPanierItemDialog" [style]="{width: '70vw'}"
+        header="Panier item" [modal]="true"
+        styleClass="p-fluid">
+
+    <ng-template pTemplate="content">
+        <p-tabView>
+            <p-tabPanel header="Panier item">
+                <div class="p-grid">
+
+                                <div class="p-field p-col-12 p-md-6">
+                                    <label for="1">Image</label>
+                                    <p-dropdown [options]="images" [(ngModel)]="selectedPanierItem.imageVo"
+                                            id="1" [filter]="true" filterMatchMode="contains"
+                                            [showClear]="true" [disabled]="true"
+                                            optionLabel="reference"
+                                            placeholder="Image">
+                                    </p-dropdown>
+                                </div>
+
+
+                                <div class="p-field p-col-12 p-md-6">
+                                    <label for="2">Panier</label>
+                                    <p-dropdown [options]="paniers" [(ngModel)]="selectedPanierItem.panierVo"
+                                            id="2" [filter]="true" filterMatchMode="contains"
+                                            [showClear]="true" [disabled]="true"
+                                            optionLabel="id"
+                                            placeholder="Panier">
+                                    </p-dropdown>
+                                </div>
+
+
+                                <div class="p-field p-col-12 p-md-6">
+                                    <label for="3">Prix</label>
+                                    <p-inputNumber class="p-mb-2 p-mr-2" id="3" [disabled]="true"
+                                                   placeholder="Prix"  [(ngModel)]="selectedPanierItem.prix"
+                                            [(ngModel)]="selectedPanierItem.prix"></p-inputNumber>
+                                </div>
+
+                                <div class="p-field p-col-12 p-md-6">
+                                    <label for="4">Reduction</label>
+                                    <p-inputNumber class="p-mb-2 p-mr-2" id="4" [disabled]="true"
+                                                   placeholder="Reduction"  [(ngModel)]="selectedPanierItem.reduction"
+                                            [(ngModel)]="selectedPanierItem.reduction"></p-inputNumber>
+                                </div>
+
+                                <div class="p-field p-col-12 p-md-6">
+                                    <label for="5">Prix apres reduction</label>
+                                    <p-inputNumber class="p-mb-2 p-mr-2" id="5" [disabled]="true"
+                                                   placeholder="Prix apres reduction"  [(ngModel)]="selectedPanierItem.prixApresReduction"
+                                            [(ngModel)]="selectedPanierItem.prixApresReduction"></p-inputNumber>
+                                </div>
+
+                </div>
+            </p-tabPanel>
+
+        </p-tabView>
+
+    </ng-template>
+
+    <ng-template pTemplate="footer" >
+        <div class="p-grid">
+            <div>
+                <button pButton pRipple label="Annuler" icon="pi pi-times"
+                        class="p-button-text" (click)="hideViewDialog()"></button>
+            </div>
+        </div>
+    </ng-template>
+
+            <app-image-create-chercheur></app-image-create-chercheur>
+            <app-panier-create-chercheur></app-panier-create-chercheur>
+
+
+
+</p-dialog>
+
+
+

@@ -1,0 +1,590 @@
+<div class="p-grid">
+    <div class="p-col-12">
+        <p-toast></p-toast>
+        <div class="card" style="width: 1265px; position: relative; background-color: #121F38">
+            <p-toolbar styleClass="p-mb-4" >
+                <ng-template pTemplate="left">
+<!--                    <button pButton pRipple label="Nouveau" icon="pi pi-plus" class="p-button-success p-mr-2 p-mb-2"-->
+<!--                            (click)="openCreateImage('image')"></button>-->
+                    <button  pButton pRipple label="Consulter Panier({{imagesOfPanier.length}})" icon="pi pi-shopping-cart" style="background-color: #121F38"
+                             class="p-button-success p-mr-2 p-mb-2"
+                             (click)="openPanier('image')"></button>
+
+                    <button pButton pRipple label="Valider mon panier" style="background-color: #121F38" icon="pi pi-check" class="p-button-success p-mr-2 p-mb-2"
+                            (click)="saveAll()"></button>
+
+
+                    <button pButton pRipple label="Recherche" style="background-color: #121F38"
+                            icon="pi pi-{{findByCriteriaShow?'angle-down':'angle-right'}} pi-search"
+                            class="p-button-success p-mr-2 p-mb-2"
+                            (click)="this.findByCriteriaShow = !this.findByCriteriaShow"></button>
+                </ng-template>
+                <!--                <ng-template pTemplate="right">-->
+                <!--                    <div class="flex">-->
+                <!--                        <p-splitButton label="Exporter" icon="pi pi-download" styleClass="p-button-help"-->
+                <!--                                       [model]="excelPdfButons"></p-splitButton>-->
+                <!--                    </div>-->
+                <!--                </ng-template>-->
+
+            </p-toolbar>
+            <p-toolbar *ngIf="findByCriteriaShow">
+
+                <div class="align-form-search">
+<!--                                <span class="p-float-label p-mr-3 align-search-items p-mt-4">-->
+<!--                                    <input class="p-mr-2" pInputText id="1"-->
+<!--                                           type="text" [(ngModel)]="searchImage.reference">-->
+<!--                                    <label for="1">Reference</label>-->
+<!--                                </span>-->
+                    <span class="p-float-label p-mr-3 align-search-items p-mt-4">
+                                    <input class="p-mr-2" pInputText id="8"
+                                           type="text" [(ngModel)]="searchImage.description">
+                                    <label for="1">Description</label>
+                                </span>
+                    <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                              <p-inputNumber class="p-mr-2"
+                                                             mode="decimal" [(ngModel)]="searchImage.prixMin"
+                                                             id="2-1"></p-inputNumber>
+                                              <label for="2-1">Prix Min</label>
+                                       </span>
+                    <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                              <p-inputNumber class="p-mr-2"
+                                                             mode="decimal" [(ngModel)]="searchImage.prixMax"
+                                                             id="2-2"></p-inputNumber>
+                                             <label for="2-2">Prix Max</label>
+                                       </span>
+                    <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                    <input class="p-mr-2" pInputText id="4"
+                                           type="text" [(ngModel)]="searchImage.extension">
+                                    <label for="4">Extension</label>
+                                </span>
+                    <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                              <p-inputNumber class="p-mr-2"
+                                                             mode="decimal" [(ngModel)]="searchImage.tailleMin"
+                                                             id="5-1"></p-inputNumber>
+                                              <label for="5-1">Taille Min</label>
+                                       </span>
+                    <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                              <p-inputNumber class="p-mr-2"
+                                                             mode="decimal" [(ngModel)]="searchImage.tailleMax"
+                                                             id="5-2"></p-inputNumber>
+                                             <label for="5-2">Taille Max</label>
+                                       </span>
+<!--                    <span class=" p-float-label p-mr-3 align-search-items p-mt-4">-->
+<!--                                              <p-inputNumber class="p-mr-2"-->
+<!--                                                             mode="decimal" [(ngModel)]="searchImage.resolutionMin"-->
+<!--                                                             id="6-1"></p-inputNumber>-->
+<!--                                              <label for="6-1">Resolution Min</label>-->
+<!--                                       </span>-->
+<!--                    <span class=" p-float-label p-mr-3 align-search-items p-mt-4">-->
+<!--                                              <p-inputNumber class="p-mr-2"-->
+<!--                                                             mode="decimal" [(ngModel)]="searchImage.resolutionMax"-->
+<!--                                                             id="6-2"></p-inputNumber>-->
+<!--                                             <label for="6-2">Resolution Max</label>-->
+<!--                                       </span>-->
+<!--                    <span class=" p-float-label p-mr-3 align-search-items p-mt-4">-->
+<!--                                <p-dropdown [options]="clients" [(ngModel)]="searchImage.clientVo"-->
+<!--                                            id="7"-->
+<!--                                            [filter]="true" [showClear]="true" placeholder="Client"-->
+<!--                                            optionLabel="numeroMatricule">-->
+<!--                                </p-dropdown>-->
+<!--                            </span>-->
+
+<!--                    <span class=" p-float-label p-mr-3 align-search-items p-mt-4">-->
+<!--                                <p-dropdown [options]="buckets" [(ngModel)]="searchImage.bucketVo"-->
+<!--                                            id="8"-->
+<!--                                            [filter]="true" [showClear]="true" placeholder="Bucket"-->
+<!--                                            optionLabel="libelle">-->
+<!--                                </p-dropdown>-->
+<!--                            </span>-->
+                    <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                <p-dropdown [options]="typeImages" [(ngModel)]="searchImage.typeImageVo"
+                                            id="10"
+                                            [filter]="true" [showClear]="true" placeholder="Type image"
+                                            optionLabel="libelle">
+                                </p-dropdown>
+                            </span>
+
+                </div>
+
+                <div class="align-search-button">
+                    <button style="border-radius: 100px; background-color: #121F38" icon="pi pi-check-circle" pButton pRipple label="Valider"
+                            class="p-button-info p-mr-2" (click)="searchRequest()"></button>
+                </div>
+            </p-toolbar>
+
+
+            <p-table #dt [value]="imagesOfPanier" [columns]="cols" [rows]="4" [paginator]="true" *ngIf="printTable"
+                     [globalFilterFields]="['reference', 'prix', 'extension', 'taille', 'resolution', 'numeroMatricule', 'libelle', 'libelle']"
+                     [(selection)]="selectedImage"
+                     [rowHover]="true" dataKey="id" styleClass="p-datatable-customers"
+                     currentPageReportTemplate="Les éléments de {first} à {last} sur {totalRecords}"
+                     [showCurrentPageReport]="true">
+                <ng-template pTemplate="caption">
+                    <div class="p-d-flex p-flex-column p-flex-md-row p-jc-md-between table-header">
+                        <h5 class="p-m-0">Liste des images</h5>
+                        <span class="p-input-icon-left">
+                            <i class="pi pi-search"></i>
+                            <input pInputText type="text" placeholder="Chercher..."
+                                   (input)="dt.filterGlobal($event.target.value, 'contains')"/>
+                        </span>
+                    </div>
+                </ng-template>
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th style="width: 3rem">
+                            <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+                        </th>
+
+                        <!--                                -->
+                        <!--                                <th pSortableColumn="reference">-->
+                        <!--                                    <div class="p-d-flex p-jc-between p-ai-center">-->
+                        <!--                                        <span>Reference</span>-->
+                        <!--                                        <p-sortIcon field="reference"></p-sortIcon>-->
+                        <!--                                    </div>-->
+                        <!--                                </th>-->
+
+
+                        <th pSortableColumn="prix">
+                            <div class="p-d-flex p-jc-between p-ai-center">
+                                <span>Prix</span>
+                                <p-sortIcon field="prix"></p-sortIcon>
+                            </div>
+                        </th>
+
+
+                        <!--                                <th pSortableColumn="extension">-->
+                        <!--                                    <div class="p-d-flex p-jc-between p-ai-center">-->
+                        <!--                                        <span>Extension</span>-->
+                        <!--                                        <p-sortIcon field="extension"></p-sortIcon>-->
+                        <!--                                    </div>-->
+                        <!--                                </th>-->
+
+
+                        <!--                                <th pSortableColumn="taille">-->
+                        <!--                                    <div class="p-d-flex p-jc-between p-ai-center">-->
+                        <!--                                        <span>Taille</span>-->
+                        <!--                                        <p-sortIcon field="taille"></p-sortIcon>-->
+                        <!--                                    </div>-->
+                        <!--                                </th>-->
+
+
+                        <!--                                <th pSortableColumn="resolution">-->
+                        <!--                                    <div class="p-d-flex p-jc-between p-ai-center">-->
+                        <!--                                        <span>Resolution</span>-->
+                        <!--                                        <p-sortIcon field="resolution"></p-sortIcon>-->
+                        <!--                                    </div>-->
+                        <!--                                </th>-->
+                        <!--                                -->
+
+
+                        <!--                                <th pSortableColumn="client">-->
+                        <!--                                    <div class="p-d-flex p-jc-between p-ai-center">-->
+                        <!--                                        <span>Client</span>-->
+                        <!--                                        <p-sortIcon field="client"></p-sortIcon>-->
+                        <!--                                    </div>-->
+                        <!--                                </th>-->
+
+
+                        <!--                                <th pSortableColumn="bucket">-->
+                        <!--                                    <div class="p-d-flex p-jc-between p-ai-center">-->
+                        <!--                                        <span>Bucket</span>-->
+                        <!--                                        <p-sortIcon field="bucket"></p-sortIcon>-->
+                        <!--                                    </div>-->
+                        <!--                                </th>-->
+
+
+                        <th pSortableColumn="typeImage">
+                            <div class="p-d-flex p-jc-between p-ai-center">
+                                <span>Type image</span>
+                                <p-sortIcon field="typeImage"></p-sortIcon>
+                            </div>
+                        </th>
+
+
+                        <!--                        <th>Actions</th>-->
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-image>
+                    <tr>
+                        <td>
+                            <!--                            <p-tableCheckbox [value]="image"></p-tableCheckbox>-->
+                        </td>
+
+                        <!--                                 <td>{{image.reference}}</td>-->
+
+
+                        <td>{{image.prix}} DH .</td>
+
+
+                        <!--                                 <td>{{image.extension}}</td>-->
+
+
+                        <!--                                 <td>{{image.taille}}</td>-->
+
+
+<!--                        <td>{{image.resolution}}</td>-->
+
+
+                        <td>{{image.clientVo?.numeroMatricule}}</td>
+
+
+<!--                        <td>{{image.bucketVo?.libelle}}</td>-->
+
+
+                        <td>{{image.typeImageVo?.libelle}}</td>
+
+
+<!--                        <td>-->
+<!--                            <button pButton pRipple icon="pi pi-pencil"-->
+<!--                                    class="p-button-rounded p-button-success p-mr-2"-->
+<!--                                    (click)="editImage(image)"></button>-->
+<!--                            <button pButton pRipple icon="pi pi-list" class="p-button-rounded p-button-info p-mr-2"-->
+<!--                                    (click)="viewImage(image)"></button>-->
+<!--                            <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-danger p-mr-2"-->
+<!--                                    (click)="deleteImage(image)"></button>-->
+
+<!--                            <button pButton pRipple icon="pi pi-copy"-->
+<!--                                    class="p-button-rounded p-button-raised p-button-warning"-->
+<!--                                    (click)="duplicateImage(image)"></button>-->
+<!--                        </td>-->
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="summary">
+                    <div class="p-d-flex p-ai-center p-jc-between">
+                        total prix : {{prixTotal}} DH .
+                    </div>
+                </ng-template>
+            </p-table>
+
+        </div>
+<!--        <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400&display=swap" rel="stylesheet">-->
+
+<!--        <div class="gallery" style="margin-left: 10px">-->
+<!--            <div class="gallery__column">-->
+<!--                <a href="https://unsplash.com/@jeka_fe" target="_blank" class="gallery__link">-->
+<!--                    <figure class="gallery__thumb">-->
+<!--                        <img src="https://source.unsplash.com/_cvwXhGqG-o/300x300" alt="Portrait by Jessica Felicio" class="gallery__image">-->
+<!--                    </figure>-->
+<!--                </a>-->
+
+<!--                <a href="https://unsplash.com/@oladimeg" target="_blank" class="gallery__link">-->
+<!--                    <figure class="gallery__thumb">-->
+<!--                        <img src="https://source.unsplash.com/AHBvAIVqk64/300x500" alt="Portrait by Oladimeji Odunsi" class="gallery__image">-->
+<!--                    </figure>-->
+<!--                </a>-->
+
+<!--                <a href="https://unsplash.com/@a2eorigins" target="_blank" class="gallery__link">-->
+<!--                    <figure class="gallery__thumb">-->
+<!--                        <img src="https://source.unsplash.com/VLPLo-GtrIE/300x300" alt="Portrait by Alex Perez" class="gallery__image">-->
+<!--                    </figure>-->
+<!--                </a>-->
+<!--            </div>-->
+
+<!--            <div class="gallery__column">-->
+<!--                <a href="https://unsplash.com/@noahbuscher" target="_blank" class="gallery__link">-->
+<!--                    <figure class="gallery__thumb">-->
+<!--                        <img src="https://source.unsplash.com/AR7aumwKr2s/300x300" alt="Portrait by Noah Buscher" class="gallery__image">-->
+<!--                    </figure>-->
+<!--                </a>-->
+
+<!--                <a href="https://unsplash.com/@von_co" target="_blank" class="gallery__link">-->
+<!--                    <figure class="gallery__thumb">-->
+<!--                        <img src="https://source.unsplash.com/dnL6ZIpht2s/300x300" alt="Portrait by Ivana Cajina" class="gallery__image">-->
+<!--                    </figure>-->
+<!--                </a>-->
+
+<!--                <a href="https://unsplash.com/@samburriss" target="_blank" class="gallery__link">-->
+<!--                    <figure class="gallery__thumb">-->
+<!--                        <img src="https://source.unsplash.com/tV_1sC603zA/300x500" alt="Portrait by Sam Burriss" class="gallery__image">-->
+<!--                    </figure>-->
+<!--                </a>-->
+<!--            </div>-->
+
+<!--            <div class="gallery__column">-->
+<!--                <a href="https://unsplash.com/@marilezhava" target="_blank" class="gallery__link">-->
+<!--                    <figure class="gallery__thumb">-->
+<!--                        <img src="https://source.unsplash.com/Xm9-vA_bhm0/300x500" alt="Portrait by Mari Lezhava" class="gallery__image">-->
+<!--                    </figure>-->
+<!--                </a>-->
+
+<!--                <a href="https://unsplash.com/@ethanhaddox" target="_blank" class="gallery__link">-->
+<!--                    <figure class="gallery__thumb">-->
+<!--                        <img src="https://source.unsplash.com/NTjSR3zYpsY/300x300" alt="Portrait by Ethan Haddox" class="gallery__image">-->
+<!--                    </figure>-->
+<!--                </a>-->
+
+<!--                <a href="https://unsplash.com/@mr_geshani" target="_blank" class="gallery__link">-->
+<!--                    <figure class="gallery__thumb">-->
+<!--                        <img src="https://source.unsplash.com/2JH8d3ChNec/300x300" alt="Portrait by Amir Geshani" class="gallery__image">-->
+<!--                    </figure>-->
+<!--                </a>-->
+<!--            </div>-->
+
+<!--            <div class="gallery__column">-->
+<!--                <a href="https://unsplash.com/@frxgui" target="_blank" class="gallery__link">-->
+<!--                    <figure class="gallery__thumb">-->
+<!--                        <img src="https://source.unsplash.com/FQhLLehm4dk/300x300" alt="Portrait by Guilian Fremaux" class="gallery__image">-->
+<!--                    </figure>-->
+<!--                </a>-->
+
+<!--                <a href="https://unsplash.com/@majestical_jasmin" target="_blank" class="gallery__link">-->
+<!--                    <figure class="gallery__thumb">-->
+<!--                        <img src="https://source.unsplash.com/OQd9zONSx7s/300x300" alt="Portrait by Jasmin Chew" class="gallery__image">-->
+<!--                    </figure>-->
+<!--                </a>-->
+
+<!--                <a href="https://unsplash.com/@dimadallacqua" target="_blank" class="gallery__link">-->
+<!--                    <figure class="gallery__thumb">-->
+<!--                        <img src="https://source.unsplash.com/XZkEhowjx8k/300x500" alt="Portrait by Dima DallAcqua" class="gallery__image">-->
+<!--                    </figure>-->
+<!--                </a>-->
+<!--            </div>-->
+<!--        </div>-->
+        <div class="container">
+            <div class="box">
+                <img src="https://source.unsplash.com/1000x800">
+
+            </div>
+            <div class="box">
+                <img src="https://source.unsplash.com/1000x802">
+
+            </div>
+            <div class="box">
+                <img src="https://source.unsplash.com/1000x804">
+
+            </div>
+            <div class="box">
+                <img src="https://source.unsplash.com/1000x806">
+
+            </div>
+            <div class="box">
+                <img src="https://source.unsplash.com/1000x807">
+
+            </div>
+        </div>
+        <ul class="slides">
+            <input type="radio" name="radio-btn" id="img-1" checked />
+            <li class="slide-container">
+                <div class="slide">
+                    <img src="https://source.unsplash.com/1000x827" />
+                </div>
+                <div class="nav">
+                    <label for="img-6" class="prev">&#x2039;</label>
+                    <label for="img-2" class="next">&#x203a;</label>
+                </div>
+            </li>
+
+            <input type="radio" name="radio-btn" id="img-2" />
+            <li class="slide-container">
+                <div class="slide">
+                    <img src="https://source.unsplash.com/1000x826" />
+                </div>
+                <div class="nav">
+                    <label for="img-1" class="prev">&#x2039;</label>
+                    <label for="img-3" class="next">&#x203a;</label>
+                </div>
+            </li>
+
+            <input type="radio" name="radio-btn" id="img-3" />
+            <li class="slide-container">
+                <div class="slide">
+                    <img src="https://source.unsplash.com/1000x825" />
+                </div>
+                <div class="nav">
+                    <label for="img-2" class="prev">&#x2039;</label>
+                    <label for="img-4" class="next">&#x203a;</label>
+                </div>
+            </li>
+
+            <input type="radio" name="radio-btn" id="img-4" />
+            <li class="slide-container">
+                <div class="slide">
+                    <img src="https://source.unsplash.com/1000x824" />
+                </div>
+                <div class="nav">
+                    <label for="img-3" class="prev">&#x2039;</label>
+                    <label for="img-5" class="next">&#x203a;</label>
+                </div>
+            </li>
+
+            <input type="radio" name="radio-btn" id="img-5" />
+            <li class="slide-container">
+                <div class="slide">
+                    <img src="https://source.unsplash.com/1000x823" />
+                </div>
+                <div class="nav">
+                    <label for="img-4" class="prev">&#x2039;</label>
+                    <label for="img-6" class="next">&#x203a;</label>
+                </div>
+            </li>
+
+            <input type="radio" name="radio-btn" id="img-6" />
+            <li class="slide-container">
+                <div class="slide">
+                    <img src="https://source.unsplash.com/1000x822" />
+                </div>
+                <div class="nav">
+                    <label for="img-5" class="prev">&#x2039;</label>
+                    <label for="img-1" class="next">&#x203a;</label>
+                </div>
+            </li>
+
+            <li class="nav-dots">
+                <label for="img-1" class="nav-dot" id="img-dot-1"></label>
+                <label for="img-2" class="nav-dot" id="img-dot-2"></label>
+                <label for="img-3" class="nav-dot" id="img-dot-3"></label>
+                <label for="img-4" class="nav-dot" id="img-dot-4"></label>
+                <label for="img-5" class="nav-dot" id="img-dot-5"></label>
+                <label for="img-6" class="nav-dot" id="img-dot-6"></label>
+            </li>
+        </ul>
+        <div *ngIf="!printTable"  style="margin-left: 55px">
+            <div class="card mb-3" style="max-width: 300px; display: inline-block;" *ngFor="let myImage of images; index as i ">
+                <div class="row g-0">
+                    <div class="col-md-4">
+                        <img src="{{myImage.reference}}" style="width: 280px;height: 280px; position: relative">
+                    </div>
+                    <div class="col-md-8" >
+                        <div class="card-body" >
+                            <h5 class="card-title" style="font-weight: bold; font-family: Comic Sans MS">{{myImage.description}}</h5>
+
+                            <!--                <img src="assets/images/{{myImage.reference}}" alt="Hot air balloons">-->
+                            <p style="font-family: Leelawadee;font-weight: bold"> {{myImage.prix}} DH  </p>
+                        </div>
+                        <div class="card-footer">
+                            <!--                <div class="animated-button1" (click)="addToPanier(myImage)" icon="pi pi-check"-->
+                            <!--                     style="margin-right: .25em">-->
+                            <a type="button" class="animated-button" (click)="addToPanier(myImage)" icon="pi pi-check"
+                               style="margin-right: .25em">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                Ajouter au panier
+                            </a>
+                            <!--                </div>-->
+                            <!--                <button pButton type="button" label="Ajouter au panier" (click)="addToPanier(myImage)" icon="pi pi-check"-->
+                            <!--                        style="margin-right: .25em"></button>-->
+                            <!--            </div>-->
+                        </div>
+                    </div>
+
+                </div>
+
+                <app-image-create-client></app-image-create-client>
+                <app-image-edit-client></app-image-edit-client>
+                <app-image-view-client></app-image-view-client>
+
+                <p-confirmDialog [style]="{width: '450px'}"></p-confirmDialog>
+            </div>
+        </div>
+
+    </div>
+    <div class="gallery">
+        <div class="gallery__column">
+            <a href="https://unsplash.com/@jeka_fe" target="_blank" class="gallery__link">
+                <figure class="gallery__thumb">
+                    <img src="https://source.unsplash.com/1000x813" alt="Portrait by Jessica Felicio" class="gallery__image" style="height: 400px;width: 300px;margin-left: 30px">
+                </figure>
+            </a>
+
+            <a href="https://unsplash.com/@oladimeg" target="_blank" class="gallery__link">
+                <figure class="gallery__thumb">
+                    <img src="https://source.unsplash.com/1000x814" alt="Portrait by Oladimeji Odunsi" class="gallery__image" style="height: 400px;width: 300px; margin-left: 30px">
+                </figure>
+            </a>
+
+            <a href="https://unsplash.com/@a2eorigins" target="_blank" class="gallery__link">
+                <figure class="gallery__thumb">
+                    <img src="https://source.unsplash.com/1000x815" alt="Portrait by Alex Perez" class="gallery__image" style="height: 400px;width: 300px;margin-left: 30px">
+                </figure>
+            </a>
+        </div>
+        <div class="gallery__column">
+            <a href="https://unsplash.com/@noahbuscher" target="_blank" class="gallery__link">
+                <figure class="gallery__thumb">
+                    <img src="https://source.unsplash.com/1000x816" alt="Portrait by Noah Buscher" class="gallery__image" style="height: 400px;width: 300px;margin-left: 80px">
+                </figure>
+            </a>
+
+            <a href="https://unsplash.com/@von_co" target="_blank" class="gallery__link">
+                <figure class="gallery__thumb">
+                    <img src="https://source.unsplash.com/1000x817" alt="Portrait by Ivana Cajina" class="gallery__image" style="height: 400px;width: 300px;margin-left: 80px">
+                </figure>
+            </a>
+
+            <a href="https://unsplash.com/@samburriss" target="_blank" class="gallery__link">
+                <figure class="gallery__thumb">
+                    <img src="https://source.unsplash.com/1000x818" alt="Portrait by Sam Burriss" class="gallery__image" style="height: 400px;width: 300px;margin-left: 80px">
+                </figure>
+            </a>
+        </div>
+
+        <div class="gallery__column">
+            <a href="https://unsplash.com/@marilezhava" target="_blank" class="gallery__link">
+                <figure class="gallery__thumb">
+                    <img src="https://source.unsplash.com/1000x819" alt="Portrait by Mari Lezhava" class="gallery__image" style="height: 400px;width: 300px;margin-left: 80px">
+                </figure>
+            </a>
+
+            <a href="https://unsplash.com/@ethanhaddox" target="_blank" class="gallery__link">
+                <figure class="gallery__thumb">
+                    <img src="https://source.unsplash.com/1000x820" alt="Portrait by Ethan Haddox" class="gallery__image" style="height: 400px;width: 300px;margin-left: 80px">
+                </figure>
+            </a>
+
+            <a href="https://unsplash.com/@mr_geshani" target="_blank" class="gallery__link">
+                <figure class="gallery__thumb">
+                    <img src="https://source.unsplash.com/1000x821" alt="Portrait by Amir Geshani" class="gallery__image" style="height: 400px;width: 300px;margin-left: 80px">
+                </figure>
+            </a>
+        </div>
+
+<!--        <div class="gallery__column">-->
+<!--            <a href="https://unsplash.com/@frxgui" target="_blank" class="gallery__link">-->
+<!--                <figure class="gallery__thumb">-->
+<!--                    <img src="https://source.unsplash.com/FQhLLehm4dk/300x300" alt="Portrait by Guilian Fremaux" class="gallery__image">-->
+<!--                    <figcaption class="gallery__caption">Portrait by Guilian Fremaux</figcaption>-->
+<!--                </figure>-->
+<!--            </a>-->
+
+<!--            <a href="https://unsplash.com/@majestical_jasmin" target="_blank" class="gallery__link">-->
+<!--                <figure class="gallery__thumb">-->
+<!--                    <img src="https://source.unsplash.com/OQd9zONSx7s/300x300" alt="Portrait by Jasmin Chew" class="gallery__image">-->
+<!--                    <figcaption class="gallery__caption">Portrait by Jasmin Chew</figcaption>-->
+<!--                </figure>-->
+<!--            </a>-->
+
+<!--            <a href="https://unsplash.com/@dimadallacqua" target="_blank" class="gallery__link">-->
+<!--                <figure class="gallery__thumb">-->
+<!--                    <img src="https://source.unsplash.com/XZkEhowjx8k/300x500" alt="Portrait by Dima DallAcqua" class="gallery__image">-->
+<!--                    <figcaption class="gallery__caption">Portrait by Dima DallAcqua</figcaption>-->
+<!--                </figure>-->
+<!--            </a>-->
+<!--        </div>-->
+<!--    </div>-->
+        <div class="container">
+        <div class="box">
+            <img src="https://source.unsplash.com/1000x808">
+
+
+    </div>
+        </div>
+        <div class="box">
+            <img src="https://source.unsplash.com/1000x809">
+
+        </div>
+        <div class="box">
+            <img src="https://source.unsplash.com/1000x810">
+
+        </div>
+        <div class="box">
+            <img src="https://source.unsplash.com/1000x811">
+
+        </div>
+        <div class="box">
+            <img src="https://source.unsplash.com/1000x812">
+
+        </div>
+</div>
+</div>

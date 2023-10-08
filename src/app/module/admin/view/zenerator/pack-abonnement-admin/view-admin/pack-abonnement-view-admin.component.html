@@ -1,0 +1,61 @@
+
+<p-dialog [(visible)]="viewPackAbonnementDialog" [style]="{width: '70vw'}"
+        header="Pack abonnement" [modal]="true"
+        styleClass="p-fluid">
+
+    <ng-template pTemplate="content">
+        <p-tabView>
+            <p-tabPanel header="Pack abonnement">
+                <div class="p-grid">
+
+                                <div class="p-field p-col-12 p-md-6">
+                                    <label for="1">Nombre image max</label>
+                                    <p-inputNumber class="p-mb-2 p-mr-2" id="1" [disabled]="true"
+                                                   placeholder="Nombre image max"  [(ngModel)]="selectedPackAbonnement.nombreImageMax"
+                                            [(ngModel)]="selectedPackAbonnement.nombreImageMax"></p-inputNumber>
+                                </div>
+
+                                <div class="p-field p-col-12 p-md-6">
+                                    <label for="2">Reduction</label>
+                                    <p-inputNumber class="p-mb-2 p-mr-2" id="2" [disabled]="true"
+                                                   placeholder="Reduction"  [(ngModel)]="selectedPackAbonnement.reduction"
+                                            [(ngModel)]="selectedPackAbonnement.reduction"></p-inputNumber>
+                                </div>
+
+                                <div class="p-field p-col-12 p-md-6">
+                                    <label for="3">Date min</label>
+                                    <p-calendar id="3" [disabled]="true"
+                                                placeholder="Date min"  [(ngModel)]="selectedPackAbonnement.dateMin"
+                                            dateFormat="{{dateFormat}}"></p-calendar>
+                                </div>
+
+                                <div class="p-field p-col-12 p-md-6">
+                                    <label for="4">Date max</label>
+                                    <p-calendar id="4" [disabled]="true"
+                                                placeholder="Date max"  [(ngModel)]="selectedPackAbonnement.dateMax"
+                                            dateFormat="{{dateFormat}}"></p-calendar>
+                                </div>
+
+                </div>
+            </p-tabPanel>
+
+        </p-tabView>
+
+    </ng-template>
+
+    <ng-template pTemplate="footer" >
+        <div class="p-grid">
+            <div>
+                <button pButton pRipple label="Annuler" icon="pi pi-times"
+                        class="p-button-text" (click)="hideViewDialog()"></button>
+            </div>
+        </div>
+    </ng-template>
+
+
+
+
+</p-dialog>
+
+
+

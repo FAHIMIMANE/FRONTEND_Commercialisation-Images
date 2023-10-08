@@ -1,0 +1,57 @@
+
+<p-dialog [(visible)]="viewTagBucketDialog" [style]="{width: '70vw'}"
+        header="Tag bucket" [modal]="true"
+        styleClass="p-fluid">
+
+    <ng-template pTemplate="content">
+        <p-tabView>
+            <p-tabPanel header="Tag bucket">
+                <div class="p-grid">
+
+                                <div class="p-field p-col-12 p-md-6">
+                                    <label for="1">Bucket</label>
+                                    <p-dropdown [options]="buckets" [(ngModel)]="selectedTagBucket.bucketVo"
+                                            id="1" [filter]="true" filterMatchMode="contains"
+                                            [showClear]="true" [disabled]="true"
+                                            optionLabel="libelle"
+                                            placeholder="Bucket">
+                                    </p-dropdown>
+                                </div>
+
+
+                                <div class="p-field p-col-12 p-md-6">
+                                    <label for="2">Tag</label>
+                                    <p-dropdown [options]="tags" [(ngModel)]="selectedTagBucket.tagVo"
+                                            id="2" [filter]="true" filterMatchMode="contains"
+                                            [showClear]="true" [disabled]="true"
+                                            optionLabel="libelle"
+                                            placeholder="Tag">
+                                    </p-dropdown>
+                                </div>
+
+
+                </div>
+            </p-tabPanel>
+
+        </p-tabView>
+
+    </ng-template>
+
+    <ng-template pTemplate="footer" >
+        <div class="p-grid">
+            <div>
+                <button pButton pRipple label="Annuler" icon="pi pi-times"
+                        class="p-button-text" (click)="hideViewDialog()"></button>
+            </div>
+        </div>
+    </ng-template>
+
+            <app-bucket-create-admin></app-bucket-create-admin>
+            <app-tag-create-admin></app-tag-create-admin>
+
+
+
+</p-dialog>
+
+
+

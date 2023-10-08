@@ -1,0 +1,90 @@
+
+<p-dialog [(visible)]="viewPaiementDialog" [style]="{width: '70vw'}"
+        header="Paiement" [modal]="true"
+        styleClass="p-fluid">
+
+    <ng-template pTemplate="content">
+        <p-tabView>
+            <p-tabPanel header="Paiement">
+                <div class="p-grid">
+
+                                <div class="p-field p-col-12 p-md-4">
+                                    <label for="1">Code</label>
+                                    <input class="p-mb-2 p-mr-2" type="text" pInputText [disabled]="true"
+                                           placeholder="Code"  [(ngModel)]="selectedPaiement.code"
+                                           id="1" [(ngModel)]="selectedPaiement.code"
+                                           autofocus>
+                                </div>
+
+
+
+                                <div class="p-field p-col-12 p-md-4">
+                                    <label for="2">Montant ht</label>
+                                    <p-inputNumber class="p-mb-2 p-mr-2" id="2" [disabled]="true"
+                                                   placeholder="Montant ht"  [(ngModel)]="selectedPaiement.montantHt"
+                                            [(ngModel)]="selectedPaiement.montantHt"></p-inputNumber>
+                                </div>
+
+                                <div class="p-field p-col-12 p-md-4">
+                                    <label for="3">Montant ttc</label>
+                                    <p-inputNumber class="p-mb-2 p-mr-2" id="3" [disabled]="true"
+                                                   placeholder="Montant ttc"  [(ngModel)]="selectedPaiement.montantTtc"
+                                            [(ngModel)]="selectedPaiement.montantTtc"></p-inputNumber>
+                                </div>
+
+                                <div class="p-field p-col-12 p-md-4">
+                                    <label for="4">Montant tva</label>
+                                    <p-inputNumber class="p-mb-2 p-mr-2" id="4" [disabled]="true"
+                                                   placeholder="Montant tva"  [(ngModel)]="selectedPaiement.montantTva"
+                                            [(ngModel)]="selectedPaiement.montantTva"></p-inputNumber>
+                                </div>
+
+                                <div class="p-field p-col-12 p-md-4">
+                                    <label for="5">Date paiement</label>
+                                    <p-calendar id="5" [disabled]="true"
+                                                placeholder="Date paiement"  [(ngModel)]="selectedPaiement.datePaiement"
+                                            dateFormat="{{dateFormat}}"></p-calendar>
+                                </div>
+
+                                <div class="p-field p-col-12 p-md-4">
+                                    <label for="6">Pourcentage reduction</label>
+                                    <p-inputNumber class="p-mb-2 p-mr-2" id="6" [disabled]="true"
+                                                   placeholder="Pourcentage reduction"  [(ngModel)]="selectedPaiement.pourcentageReduction"
+                                            [(ngModel)]="selectedPaiement.pourcentageReduction"></p-inputNumber>
+                                </div>
+
+                                <div class="p-field p-col-12 p-md-4">
+                                    <label for="7">Offre reduction</label>
+                                    <p-dropdown [options]="offreReductions" [(ngModel)]="selectedPaiement.offreReductionVo"
+                                            id="7" [filter]="true" filterMatchMode="contains"
+                                            [showClear]="true" [disabled]="true"
+                                            optionLabel="qteMin"
+                                            placeholder="Offre reduction">
+                                    </p-dropdown>
+                                </div>
+
+
+                </div>
+            </p-tabPanel>
+
+        </p-tabView>
+
+    </ng-template>
+
+    <ng-template pTemplate="footer" >
+        <div class="p-grid">
+            <div>
+                <button pButton pRipple label="Annuler" icon="pi pi-times"
+                        class="p-button-text" (click)="hideViewDialog()"></button>
+            </div>
+        </div>
+    </ng-template>
+
+            <app-offre-reduction-create-contributeur></app-offre-reduction-create-contributeur>
+
+
+
+</p-dialog>
+
+
+

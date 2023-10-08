@@ -1,0 +1,50 @@
+
+<p-dialog [(visible)]="viewCategorieImageDialog" [style]="{width: '70vw'}"
+        header="Categorie image" [modal]="true"
+        styleClass="p-fluid">
+
+    <ng-template pTemplate="content">
+        <p-tabView>
+            <p-tabPanel header="Categorie image">
+                <div class="p-grid">
+
+                                <div class="p-field p-col-12 p-md-6">
+                                    <label for="1">Libelle</label>
+                                    <input class="p-mb-2 p-mr-2" type="text" pInputText [disabled]="true"
+                                           placeholder="Libelle"  [(ngModel)]="selectedCategorieImage.libelle"
+                                           id="1" [(ngModel)]="selectedCategorieImage.libelle"
+                                           autofocus>
+                                </div>
+
+
+
+                                <div class="p-field p-col-12 p-md-6">
+                                    <label for="2">Description</label>
+                                    <textarea id="2" pInputTextarea rows="5" cols="30"
+                                              placeholder="Description"  [(ngModel)]="selectedCategorieImage.description"
+                                    ></textarea>
+                                </div>
+
+                </div>
+            </p-tabPanel>
+
+        </p-tabView>
+
+    </ng-template>
+
+    <ng-template pTemplate="footer" >
+        <div class="p-grid">
+            <div>
+                <button pButton pRipple label="Annuler" icon="pi pi-times"
+                        class="p-button-text" (click)="hideViewDialog()"></button>
+            </div>
+        </div>
+    </ng-template>
+
+
+
+
+</p-dialog>
+
+
+

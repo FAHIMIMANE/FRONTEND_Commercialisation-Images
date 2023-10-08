@@ -1,0 +1,457 @@
+<div class="p-grid">
+    <div class="p-col-12">
+        <p-toast></p-toast>
+        <div class="card">
+            <p-toolbar styleClass="p-mb-4">
+                <ng-template pTemplate="left">
+                                            <button pButton pRipple label="Nouveau" icon="pi pi-plus" class="p-button-success p-mr-2 p-mb-2"
+                                (click)="openCreateContributeur('contributeur')"></button>
+
+
+                    <button pButton pRipple label="Recherche"
+                            icon="pi pi-{{findByCriteriaShow?'angle-down':'angle-right'}}"
+                            class="p-button-success p-mr-2 p-mb-2"
+                            (click)="this.findByCriteriaShow = !this.findByCriteriaShow"></button>
+                </ng-template>
+                <ng-template pTemplate="right">
+                    <div class="flex">
+                        <p-splitButton label="Exporter" icon="pi pi-download" styleClass="p-button-help" [model]="excelPdfButons"></p-splitButton>
+                    </div>
+                </ng-template>
+
+            </p-toolbar>
+            <p-toolbar *ngIf="findByCriteriaShow">
+
+                <div class="align-form-search">
+                                <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                    <input class="p-mr-2" pInputText id="1"
+                                           type="text"  [(ngModel)]="searchContributeur.numeroMatricule">
+                                    <label for="1">Numero matricule</label>
+                                </span>
+                                <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                    <input class="p-mr-2" pInputText id="2"
+                                           type="text"  [(ngModel)]="searchContributeur.emailPrincipale">
+                                    <label for="2">Email principale</label>
+                                </span>
+                                <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                    <p-dropdown  id="4" [options]="yesOrNoCredentialsNonExpired" [(ngModel)]="searchContributeur.credentialsNonExpired"
+                                            [filter]="false" [showClear]="true"  placeholder="Credentials non expired"
+                                                 optionLabel="label" optionValue="value">
+                                    </p-dropdown>
+                                </span>
+                                <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                    <p-dropdown  id="5" [options]="yesOrNoEnabled" [(ngModel)]="searchContributeur.enabled"
+                                            [filter]="false" [showClear]="true"  placeholder="Enabled"
+                                                 optionLabel="label" optionValue="value">
+                                    </p-dropdown>
+                                </span>
+                                <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                    <p-dropdown  id="6" [options]="yesOrNoAccountNonExpired" [(ngModel)]="searchContributeur.accountNonExpired"
+                                            [filter]="false" [showClear]="true"  placeholder="Account non expired"
+                                                 optionLabel="label" optionValue="value">
+                                    </p-dropdown>
+                                </span>
+                                <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                    <p-dropdown  id="7" [options]="yesOrNoAccountNonLocked" [(ngModel)]="searchContributeur.accountNonLocked"
+                                            [filter]="false" [showClear]="true"  placeholder="Account non locked"
+                                                 optionLabel="label" optionValue="value">
+                                    </p-dropdown>
+                                </span>
+                                <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                    <p-dropdown  id="8" [options]="yesOrNoPasswordChanged" [(ngModel)]="searchContributeur.passwordChanged"
+                                            [filter]="false" [showClear]="true"  placeholder="Password changed"
+                                                 optionLabel="label" optionValue="value">
+                                    </p-dropdown>
+                                </span>
+
+                        <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                            <p-calendar
+                                    class="p-mr-2" [(ngModel)]="searchContributeur.createdAtMin"
+                                    id="9-1"
+                                    dateFormat="dd-MM-yy"></p-calendar>
+                            <label for="9-1">Created at Min</label>
+                        </span>
+
+                         <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                            <p-calendar
+                                    class="p-mr-2" [(ngModel)]="searchContributeur.createdAtMax"
+                                    id="9-2"
+                                    dateFormat="dd-MM-yy"></p-calendar>
+                            <label for="9-2">Created at Max</label>
+                        </span>
+
+
+                        <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                            <p-calendar
+                                    class="p-mr-2" [(ngModel)]="searchContributeur.updatedAtMin"
+                                    id="10-1"
+                                    dateFormat="dd-MM-yy"></p-calendar>
+                            <label for="10-1">Updated at Min</label>
+                        </span>
+
+                         <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                            <p-calendar
+                                    class="p-mr-2" [(ngModel)]="searchContributeur.updatedAtMax"
+                                    id="10-2"
+                                    dateFormat="dd-MM-yy"></p-calendar>
+                            <label for="10-2">Updated at Max</label>
+                        </span>
+
+                                <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                    <input class="p-mr-2" pInputText id="11"
+                                           type="text"  [(ngModel)]="searchContributeur.username">
+                                    <label for="11">Username</label>
+                                </span>
+                                <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                    <input class="p-mr-2" pInputText id="12"
+                                           type="text"  [(ngModel)]="searchContributeur.password">
+                                    <label for="12">Password</label>
+                                </span>
+                                <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                    <input class="p-mr-2" pInputText id="13"
+                                           type="text"  [(ngModel)]="searchContributeur.prenom">
+                                    <label for="13">Prenom</label>
+                                </span>
+                                <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                    <input class="p-mr-2" pInputText id="14"
+                                           type="text"  [(ngModel)]="searchContributeur.nom">
+                                    <label for="14">Nom</label>
+                                </span>
+                                <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                    <input class="p-mr-2" pInputText id="15"
+                                           type="text"  [(ngModel)]="searchContributeur.cin">
+                                    <label for="15">Cin</label>
+                                </span>
+                                <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                    <input class="p-mr-2" pInputText id="16"
+                                           type="text"  [(ngModel)]="searchContributeur.numeroTelephone">
+                                    <label for="16">Numero telephone</label>
+                                </span>
+                                <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                    <input class="p-mr-2" pInputText id="17"
+                                           type="text"  [(ngModel)]="searchContributeur.adresse">
+                                    <label for="17">Adresse</label>
+                                </span>
+                                <span class=" p-float-label p-mr-3 align-search-items p-mt-4">
+                                    <input class="p-mr-2" pInputText id="18"
+                                           type="text"  [(ngModel)]="searchContributeur.codePostale">
+                                    <label for="18">Code postale</label>
+                                </span>
+                </div>
+
+                <div class="align-search-button">
+                    <button pButton pRipple label="Valider" icon="pi pi-sort-amount-down"
+                            class="p-button-info p-mr-2" (click)="searchRequest()"></button>
+                </div>
+            </p-toolbar>
+
+
+            <p-table #dt [value]="contributeurs" [columns]="cols" [rows]="4" [paginator]="true"
+                    [globalFilterFields]="['numeroMatricule', 'emailPrincipale', 'credentialsNonExpired', 'enabled', 'accountNonExpired', 'accountNonLocked', 'passwordChanged', 'createdAt', 'updatedAt', 'username', 'password', 'prenom', 'nom', 'cin', 'numeroTelephone', 'adresse', 'codePostale']" [(selection)]="selectedContributeur"
+                    [rowHover]="true" dataKey="id" styleClass="p-datatable-customers"
+                                      currentPageReportTemplate="Les éléments de {first} à {last} sur {totalRecords}"
+                    [showCurrentPageReport]="true">
+                <ng-template pTemplate="caption">
+                    <div class="p-d-flex p-flex-column p-flex-md-row p-jc-md-between table-header">
+                        <h5 class="p-m-0">Liste des contributeurs</h5>
+                        <span class="p-input-icon-left">
+                            <i class="pi pi-search"></i>
+                            <input pInputText type="text" placeholder="Chercher..." (input)="dt.filterGlobal($event.target.value, 'contains')"/>
+                        </span>
+                    </div>
+                </ng-template>
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th style="width: 3rem">
+                            <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+                        </th>
+
+                                
+                                <th pSortableColumn="numeroMatricule">
+                                    <div class="p-d-flex p-jc-between p-ai-center">
+                                        <span>Numero matricule</span>
+                                        <p-sortIcon field="numeroMatricule"></p-sortIcon>
+                                    </div>
+                                </th>
+                                
+
+
+                                
+                                <th pSortableColumn="emailPrincipale">
+                                    <div class="p-d-flex p-jc-between p-ai-center">
+                                        <span>Email principale</span>
+                                        <p-sortIcon field="emailPrincipale"></p-sortIcon>
+                                    </div>
+                                </th>
+                                
+
+
+
+                                
+                                <th pSortableColumn="credentialsNonExpired">
+                                    <div class="p-d-flex p-jc-between p-ai-center">
+                                        <span>Credentials non expired</span>
+                                        <p-sortIcon field="credentialsNonExpired"></p-sortIcon>
+                                    </div>
+                                </th>
+                                
+
+
+                                
+                                <th pSortableColumn="enabled">
+                                    <div class="p-d-flex p-jc-between p-ai-center">
+                                        <span>Enabled</span>
+                                        <p-sortIcon field="enabled"></p-sortIcon>
+                                    </div>
+                                </th>
+                                
+
+
+                                
+                                <th pSortableColumn="accountNonExpired">
+                                    <div class="p-d-flex p-jc-between p-ai-center">
+                                        <span>Account non expired</span>
+                                        <p-sortIcon field="accountNonExpired"></p-sortIcon>
+                                    </div>
+                                </th>
+                                
+
+
+                                
+                                <th pSortableColumn="accountNonLocked">
+                                    <div class="p-d-flex p-jc-between p-ai-center">
+                                        <span>Account non locked</span>
+                                        <p-sortIcon field="accountNonLocked"></p-sortIcon>
+                                    </div>
+                                </th>
+                                
+
+
+                                
+                                <th pSortableColumn="passwordChanged">
+                                    <div class="p-d-flex p-jc-between p-ai-center">
+                                        <span>Password changed</span>
+                                        <p-sortIcon field="passwordChanged"></p-sortIcon>
+                                    </div>
+                                </th>
+                                
+
+
+                                
+                                <th pSortableColumn="createdAt">
+                                    <div class="p-d-flex p-jc-between p-ai-center">
+                                        <span>Created at</span>
+                                        <p-sortIcon field="createdAt"></p-sortIcon>
+                                    </div>
+                                </th>
+                                
+
+
+                                
+                                <th pSortableColumn="updatedAt">
+                                    <div class="p-d-flex p-jc-between p-ai-center">
+                                        <span>Updated at</span>
+                                        <p-sortIcon field="updatedAt"></p-sortIcon>
+                                    </div>
+                                </th>
+                                
+
+
+                                <!-- 
+                                <th pSortableColumn="username">
+                                    <div class="p-d-flex p-jc-between p-ai-center">
+                                        <span>Username</span>
+                                        <p-sortIcon field="username"></p-sortIcon>
+                                    </div>
+                                </th>
+                                --> 
+
+
+                                <!-- 
+                                <th pSortableColumn="password">
+                                    <div class="p-d-flex p-jc-between p-ai-center">
+                                        <span>Password</span>
+                                        <p-sortIcon field="password"></p-sortIcon>
+                                    </div>
+                                </th>
+                                --> 
+
+
+                                <!-- 
+                                <th pSortableColumn="prenom">
+                                    <div class="p-d-flex p-jc-between p-ai-center">
+                                        <span>Prenom</span>
+                                        <p-sortIcon field="prenom"></p-sortIcon>
+                                    </div>
+                                </th>
+                                --> 
+
+
+                                <!-- 
+                                <th pSortableColumn="nom">
+                                    <div class="p-d-flex p-jc-between p-ai-center">
+                                        <span>Nom</span>
+                                        <p-sortIcon field="nom"></p-sortIcon>
+                                    </div>
+                                </th>
+                                --> 
+
+
+                                <!-- 
+                                <th pSortableColumn="cin">
+                                    <div class="p-d-flex p-jc-between p-ai-center">
+                                        <span>Cin</span>
+                                        <p-sortIcon field="cin"></p-sortIcon>
+                                    </div>
+                                </th>
+                                --> 
+
+
+                                <!-- 
+                                <th pSortableColumn="numeroTelephone">
+                                    <div class="p-d-flex p-jc-between p-ai-center">
+                                        <span>Numero telephone</span>
+                                        <p-sortIcon field="numeroTelephone"></p-sortIcon>
+                                    </div>
+                                </th>
+                                --> 
+
+
+                                <!-- 
+                                <th pSortableColumn="adresse">
+                                    <div class="p-d-flex p-jc-between p-ai-center">
+                                        <span>Adresse</span>
+                                        <p-sortIcon field="adresse"></p-sortIcon>
+                                    </div>
+                                </th>
+                                --> 
+
+
+                                <!-- 
+                                <th pSortableColumn="codePostale">
+                                    <div class="p-d-flex p-jc-between p-ai-center">
+                                        <span>Code postale</span>
+                                        <p-sortIcon field="codePostale"></p-sortIcon>
+                                    </div>
+                                </th>
+                                --> 
+
+
+
+                        <th>Actions</th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-contributeur>
+                    <tr>
+                        <td>
+                            <p-tableCheckbox [value]="contributeur"></p-tableCheckbox>
+                        </td>
+                            
+                                 <td>{{contributeur.numeroMatricule}}</td>
+                            
+
+                            
+                                 <td>{{contributeur.emailPrincipale}}</td>
+                            
+
+                            
+                                <td><i *ngIf="contributeur.credentialsNonExpired" class="pi pi-check checked-toogle"></i>
+                                    <i *ngIf="!contributeur.credentialsNonExpired" class="pi pi-times unchecked-toogle"></i>
+                                </td>
+                            
+
+                            
+                                <td><i *ngIf="contributeur.enabled" class="pi pi-check checked-toogle"></i>
+                                    <i *ngIf="!contributeur.enabled" class="pi pi-times unchecked-toogle"></i>
+                                </td>
+                            
+
+                            
+                                <td><i *ngIf="contributeur.accountNonExpired" class="pi pi-check checked-toogle"></i>
+                                    <i *ngIf="!contributeur.accountNonExpired" class="pi pi-times unchecked-toogle"></i>
+                                </td>
+                            
+
+                            
+                                <td><i *ngIf="contributeur.accountNonLocked" class="pi pi-check checked-toogle"></i>
+                                    <i *ngIf="!contributeur.accountNonLocked" class="pi pi-times unchecked-toogle"></i>
+                                </td>
+                            
+
+                            
+                                <td><i *ngIf="contributeur.passwordChanged" class="pi pi-check checked-toogle"></i>
+                                    <i *ngIf="!contributeur.passwordChanged" class="pi pi-times unchecked-toogle"></i>
+                                </td>
+                            
+
+                            
+                                <td>{{contributeur.createdAt | date:'dd-M-yyyy' }}</td>
+                            
+
+                             <!-- 
+                                <td>{{contributeur.updatedAt | date:'dd-M-yyyy' }}</td>
+                             --> 
+
+                             <!-- 
+                                 <td>{{contributeur.username}}</td>
+                             --> 
+
+                             <!-- 
+                                 <td>{{contributeur.password}}</td>
+                             --> 
+
+                             <!-- 
+                                 <td>{{contributeur.prenom}}</td>
+                             --> 
+
+                             <!-- 
+                                 <td>{{contributeur.nom}}</td>
+                             --> 
+
+                             <!-- 
+                                 <td>{{contributeur.cin}}</td>
+                             --> 
+
+                             <!-- 
+                                 <td>{{contributeur.numeroTelephone}}</td>
+                             --> 
+
+                             <!-- 
+                                 <td>{{contributeur.adresse}}</td>
+                             --> 
+
+                             <!-- 
+                                 <td>{{contributeur.codePostale}}</td>
+                             --> 
+
+
+                        <td>
+                            <button pButton pRipple icon="pi pi-pencil"
+                                    class="p-button-rounded p-button-success p-mr-2"
+                                    (click)="editContributeur(contributeur)"></button>
+                            <button pButton pRipple icon="pi pi-list" class="p-button-rounded p-button-info p-mr-2"
+                                    (click)="viewContributeur(contributeur)"></button>
+                            <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-danger p-mr-2"
+                                    (click)="deleteContributeur(contributeur)"></button>
+
+                            <button pButton pRipple icon="pi pi-copy" class="p-button-rounded p-button-raised p-button-warning"
+                                    (click)="duplicateContributeur(contributeur)"></button>
+                        </td>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="summary">
+                    <div class="p-d-flex p-ai-center p-jc-between">
+                        En totale
+                        il {{contributeurs ? contributeurs.length == 1 ? 'y a' : 'y a' : 'y a' }} {{contributeurs ? contributeurs.length : 0 }} {{contributeurs ? contributeurs.length == 1 ? 'contributeur' : 'contributeurs' : 0 }}
+                        .
+                    </div>
+                </ng-template>
+            </p-table>
+        </div>
+
+        <app-contributeur-create-chercheur></app-contributeur-create-chercheur>
+        <app-contributeur-edit-chercheur></app-contributeur-edit-chercheur>
+        <app-contributeur-view-chercheur></app-contributeur-view-chercheur>
+        <p-confirmDialog [style]="{width: '450px'}"></p-confirmDialog>
+    </div>
+</div>

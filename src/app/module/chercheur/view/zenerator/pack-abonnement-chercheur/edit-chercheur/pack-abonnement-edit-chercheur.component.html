@@ -1,0 +1,68 @@
+        <p-dialog [(visible)]="editPackAbonnementDialog" [style]="{width: '70vw'}"
+                header="Pack abonnement" [modal]="true"
+                styleClass="p-fluid" [maximizable]="true" [draggable]="false" [resizable]="false">
+
+
+            <ng-template pTemplate="content" >
+                <p-tabView>
+                    <p-tabPanel header="Pack abonnement">
+                        <div class="p-grid">
+
+                                        <div class="p-field p-col-12 p-md-6">
+                                            <label for="1">Nombre image max<span style="color: red;">*</span></label>
+                                            <p-inputNumber class="p-mb-2 p-mr-2" id="1"
+                                                           placeholder="Nombre image max"
+                                                    [(ngModel)]="selectedPackAbonnement.nombreImageMax" [ngClass]="{'ng-invalid ng-dirty' : !validPackAbonnementNombreImageMax}"  >
+                                            </p-inputNumber>
+                                            <small class='p-error' *ngIf='!validPackAbonnementNombreImageMax'>NombreImageMax est obligatoire.</small>
+                                        </div>
+
+                                        <div class="p-field p-col-12 p-md-6">
+                                            <label for="2">Reduction<span style="color: red;">*</span></label>
+                                            <p-inputNumber class="p-mb-2 p-mr-2" id="2"
+                                                           placeholder="Reduction"
+                                                    [(ngModel)]="selectedPackAbonnement.reduction" [ngClass]="{'ng-invalid ng-dirty' : !validPackAbonnementReduction}"  >
+                                            </p-inputNumber>
+                                            <small class='p-error' *ngIf='!validPackAbonnementReduction'>Reduction est obligatoire.</small>
+                                        </div>
+
+                                        <div class="p-field p-col-12 p-md-6">
+                                            <label for="3">Date min<span style="color: red;">*</span></label>
+                                            <p-calendar id="3"
+                                                        placeholder="Date min"  [(ngModel)]="selectedPackAbonnement.dateMin"
+                                                    dateFormat="{{dateFormat}}" [ngClass]="{'ng-invalid ng-dirty' : !validPackAbonnementDateMin}"  >
+                                            </p-calendar>
+                                            <small class='p-error' *ngIf='!validPackAbonnementDateMin'>DateMin est obligatoire.</small>
+                                        </div>
+
+                                        <div class="p-field p-col-12 p-md-6">
+                                            <label for="4">Date max<span style="color: red;">*</span></label>
+                                            <p-calendar id="4"
+                                                        placeholder="Date max"  [(ngModel)]="selectedPackAbonnement.dateMax"
+                                                    dateFormat="{{dateFormat}}" [ngClass]="{'ng-invalid ng-dirty' : !validPackAbonnementDateMax}"  >
+                                            </p-calendar>
+                                            <small class='p-error' *ngIf='!validPackAbonnementDateMax'>DateMax est obligatoire.</small>
+                                        </div>
+
+                        </div>
+                    </p-tabPanel>
+
+                </p-tabView>
+
+            </ng-template>
+
+            <ng-template pTemplate="footer" >
+                <div class="p-grid">
+                        <div>
+                            <button pButton pRipple label="Annuler" icon="pi pi-times"
+                                    class="p-button-text" (click)="hideCreateDialog()"></button>
+                        </div>
+                    <div>
+                        <button pButton pRipple label="Valider" icon="pi pi-check" style="margin:10px" (click)="edit()"></button>
+                    </div>
+                </div>
+            </ng-template>
+
+
+
+    </p-dialog>

@@ -1,0 +1,160 @@
+        <p-dialog [(visible)]="createImageDialog" [style]="{width: '70vw'}"
+                header="Image" [modal]="true"
+                styleClass="p-fluid" [maximizable]="true" [draggable]="false" [resizable]="false">
+
+
+            <ng-template pTemplate="content" >
+                <p-tabView>
+                    <p-tabPanel header="Image">
+                        <div class="p-grid">
+
+                                        <div class="p-field p-col-12 p-md-4">
+                                            <label for="1">Reference<span style="color: red;">*</span></label>
+                                            <input class="p-mb-2 p-mr-2" type="text" pInputText
+                                                   placeholder="Reference"
+                                                   id="1" [(ngModel)]="selectedImage.reference"
+                                                    [ngClass]="{'ng-invalid ng-dirty' : !validImageReference}"  />
+                                            <small class='p-error' *ngIf='!validImageReference'>Reference est obligatoire.</small>
+                                        </div>
+
+
+
+                                        <div class="p-field p-col-12 p-md-4">
+                                            <label for="2">Prix<span style="color: red;">*</span></label>
+                                            <p-inputNumber class="p-mb-2 p-mr-2" id="2"
+                                                           placeholder="Prix"
+                                                    [(ngModel)]="selectedImage.prix" [ngClass]="{'ng-invalid ng-dirty' : !validImagePrix}"  >
+                                            </p-inputNumber>
+                                            <small class='p-error' *ngIf='!validImagePrix'>Prix est obligatoire.</small>
+                                        </div>
+
+                                        <div class="p-field p-col-12 p-md-4">
+                                            <label for="3">Description<span style="color: red;">*</span></label>
+                                            <textarea id="3" pInputTextarea rows="5" cols="30"
+                                                      placeholder="Description"  [(ngModel)]="selectedImage.description"
+                                            [ngClass]="{'ng-invalid ng-dirty' : !validImageDescription}"  ></textarea>
+                                            <small class='p-error' *ngIf='!validImageDescription'>Description est obligatoire.</small>
+                                        </div>
+
+                                        <div class="p-field p-col-12 p-md-4">
+                                            <label for="4">Extension</label>
+                                            <input class="p-mb-2 p-mr-2" type="text" pInputText
+                                                   placeholder="Extension"
+                                                   id="4" [(ngModel)]="selectedImage.extension"
+                                                     />
+                                            
+                                        </div>
+
+
+
+                                        <div class="p-field p-col-12 p-md-4">
+                                            <label for="5">Taille</label>
+                                            <p-inputNumber class="p-mb-2 p-mr-2" id="5"
+                                                           placeholder="Taille"
+                                                    [(ngModel)]="selectedImage.taille"  >
+                                            </p-inputNumber>
+                                            
+                                        </div>
+
+                                        <div class="p-field p-col-12 p-md-4">
+                                            <label for="6">Resolution</label>
+                                            <p-inputNumber class="p-mb-2 p-mr-2" id="6"
+                                                           placeholder="Resolution"
+                                                    [(ngModel)]="selectedImage.resolution"  >
+                                            </p-inputNumber>
+                                            
+                                        </div>
+
+                                        <div class="p-field p-col-11 p-md-3">
+                                            <label for="7">Client</label>
+                                            <p-dropdown [options]="clients" [(ngModel)]="selectedImage.clientVo"
+                                                    id="7" [filter]="true" filterMatchMode="contains"
+                                                    [showClear]="true"
+                                                    optionLabel="numeroMatricule"
+                                                    placeholder="Client"  >
+                                            </p-dropdown>
+                                            
+                                        </div>
+                                        <div class="p-col-1">
+                                            <label></label>
+                                            <button pButton pRipple type="button"
+                                                    icon="pi pi-plus"   (click)="openCreateclient('client')"
+                                                    class="p-button-success one-colonne-btn-success-align"></button>
+                                        </div>
+                                        <div class="p-field p-col-11 p-md-3">
+                                            <label for="8">Bucket<span style="color: red;">*</span></label>
+                                            <p-dropdown [options]="buckets" [(ngModel)]="selectedImage.bucketVo"
+                                                    id="8" [filter]="true" filterMatchMode="contains"
+                                                    [showClear]="true"
+                                                    optionLabel="libelle"
+                                                    placeholder="Bucket" [ngClass]="{'ng-invalid ng-dirty' : !validImageBucket}"  >
+                                            </p-dropdown>
+                                            <small class='p-error' *ngIf='!validImageBucket'>Bucket est obligatoire.</small>
+                                        </div>
+                                        <div class="p-col-1">
+                                            <label></label>
+                                            <button pButton pRipple type="button"
+                                                    icon="pi pi-plus"   (click)="openCreatebucket('bucket')"
+                                                    class="p-button-success one-colonne-btn-success-align"></button>
+                                        </div>
+                                    <div class="p-field p-col-12  p-md-4">
+                                        <label>Categorie image</label>
+                                        <p-multiSelect [options]="categorieItemsVo" [(ngModel)]="selectedImage.categorieItemsVo" defaultLabel="Select un categorieImage" optionLabel="categorieImageVo.libelle"  display="chip"></p-multiSelect>
+                                    </div>
+                                        <div class="p-field p-col-11 p-md-3">
+                                            <label for="10">Type image</label>
+                                            <p-dropdown [options]="typeImages" [(ngModel)]="selectedImage.typeImageVo"
+                                                    id="10" [filter]="true" filterMatchMode="contains"
+                                                    [showClear]="true"
+                                                    optionLabel="libelle"
+                                                    placeholder="Type image"  >
+                                            </p-dropdown>
+                                            
+                                        </div>
+                            <div class="p-field p-col-12 p-md-6 content">
+                                <div class="contentImage ">
+                                    <p class="p-mb-2 p-mr-2" for="3">Image</p>
+
+                                    <img class="p-mb-2 p-mr-2" [src]="imgSrc" width="200px" height="100px"
+                                         (click)="fileUploader.click()">
+
+                                    <input name="files[]" class="p-mb-2 p-mr-2" type="file" accept="image/*" multiple="multiple"
+                                           #fileUploader
+                                           id="file-upload" placeholder="Image" (change)="onselectedFile($event)"
+                                           [(ngModel)]="selectedImage.reference"/>
+
+                                </div>
+
+                            </div>
+                                        <div class="p-col-1">
+                                            <label></label>
+                                            <button pButton pRipple type="button"
+                                                    icon="pi pi-plus"   (click)="openCreatetypeImage('typeImage')"
+                                                    class="p-button-success one-colonne-btn-success-align"></button>
+                                        </div>
+                        </div>
+                    </p-tabPanel>
+
+                </p-tabView>
+
+            </ng-template>
+
+            <ng-template pTemplate="footer" >
+                <div class="p-grid">
+                        <div>
+                            <button pButton pRipple label="Annuler" icon="pi pi-times"
+                                    class="p-button-text" (click)="hideCreateDialog()"></button>
+                        </div>
+                    <div>
+                        <button pButton pRipple label="Valider" icon="pi pi-check" style="margin:10px" (click)="save()"></button>
+                    </div>
+                </div>
+            </ng-template>
+
+              <app-client-create-client></app-client-create-client>
+             <app-bucket-create-client></app-bucket-create-client>
+           <app-type-image-create-client></app-type-image-create-client>
+
+                      <app-categorie-image-create-client></app-categorie-image-create-client>
+
+ </p-dialog>

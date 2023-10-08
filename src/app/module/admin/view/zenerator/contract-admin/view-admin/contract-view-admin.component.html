@@ -1,0 +1,139 @@
+
+<p-dialog [(visible)]="viewContractDialog" [style]="{width: '70vw'}"
+        header="Contract" [modal]="true"
+        styleClass="p-fluid">
+
+    <ng-template pTemplate="content">
+        <p-tabView>
+            <p-tabPanel header="Contract">
+                <div class="p-grid">
+
+                                <div class="p-field p-col-12 p-md-4">
+                                    <label for="1">Date debut</label>
+                                    <p-calendar id="1" [disabled]="true"
+                                                placeholder="Date debut"  [(ngModel)]="selectedContract.dateDebut"
+                                            dateFormat="{{dateFormat}}"></p-calendar>
+                                </div>
+
+                                <div class="p-field p-col-12 p-md-4">
+                                    <label for="2">Date fin</label>
+                                    <p-calendar id="2" [disabled]="true"
+                                                placeholder="Date fin"  [(ngModel)]="selectedContract.dateFin"
+                                            dateFormat="{{dateFormat}}"></p-calendar>
+                                </div>
+
+                                <div class="p-field p-col-12 p-md-4">
+                                    <label for="3">Objet</label>
+                                    <input class="p-mb-2 p-mr-2" type="text" pInputText [disabled]="true"
+                                           placeholder="Objet"  [(ngModel)]="selectedContract.objet"
+                                           id="3" [(ngModel)]="selectedContract.objet"
+                                           autofocus>
+                                </div>
+
+
+
+                                <div class="p-field p-col-12 p-md-4">
+                                    <label for="4">Type contrat</label>
+                                    <p-dropdown [options]="typeContrats" [(ngModel)]="selectedContract.typeContratVo"
+                                            id="4" [filter]="true" filterMatchMode="contains"
+                                            [showClear]="true" [disabled]="true"
+                                            optionLabel="libelle"
+                                            placeholder="Type contrat">
+                                    </p-dropdown>
+                                </div>
+
+
+                                <div class="p-field p-col-12 p-md-4">
+                                    <label for="5">Contenu</label>
+                                    <textarea id="5" pInputTextarea rows="5" cols="30"
+                                              placeholder="Contenu"  [(ngModel)]="selectedContract.contenu"
+                                    ></textarea>
+                                </div>
+
+                                <div class="p-field p-col-12 p-md-4">
+                                    <label for="6">Reference</label>
+                                    <input class="p-mb-2 p-mr-2" type="text" pInputText [disabled]="true"
+                                           placeholder="Reference"  [(ngModel)]="selectedContract.reference"
+                                           id="6" [(ngModel)]="selectedContract.reference"
+                                           autofocus>
+                                </div>
+
+
+
+                                <div class="p-field align-inputswitch p-col-12  p-md-4">
+                                    <div  class="label-inputswitch">
+                                        <label for="8">Archive</label>
+                                    </div>
+                                    <div class="input-switch">
+                                        <p-inputSwitch id="8"  [disabled]="true" [(ngModel)]="selectedContract.archive"></p-inputSwitch>
+                                    </div>
+                                </div>
+
+
+                                <div class="p-field p-col-12 p-md-4">
+                                    <label for="9">Date archivage</label>
+                                    <p-calendar id="9" [disabled]="true"
+                                                placeholder="Date archivage"  [(ngModel)]="selectedContract.dateArchivage"
+                                            dateFormat="{{dateFormat}}"></p-calendar>
+                                </div>
+
+                                <div class="p-field p-col-12 p-md-4">
+                                    <label for="10">Date creation</label>
+                                    <p-calendar id="10" [disabled]="true"
+                                                placeholder="Date creation"  [(ngModel)]="selectedContract.dateCreation"
+                                            dateFormat="{{dateFormat}}"></p-calendar>
+                                </div>
+
+                </div>
+            </p-tabPanel>
+                    <p-tabPanel header="Signatures">
+                        <div class="p-grid">
+
+                            <div class="p-col">
+                                <div class="card">
+                                    <p-table [value]="selectedContract.signaturesVo" [scrollable]="true"
+                                            scrollHeight="200px">
+                                        <ng-template pTemplate="header">
+                                            <tr>
+                                                            <th>Date signature</th>
+                                                            <th>Contributeur</th>
+                                            </tr>
+                                        </ng-template>
+                                        <ng-template pTemplate="body" let-p>
+                                            <tr>
+                                                            <td>{{p.dateSignature | date: dateFormatColumn}}</td>
+
+                                                        <td>{{p.contributeurVo?.cin}}</td>
+
+                                            </tr>
+                                        </ng-template>
+                                    </p-table>
+                                </div>
+                            </div>
+                        </div>
+
+                    </p-tabPanel>
+
+
+        </p-tabView>
+
+    </ng-template>
+
+    <ng-template pTemplate="footer" >
+        <div class="p-grid">
+            <div>
+                <button pButton pRipple label="Annuler" icon="pi pi-times"
+                        class="p-button-text" (click)="hideViewDialog()"></button>
+            </div>
+        </div>
+    </ng-template>
+
+            <app-type-contrat-create-admin></app-type-contrat-create-admin>
+
+                    <app-contributeur-create-admin></app-contributeur-create-admin>
+
+
+</p-dialog>
+
+
+

@@ -1,0 +1,93 @@
+        <p-dialog [(visible)]="createPanierItemDialog" [style]="{width: '70vw'}"
+                header="Panier item" [modal]="true"
+                styleClass="p-fluid" [maximizable]="true" [draggable]="false" [resizable]="false">
+
+
+            <ng-template pTemplate="content" >
+                <p-tabView>
+                    <p-tabPanel header="Panier item">
+                        <div class="p-grid">
+
+                                        <div class="p-field p-col-11 p-md-5">
+                                            <label for="1">Image<span style="color: red;">*</span></label>
+                                            <p-dropdown [options]="images" [(ngModel)]="selectedPanierItem.imageVo"
+                                                    id="1" [filter]="true" filterMatchMode="contains"
+                                                    [showClear]="true"
+                                                    optionLabel="reference"
+                                                    placeholder="Image" [ngClass]="{'ng-invalid ng-dirty' : !validPanierItemImage}"  >
+                                            </p-dropdown>
+                                            <small class='p-error' *ngIf='!validPanierItemImage'>Image est obligatoire.</small>
+                                        </div>
+                                        <div class="p-col-1">
+                                            <label></label>
+                                            <button pButton pRipple type="button"
+                                                    icon="pi pi-plus"   (click)="openCreateimage('image')"
+                                                    class="p-button-success one-colonne-btn-success-align"></button>
+                                        </div>
+                                        <div class="p-field p-col-11 p-md-5">
+                                            <label for="2">Panier<span style="color: red;">*</span></label>
+                                            <p-dropdown [options]="paniers" [(ngModel)]="selectedPanierItem.panierVo"
+                                                    id="2" [filter]="true" filterMatchMode="contains"
+                                                    [showClear]="true"
+                                                    optionLabel="id"
+                                                    placeholder="Panier" [ngClass]="{'ng-invalid ng-dirty' : !validPanierItemPanier}"  >
+                                            </p-dropdown>
+                                            <small class='p-error' *ngIf='!validPanierItemPanier'>Panier est obligatoire.</small>
+                                        </div>
+                                        <div class="p-col-1">
+                                            <label></label>
+                                            <button pButton pRipple type="button"
+                                                    icon="pi pi-plus"   (click)="openCreatepanier('panier')"
+                                                    class="p-button-success one-colonne-btn-success-align"></button>
+                                        </div>
+                                        <div class="p-field p-col-12 p-md-6">
+                                            <label for="3">Prix</label>
+                                            <p-inputNumber class="p-mb-2 p-mr-2" id="3"
+                                                           placeholder="Prix"
+                                                    [(ngModel)]="selectedPanierItem.prix"  >
+                                            </p-inputNumber>
+                                            
+                                        </div>
+
+                                        <div class="p-field p-col-12 p-md-6">
+                                            <label for="4">Reduction</label>
+                                            <p-inputNumber class="p-mb-2 p-mr-2" id="4"
+                                                           placeholder="Reduction"
+                                                    [(ngModel)]="selectedPanierItem.reduction"  >
+                                            </p-inputNumber>
+                                            
+                                        </div>
+
+                                        <div class="p-field p-col-12 p-md-6">
+                                            <label for="5">Prix apres reduction</label>
+                                            <p-inputNumber class="p-mb-2 p-mr-2" id="5"
+                                                           placeholder="Prix apres reduction"
+                                                    [(ngModel)]="selectedPanierItem.prixApresReduction"  >
+                                            </p-inputNumber>
+                                            
+                                        </div>
+
+                        </div>
+                    </p-tabPanel>
+
+                </p-tabView>
+
+            </ng-template>
+
+            <ng-template pTemplate="footer" >
+                <div class="p-grid">
+                        <div>
+                            <button pButton pRipple label="Annuler" icon="pi pi-times"
+                                    class="p-button-text" (click)="hideCreateDialog()"></button>
+                        </div>
+                    <div>
+                        <button pButton pRipple label="Valider" icon="pi pi-check" style="margin:10px" (click)="save()"></button>
+                    </div>
+                </div>
+            </ng-template>
+
+                    <app-image-create-contributeur></app-image-create-contributeur>
+                    <app-panier-create-contributeur></app-panier-create-contributeur>
+
+
+    </p-dialog>
